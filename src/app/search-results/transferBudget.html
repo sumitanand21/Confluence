@@ -1,0 +1,98 @@
+<div class="col-xs-12 no_pad employee_details">
+<mat-dialog-actions>
+		<div class="col-xs-12 no_pad">
+			<div class="col-xs-12 no_pad allPopHeader"><h1 class="pull-left">Transfer budget</h1>
+			<button class="pull-right icon-close" mat-dialog-close aria-label="close" (click)="removeScroll()"></button></div>
+			<div class="col-xs-12 no_pad popInnerPadd">
+				<h2 class="col-xs-12 no_pad popupSecHead mb20">Citi bank project</h2>
+				<div class="col-xs-3 no_pad">
+					<span class="col-xs-12 no_pad label_hd">Available budget</span>
+					<span class="col-xs-12 no_pad label_text blue_color">400$</span>
+				</div>
+				<div class="col-xs-9 no_pad">
+					<span class="col-xs-12 no_pad label_hd">Cost deviation required to allocate this resource</span>
+					<span class="col-xs-12 no_pad label_text blue_color">85$</span>
+				</div>
+			</div>
+			<div class="col-xs-12 no_pad popInnerPadd topBordr">
+				<p class="col-xs-12 no_pad transBudgetInfo">You can transfer budget from the below project</p>
+				<div class="col-xs-12 no_pad mt20">
+					<table class="col-xs-12 no_pad budgetTable">
+						<thead>
+							<tr>
+								<th class="col-xs-4 no_pad">Projects</th>
+								<th class="col-xs-3 no_pad">Available budget</th>
+								<th class="col-xs-3 no_pad">Amount to be transfer</th>
+								<th class="col-xs-2 no_pad"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="col-xs-4 no_pad PaddingTop10">Standard chartered bank</td>
+								<td class="col-xs-3 no_pad PaddingTop10"><span class="pull-left availabelBudget">20$</span></td>
+								<td class="col-xs-3 no_pad PaddingTop10"><div class="amountTransfer">
+									<span class="pull-left">70$</span>
+									<button class="pull-right icon-close btndef_none" aria-label="remove" *ngIf="standardCheck" (click)="standardRemove()"></button>
+								</div></td>
+								<td class="col-xs-2 PaddingTop10">
+								<button [ngClass]="standardCheck ? 'display_none' : 'addBudget'" aria-label="add" title="add" (click)="standardAdd()">add</button>
+								<span class="pull-left icon-status_complete" *ngIf="standardCheck" (click)="standardRemove()" aria-label="Added"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-xs-4 no_pad PaddingTop10">ICICI bank</td>
+								<td class="col-xs-3 no_pad PaddingTop10"><span class="pull-left availabelBudget">85$</span></td>
+								<td class="col-xs-3 no_pad PaddingTop10"><div class="amountTransfer">
+									<span class="pull-left">15$</span>
+									<button class="pull-right icon-close btndef_none" aria-label="remove" *ngIf="bankICICCheck" (click)="bankICRemove()"></button>
+								</div></td>
+								<td class="col-xs-2 PaddingTop10">
+								<button [ngClass]="bankICICCheck ? 'display_none' : 'addBudget' " aria-label="add" title="add" (click)="bankICAdd()">add</button>
+								<span class="pull-left icon-status_complete" *ngIf="bankICICCheck" (click)="bankICRemove()" aria-label="added"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-xs-4 no_pad PaddingTop10">Indusind bank</td>
+								<td class="col-xs-3 no_pad PaddingTop10"><span class="pull-left availabelBudget">10$</span></td>
+								<td class="col-xs-3 no_pad PaddingTop10"><div class="amountTransfer">
+									<span class="pull-left">0$</span>
+									<button class="pull-right icon-close btndef_none" aria-label="remove" *ngIf="indusindCheck" (click)="indusindRemove()"></button>
+								</div></td>
+								<td class="col-xs-2 PaddingTop10">
+								<button [ngClass]="indusindCheck ? 'display_none' : 'addBudget'" aria-label="add" title="add" (click)="indusindAdd()">add</button>
+								<span class="pull-left icon-status_complete" *ngIf="indusindCheck" (click)="indusindRemove()" aria-label="added"></span>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+
+					
+				</div>
+			</div>
+			<div class="col-xs-12 no_pad mt10 backGry">
+						<table class="col-xs-12 no_pad budgetTable">
+						
+						<tbody>
+							<tr>
+								<td class="col-xs-4 no_pad PaddingTop10">Total budget added</td>
+								<td class="col-xs-3 no_pad PaddingTop10"><span class="pull-left totalBudget">85$</span></td>
+								<td class="col-xs-3 no_pad PaddingTop10"></td>
+								<td class="col-xs-2 PaddingTop10">
+								</td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+			<div class="col-xs-12 no_pad popInnerPadd">
+				<span class="pull-left icon-status_complete"></span>
+				<span class="col-xs-11 pull-left font_twelve">Your requested transfer amount will go to your ADH for approval. Once approved, we will automatically make the change here and in RLS, and allocate this person to your team. You will be notified.</span>
+			</div>
+			<div class="col-xs-12 no_pad padd10">
+			<button class="pull-right line-btn primary-btn" mat-dialog-close aria-label="proceed" title="proceed" (click)="removeScroll()">proceed</button>
+			<button class="pull-right line-btn popNoBtn" mat-dialog-close aria-label="cancel" title="cancel" (click)="removeScroll()">cancel</button>
+			</div>
+		</div>
+
+</mat-dialog-actions>
+</div>

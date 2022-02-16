@@ -1,0 +1,89 @@
+<div class="col-xs-12">
+  <div class="col-xs-12 back_pos">
+    <div class="col-xs-12 no_pad">
+      <div class="back-button-container projectDetailsHead searchHead">
+        <button class="icon-back_arrow pull-left mt3 backArrw pdngLeft0" aria-label="Back" title="Back" (click)=" goBack()">
+        </button>
+        <h2 class="pull-left">Tenure based rotation</h2>
+      </div>
+      <div class="pull-right">
+        <button class="btndef_none text-uppercase view-more-btn view_btn" aria-label="View Account Dashboard" title="View Account Dashboard">View Account Dashboard<span class="btndef_none icon-arrow_drop_right"></span></button>
+        <button class="btndef_none text-uppercase view-more-btn view_btn mr20" aria-label="Manage Core List" title="Manage Core List">Manage Core List<span class="btndef_none icon-arrow_drop_right"></span></button><!-- 
+        <!-- <button class="btndef_none text-uppercase view-more-btn view_btn mr20" (click)="openmodal()" aria-label="Manage Core List" title="Manage Core List">Manage Core List<span class="btndef_none icon-arrow_drop_right"></span></button> --> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad myteamContainer">
+    <div class="col-xs-12 no_pad checkbox_div">
+      <table class="myteam_emp_table mt10 border_ccc">
+        <tr>
+          <th colspan="3" class="paddngLeft10">
+            <div class="pull-left">
+              <label class="mb0">
+                <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+              </label>
+              <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+            </div>
+          </th>
+          <th colspan="4">
+            <div class="pull-right">
+              <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+            </div>
+          </th>
+        </tr>
+      </table>
+      <table class="myteam_emp_table border_ccc background_wht">
+        <tr *ngFor="let n of names;let i = index">
+          <td>
+            <div class="col-xs-1 no_pad singleCheckbox">
+              <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)"></mat-checkbox>
+            </div>
+            <div class="col-xs-4 no_pad empdetail">
+              <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+            </div>
+            <div class="col-xs-8">
+              <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+              </label>
+              <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+              <div class="email_skype_div width20per">
+                <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+              </div>
+            </div>
+          </td>
+          <td>
+            <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+            <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+          </td>
+          <td>
+            <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+            <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.skilltype}}</span>
+          </td>
+          <td>
+            <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+            <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+          </td>
+          <td>
+            <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+            <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+          </td>
+          <td>
+            <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.tenure_lable}}</label>
+            <span class="col-xs-12 no_pad first_letter label_text">{{n.tenure}}</span>
+          </td>
+          <td class="padd0">
+            <div class="col-xs-12 no_pad left-neg-30">
+              <div class="pull-right toggleBtn tenure">
+                <div class="pull-left switch">
+                  <input type="checkbox" checked="true" id="mytask{{i}}" class="switchInput" />
+                  <label for="mytask{{i}}"><span class="ui"></span></label>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

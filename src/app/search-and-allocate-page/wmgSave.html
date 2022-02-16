@@ -1,0 +1,88 @@
+<div class="col-xs-12 no_pad employee_details">
+  <mat-dialog-actions>
+    <div class="col-xs-12 no_pad">
+      <div *ngIf="dc.wmgtitle" class="col-xs-12 no_pad allPopHeader">
+        <h1 class="pull-left">Ask WMG for help</h1>
+        <button class="pull-right icon-close" mat-dialog-close aria-label="close" (click)="removeScroll()"></button>
+      </div>
+      <div *ngIf="!dc.wmgtitle" class="col-xs-12 no_pad allPopHeader">
+        <h1 class="pull-left">Save details</h1>
+        <button class="pull-right icon-close" mat-dialog-close aria-label="close" (click)="removeScroll()"></button>
+      </div>
+      <div class="col-xs-12 no_pad popInnerPadd">
+        <div class="col-xs-12 no_pad demandtab_in scroll-window" slimScroll [options]="opts">
+          <ul class="col-xs-12 no_pad mt20 ">
+            <li class="col-xs-12 col-lg-6  searchAttrLi">
+              <form class="dropdownSelect example-form col-xs-12 no_pad">
+                <mat-form-field>
+                  <input type="text" [ngModel]="selectedlocations" name="selectedlocations" placeholder="Location" aria-label="Location" matInput [matAutocomplete]="autoLoc" required>
+                  <mat-autocomplete #autoLoc="matAutocomplete">
+                    <mat-option *ngFor="let optionLoc of locations" [value]="optionLoc">
+                      {{ optionLoc }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </li>
+            <li class="col-xs-12 col-lg-6  searchAttrLi">
+              <form class="dropdownSelect example-form col-xs-12 no_pad">
+                <mat-form-field>
+                  <input type="text" [ngModel]="selectedlang" name="selectedlang" placeholder="Language skills" aria-label="Language Skills" matInput [matAutocomplete]="autoLang" required>
+                  <mat-autocomplete #autoLang="matAutocomplete">
+                    <mat-option *ngFor="let optionLang of lang" [value]="optionLang">
+                      {{ optionLang }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </li>
+            <li class="col-xs-12 col-lg-6  searchAttrLi">
+              <form class="dropdownSelect example-form col-xs-12 no_pad">
+                <mat-form-field>
+                  <input matInput placeholder="No. of positions" required>
+                </mat-form-field>
+              </form>
+            </li>
+            <li class="col-xs-12 col-lg-6  searchAttrLi mt5">
+              <form class="dropdownSelect example-form col-xs-12 no_pad">
+                <mat-form-field>
+                  <mat-select placeholder="Fulfillment mode">
+                    <mat-option *ngFor="let mode of fulfilmode" [value]="mode">
+                      {{ mode }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </form>
+            </li>
+            <li class="col-xs-12 col-lg-6  searchAttrLi">
+              <form class="dropdownSelect example-form col-xs-12 no_pad">
+                <mat-form-field>
+                  <mat-select placeholder="Move demand to">
+                    <mat-option *ngFor="let demandTo of moveto" [value]="demandTo">
+                      {{ demandTo }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </form>
+            </li>
+          </ul>
+          <div class="col-lg-12">
+            <div class="col-xs-4 no_pad mt20">
+              <label class="empBilling label_text" aria-label="customer discussion required?" title="customer discussion required?">Customer Discussion required?</label>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="col-xs-4 mt20  no_pad staggerRadio">
+              <mat-radio-group>
+                <mat-radio-button value="1" checked=true>Yes</mat-radio-button>
+                <mat-radio-button value="2">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <button mat-dialog-close class="line-btn pull-right primary-btn text-uppercase view_btn mrgnRight10" aria-label="save" title="save" (click)="removeScroll()">SAVE</button>
+          <button mat-dialog-close class="line-btn pull-right text-uppercase view_btn" aria-label="cancel" title="cancel" (click)="removeScroll()">CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-actions>
+</div>

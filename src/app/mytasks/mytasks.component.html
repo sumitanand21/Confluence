@@ -1,0 +1,229 @@
+<div class="col-xs-12 no_pad task_main">
+						<div class="col-xs-12 no_pad task_head">
+							<div class="pull-left task_icon icon-warning"></div>
+							<h3 class="pull-left first_letter third_hd">due today</h3>
+							<div class="pull-right task_more font_twelve">
+								<div class="pull-left taskmore_in" [routerLink]="['/myTaskMore']">
+									<div class="pull-left">
+										<span class="pull-left task_num">12</span>
+										<span class="pull-left">tasks</span>
+									</div>
+									<div class="pull-left hash_cls">/</div>
+									<div class="pull-left remind_cls">reminders more</div>
+									<button class="pull-left btndef_none moretsk_btn icon-arrow_drop_right" aria-label="more tasks" title="more tasks" ></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 no_pad ask_content">
+							<ul class="col-xs-12 no_pad task_ul">
+								<li class="col-xs-12">
+									<div class="pull-left task_up">
+										<div class="col-xs-12 no_pad first_letter desc_hd">notice period alert</div>	
+									</div>
+									<div class="col-xs-12 no_pad task_btm">
+										<div class="col-lg-7 no_pad first_letter task_left font_twelve">
+											<div>Harshit Garg from your team is serving his notice period.</div>
+											<div>His last working day is 31-Sept-2017. You can search for his replacement with similar attributes.</div>
+										</div>
+										<div class="pull-right task_rgt">
+											<button class="pull-left btndef_none text-uppercase task_btn icon-notification" aria-label="notifications" title="notifications" [contextMenu]="notify_one" [contextMenuSubject]="notify_one"></button>
+											<button class="pull-left btndef_none task_btn text-uppercase icon-delete" aria-label="delete" title="delete" (click) = "openDeleteDialogBox()"></button>
+											<button  md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="search by attributes" title="search by attributes" [routerLink]="['/gotosearchallocate']">search by attributes</button>
+										</div>
+										<context-menu #notify_one class="notifyrgt_ul">
+										  <template contextMenuItem passive="true">
+											<div class="col-xs-12 no_pad notify_cls"  [ngClass]="selectNotify=='onehr'?'note_active':''" (click)="selectTime('onehr');">
+												<button class="pull-left btndef_none first_letter text-left">in 1 hour</button>
+												<button class="pull-right btndef_none icon-check_mark note_checked"></button> 
+											</div>
+										  </template>
+										  <template contextMenuItem passive="true">
+											<div class="col-xs-12 no_pad notify_cls" 
+											[ngClass]="selectNotify=='twohr'?'note_active':''" (click)="selectTime('twohr');">
+												<button class="pull-left btndef_none first_letter text-left">in 2 hour</button>
+												<button class="pull-right btndef_none icon-check_mark note_checked"></button> 
+											</div>
+										  </template>
+										  <template contextMenuItem passive="true">
+											<div class="col-xs-12 no_pad notify_cls" 
+											[ngClass]="selectNotify=='threehr'?'note_active':''" (click)="selectTime('threehr');">
+												<button class="pull-left btndef_none first_letter text-left">custom</button>
+												<button class="pull-right btndef_none icon-check_mark note_checked"></button> 
+											</div>
+											<div class="display_none" [ngClass]="selectNotify == 'threehr'?'display_block':''">
+												<div class="col-xs-12 no_pad notedate_cls">
+													<mat-form-field>
+													  <input matInput [matDatepicker]="noteDate" placeholder="Select date">
+													  <mat-datepicker-toggle matSuffix [for]="noteDate"></mat-datepicker-toggle>
+													  <mat-datepicker #noteDate></mat-datepicker>
+													</mat-form-field>
+												</div>
+												<div class="col-xs-12 no_pad notetime_cls">
+													<div class="styled-input">
+														<input type="text" class="disp_time" (click)="showTimepicker()" value="{{mytime | date : 'shortTime'}}" required />
+														<button class="pull-left btndef_none icon-time" (click)="showTimepicker()"></button>
+														<label>Time </label>
+														<div class="overlay_timepicker" *ngIf="showHideTime" (click)="hideOverlyTime()"></div>
+														<div class="select_date select_time animated" *ngIf="showHideTime" [class.slideInDown]="showHideTime" [class.fadeOutUp]="!showHideTime">
+															<timepicker [(ngModel)]="mytime"></timepicker>
+														</div>
+													</div>
+												</div>
+											</div>
+										  </template>
+										  <template contextMenuItem>
+										  	<button  md-button class="line-btn primary-btn pull-left text-uppercase view_btn" aria-label="Set alert" title="Set alert">set alert</button>
+										  </template>
+										</context-menu>
+									</div>
+								</li>
+								<li class="col-xs-12">
+									<div class="pull-left task_up">
+										<div class="col-xs-12 no_pad first_letter desc_hd">pending proposal</div>	
+									</div>
+									<div class="col-xs-12 no_pad task_btm">
+										<div class="col-lg-7 no_pad first_letter task_left font_twelve">You have a pending proposal for you indend n0.2345678 created on 12-Sept-2017</div>
+										<div class="pull-right task_rgt">
+											<button class="pull-left btndef_none text-uppercase task_btn icon-notification" aria-label="notifications" title="notifications"></button>
+											<button class="pull-left btndef_none task_btn text-uppercase icon-delete" aria-label="delete" title="delete" (click) = "openDeleteDialogBox()"></button>
+											<button  md-button class="line-btn  pull-left  text-uppercase view_prp" aria-label="view proposal" title="view proposal"  [routerLink]="['/pendingproposals']">view proposal</button>
+										</div>
+										<context-menu #notify_two class="notifyrgt_ul">
+										  	<template contextMenuItem passive="true">
+												<div class="col-xs-12 no_pad notify_cls"  [ngClass]="selectNotifyTwo=='onehr'?'note_active':''" (click)="selectTimeTwo('onehr');">
+													<button class="pull-left btndef_none first_letter text-left">in 1 hour</button>
+													<button class="pull-right btndef_none icon-check_mark note_checked"></button> 
+												</div>
+										  	</template>
+										  	<template contextMenuItem passive="true">
+												<div class="col-xs-12 no_pad notify_cls" 
+												[ngClass]="selectNotifyTwo=='twohr'?'note_active':''" (click)="selectTimeTwo('twohr');">
+													<button class="pull-left btndef_none first_letter text-left">in 2 hour</button>
+													<button class="pull-right btndef_none icon-check_mark note_checked"></button> 
+												</div>
+										  	</template>
+										  	<template contextMenuItem passive="true">
+												<div class="col-xs-12 no_pad notify_cls" 
+												[ngClass]="selectNotifyTwo=='threehr'?'note_active':''" (click)="selectTimeTwo('threehr');">
+													<button class="pull-left btndef_none first_letter text-left">custom</button>
+													<button class="pull-right btndef_none icon-check_mark note_checked"></button> 
+												</div>
+												<div class="display_none" [ngClass]="selectNotifyTwo == 'threehr'?'display_block':''">
+													<div class="col-xs-12 no_pad notedate_cls">
+														<mat-form-field>
+														  <input matInput [matDatepicker]="noteDate" placeholder="Select date">
+														  <mat-datepicker-toggle matSuffix [for]="noteDate"></mat-datepicker-toggle>
+														  <mat-datepicker #noteDate></mat-datepicker>
+														</mat-form-field>
+													</div>
+													<div class="col-xs-12 no_pad notetime_cls">
+														<div class="styled-input">
+															<input type="text" class="disp_time" value="{{mytime | date : 'shortTime'}}" required />
+															<button class="pull-left btndef_none icon-time" (click)="showTimepicker()"></button>
+															<label>Time </label>
+															<div class="overlay_timepicker" *ngIf="showHideTime" (click)="hideOverlyTime()"></div>
+															<div class="select_date select_time animated" *ngIf="showHideTime" [class.slideInDown]="showHideTime" [class.fadeOutUp]="!showHideTime">
+																<timepicker [(ngModel)]="mytime"></timepicker>
+															</div>
+														</div>
+													</div>
+												</div>
+										    </template>
+										    <template contextMenuItem>
+										  		<button  md-button  class="line-btn primary-btn pull-left text-uppercase view_btn" aria-label="Set alert" title="Set alert">set alert</button>
+										  	</template>
+										</context-menu>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xs-12 no_pad task_main">
+						<div class="col-xs-12 no_pad task_head">
+							<div class="pull-left task_icon icon-warning"></div>
+							<h3 class="pull-left first_letter third_hd">2 days to go</h3>
+							<div class="pull-right task_more font_twelve">
+								<div class="pull-left taskmore_in"  [routerLink]="['/myTaskMore']">
+									<div class="pull-left">
+										<span class="pull-left task_num">12</span>
+										<span class="pull-left">tasks</span>
+									</div>
+									<div class="pull-left hash_cls">/</div>
+									<div class="pull-left remind_cls">reminders more</div>
+									<button class="pull-left btndef_none moretsk_btn icon-arrow_drop_right" aria-label="more tasks" title="more tasks"></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 no_pad ask_content">
+							<ul class="col-xs-12 no_pad task_ul">
+								<li class="col-xs-12">
+									<div class="pull-left task_up">
+										<div class="col-xs-12 no_pad first_letter desc_hd">notice period alert</div>	
+									</div>
+									<div class="col-xs-12 no_pad task_btm">
+										<div class="col-lg-7 no_pad first_letter task_left font_twelve">
+											<div>Harshit Garg from your team is serving his notice period.</div>
+											<div>His last working day is 31-Sept-2017. You can search for his replacement with similar attributes.</div>
+										</div>
+										<div class="pull-right task_rgt">
+											<button class="pull-left btndef_none text-uppercase task_btn icon-notification" aria-label="notifications" title="notifications" (contextmenu)="onContextMenu($event, 'item')"></button>
+											<button class="pull-left btndef_none task_btn text-uppercase icon-delete" aria-label="delete" title="delete" (click) = "openDeleteDialogBox()"></button>
+											<button  md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="search by attributes" title="search by attributes" [routerLink]="['/gotosearchallocate']">search by attributes</button>
+										</div>
+									</div>
+								</li>
+								<li class="col-xs-12">
+									<div class="pull-left task_up">
+										<div class="col-xs-12 no_pad first_letter desc_hd">pending proposal</div>	
+									</div>
+									<div class="col-xs-12 no_pad task_btm">
+										<div class="col-lg-7 no_pad first_letter task_left font_twelve">You have a pending proposal for you indend n0.2345678 created on 12-Sept-2017</div>
+										<div class="pull-right task_rgt">
+											<button class="pull-left btndef_none text-uppercase task_btn icon-notification" aria-label="notifications" title="notifications" (contextmenu)="onContextMenu($event, 'item2')"></button>
+											<button class="pull-left btndef_none task_btn text-uppercase icon-delete" aria-label="delete" title="delete" (click) = "openDeleteDialogBox()"></button>
+											<button  md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="view proposal" title="view proposal">view proposal</button>
+										</div>
+										
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+						<div class="col-xs-12 no_pad other_note">
+						<div class="col-xs-12 no_pad">
+							<div class="col-xs-12 no_pad first_letter desc_hd task_head">
+							<div class="pull-left first_letter">other important notifications</div>
+							</div>	
+						</div>
+						<ul class="col-xs-12 no_pad notify_ul notify-gap">
+							<li class="col-lg-4 no_pad" role="button" tabindex="0">
+								<div class="col-lg-8 no_pad notify_text first_letter">approvals needed</div>
+								<div class="pull-left notify_num">12</div>
+							</li>
+							<li class="col-lg-4 no_pad" role="button" tabindex="0">
+								<div class="col-lg-8 no_pad notify_text first_letter">order structure requests </div>
+								<div class="pull-left notify_num">12</div>
+							</li>
+							<li class="col-lg-4 no_pad" role="button" tabindex="0">
+								<div class="col-lg-8 no_pad notify_text first_letter">notice period alert </div>
+								<div class="pull-left notify_num">16</div>
+							</li>
+							<li class="col-lg-4 no_pad" role="button" tabindex="0">
+								<div class="col-lg-8 no_pad notify_text first_letter">propel planning</div>
+								<div class="pull-left notify_num">12</div>
+							</li>
+							<li class="col-lg-4 no_pad" role="button" tabindex="0">
+								<div class="col-lg-8 no_pad notify_text first_letter">unlocked resources</div>
+								<div class="pull-left notify_num">12</div>
+							</li>
+							<li class="col-lg-4 no_pad" role="button" tabindex="0">
+								<div class="col-lg-8 no_pad notify_text first_letter">pending allocations</div>
+								<div class="pull-left notify_num">12</div>
+							</li>
+						</ul>
+						
+					</div>
+					<div class="pull-right mt10">
+							<button class="pull-right btndef_none text-uppercase view-more-btn view_btn" aria-label="View more" title="View more" [routerLink]="['/myTaskMore']" >View more<span class="btndef_none icon-arrow_drop_right"></span></button>
+						</div>
+						

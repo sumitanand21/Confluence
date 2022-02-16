@@ -1,0 +1,155 @@
+<div class="col-xs-12 no_pad employee_details">
+<mat-dialog-actions>
+	<div class="col-xs-12 no_pad">
+		<div class="col-xs-12 no_pad allPopHeader"><h1 class="pull-left">Employee details</h1>
+			<button class="pull-right icon-close" mat-dialog-close aria-label="close" (click)="removeScrollSearch()"></button>
+			
+		</div>
+		<div class="col-xs-12 no_pad popInnerPadd">
+		
+			<div class="col-xs-12 no_pad pop_innerHeader">
+				<h2 class="pull-left spocText">Employee details</h2>
+				<button class="pull-right downloadProfBtn line-btn icon-file_download margLR0 mrg_rgt0"></button>
+				<button class="pull-right line-btn margLR0 pspBtn" mat-dialog-close (click)="removeScroll()" aria-label="psp" title="psp">PSP</button>
+				<button class="pull-right line-btn margLR0" mat-dialog-close (click)="removeScroll()" aria-label="imarketscape" title="imarketscape">imarketscape</button>
+			</div>
+			<div class="col-xs-12 no_pad demandtab_in scroll-window" slimScroll [options]="opts">
+			<ul class="col-xs-12 no_pad detailsUL">
+				<li class="mt30">
+					  <div class="user_pic pull-left ttlrsr_num" aria-label="profile pic"></div>
+					  <div class="pull-left">
+						<label class="col-xs-12 no_pad font12 fontBold">Prakash kumar</label>
+						<span class="col-xs-12 no_pad label_hd">9832401850</span>
+					  </div>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Career band</label>
+					<span class="col-xs-12 no_pad label_text">Group B3</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Business unit domain</label>
+					<span class="col-xs-12 no_pad label_text">Service function</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Horizontal tagging</label>
+					<span class="col-xs-12 no_pad label_text">No horizontal</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Legacy practice	</label>
+					<span class="col-xs-12 no_pad label_text">BAS</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Legacy sub-practice</label>
+					<span class="col-xs-12 no_pad label_text">BAS-CCX</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Location</label>
+					<span class="col-xs-12 no_pad label_text">Bangalore</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Onsite/offshore</label>
+					<span class="col-xs-12 no_pad label_text">Offshore</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Onsite direct recruit</label>
+					<span class="col-xs-12 no_pad label_text">No</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">US overtime classification</label>
+					<span class="col-xs-12 no_pad label_text">BAS</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Previous relevant experience</label>
+					<span class="col-xs-12 no_pad label_text">BAS-CCX</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Wipro experience</label>
+					<span class="col-xs-12 no_pad label_text">Bangalore</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Total relevant experience</label>
+					<span class="col-xs-12 no_pad label_text">Service function</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Bilibility status</label>
+					<span class="col-xs-12 no_pad label_text">Support</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Cost center</label>
+					<span class="col-xs-12 no_pad label_text">BAS</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Date of joining</label>
+					<span class="col-xs-12 no_pad label_text">BAS-CCX</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Employee suite ID</label>
+					<span class="col-xs-12 no_pad label_text">WTTSLAPL41</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Employee suite name</label>
+					<span class="col-xs-12 no_pad label_text">Test lead-application testing</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Career stream</label>
+					<span class="col-xs-12 no_pad label_text">Project stream</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Opportunity level</label>
+					<span class="col-xs-12 no_pad label_text">Wipro</span>
+				</li>
+				
+			</ul>
+			<div class="col-xs-12 no_pad pop_innerHeader mt45"><h2 class="pull-left">Account and project details</h2></div>
+			<ul class="col-xs-12 no_pad detailsUL">
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Customer name</label>
+					<span class="col-xs-12 no_pad label_text">NA</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Tennure in curent customer</label>
+					<span class="col-xs-12 no_pad label_text">NA</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Project name</label>
+					<span class="col-xs-12 no_pad label_text">No</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Tenure in current project</label>
+					<span class="col-xs-12 no_pad label_text">NA</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent location</label>
+					<span class="col-xs-12 no_pad label_text">BAS-CCX</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent role ID</label>
+					<span class="col-xs-12 no_pad label_text">WLEAD 1</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent role name</label>
+					<span class="col-xs-12 no_pad label_text">LEAD-L1</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent suite ID</label>
+					<span class="col-xs-12 no_pad label_text">WTTLPUSL41</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent suite name</label>
+					<span class="col-xs-12 no_pad label_text">Tech lead portals</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent location</label>
+					<span class="col-xs-12 no_pad label_text">NA</span>
+				</li>
+				<li class="mt30">
+					<label class="col-xs-12 no_pad label_hd">Indent additional skill(s)</label>
+					<span class="col-xs-12 no_pad label_text">NA</span>
+				</li>
+			</ul>
+			</div>
+			<!-- <button class="pull-right seeMorebtn" mat-dialog-close aria-label="see more info" (click)="removeScrollSearch()"><span class="pull-left seeMoreText">see more info </span><span class="pull-right icon-arrow_drop_right"></span></button> -->
+		</div>
+	</div>
+</mat-dialog-actions>
+</div>

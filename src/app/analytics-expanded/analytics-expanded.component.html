@@ -1,0 +1,884 @@
+<div class="col-xs-12 no_pad tofamain_cls analytics-page">
+  <!-- Project stats -->
+  <div class="col-xs-4 no_pad team_analytics project_tofa">
+    <div class="col-lg-12 no_pad  tofa_cls">
+      <div class="col-xs-12 no_pad header_brdr">
+        <div class="col-xs-8 col-md-8 col-lg-8">
+          <div class="pull-left first_letter desc_hd teamana_hd no_pad no_pad_left_right">Project Statistics</div>
+        </div>
+        <div class="col-xs-4  col-md-4 col-lg-4">
+          <div class="pull-right projstatus_drpdwn no-border-select">
+            <mat-form-field>
+              <mat-select name="select" [(ngModel)]="selectedValue" (change)="onChange(selectedValue)">
+                <mat-option *ngFor="let projarr of project" [value]="projarr.value">
+                  {{projarr.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 no_pad team_in projstatus_cls no_top_pad">
+        <div class="col-xs-12 no_pad" *ngIf="FirstProjStatusGraph">
+          <div class="col-xs-12 no_pad padding_t_b_ten">
+            <canvas baseChart [data]="doughnutChartData1" [labels]="doughnutChartLabels1" [colors]="doughnutChartColors1" [legend]="false" [chartType]="doughnutChartType1" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+          <ul class="col-xs-12 no_pad projstatus_legends">
+            <li class="col-xs-12 no_pad">
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls present_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">8500</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">present</div>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls onleave_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">1800</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">on leave</div>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls ood_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">1200</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">OOD</div>
+                </div>
+              </div>
+            </li>
+            <li class="col-xs-12 no_pad">
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls noswipe_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">300</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">no swipe data</div>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls oth_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">200</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">Others</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-12 no_pad mt20" *ngIf="SecondProjStatusGraph">
+          <div class="col-xs-5 no_pad">
+            <canvas baseChart height="200px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [colors]="doughnutChartColors" [legend]="false" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+          <ul class="col-xs-7 no_pad projstatus_legends">
+            <li class="col-xs-12 no_pad">
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls present_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">8500</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">present</div>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls onleave_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">8500</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">on leave</div>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls ood_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">8500</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">OOD</div>
+                </div>
+              </div>
+            </li>
+            <li class="col-xs-12 no_pad">
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls noswipe_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">8500</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">no swipe data</div>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12 no_pad rect_cls oth_cls">
+                  <div class="col-xs-12 no_pad projstatus_txt">8500</div>
+                  <div class="col-xs-12 no_pad font_ten first_letter projstatus_num">on leave</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- <div class="col-xs-12 no_pad appleavs_cls">
+
+            <button class="pull-left btndef_none first_letter appleavs_desc" (click)="showMoreGraphClk()">no. of leaves for your project over the next 30 days:400</button>
+            <button class="pull-right btndef_none analytic_arrow icon-arrow_drop_right" aria-label="more" title="more" (click)="showMoreGraphClk()"></button>
+            
+          </div> -->
+    </div>
+  </div>
+  <!-- Efforts outside wipro office for project -->
+  <div class="col-xs-4 no_pad team_analytics project_tofa">
+    <div class="col-lg-12 no_pad  tofa_cls">
+      <div class="col-xs-12 no_pad header_brdr">
+        <div class="pull-left first_letter desc_hd teamana_hd">Efforts outside wipro office for project </div>
+      </div>
+      <div class="col-xs-12 no_pad team_in projstatus_cls">
+        <div class="col-xs-12 no_pad ">
+          <div class="width96p pull-right">
+            <canvas baseChart height="220px" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="false" [colors]="barChartColors" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+          <div class="vertical-text-container">
+            <div class="vertical-text verticalABC small-graph-label">Weekly avg time (hrs)</div>
+          </div>
+          <div class="col-xs-12 no_pad projstatus_legends weekly-avg-labels">
+            <div class="col-xs-3 ">
+              <div class="col-xs-12 no_pad rect_cls tof_cls">
+                <div class="col-xs-12 no_pad projstatus_txt">TOF</div>
+              </div>
+            </div>
+            <div class="col-xs-9 no_pad">
+              <div class="col-xs-12 no_pad rect_cls outside_cls">
+                <div class="col-xs-12 no_pad projstatus_txt">Outside wipro office</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TIC | TOFA -->
+  <div class="col-xs-4 no_pad team_analytics project_tofa pr0">
+    <div class="col-lg-12 no_pad tofa_cls">
+      <div class="col-xs-12 no_pad header_brdr">
+        <div class="pull-left first_letter desc_hd teamana_hd">TIC | TOFA</div>
+        <div class="pull-right first_letter ttl_avg font_tweleve">all fig. are average team hrs.</div>
+      </div>
+      <div class="col-xs-12 no_pad team_in">
+        <ul class="col-xs-12 no_pad teamavg_ul">
+          <li class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad teamavg_in">
+              <div class="col-xs-12 no_pad teamavg_hrs">
+                <div class="pull-left text-uppercase">tic</div>
+                <div class="pull-left">-</div>
+                <div class="pull-left">6.6</div>
+              </div>
+              <div class="col-xs-12 no_pad teamavg_measur first_letter">yesterday</div>
+            </div>
+          </li>
+          <li class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad teamavg_in">
+              <div class="col-xs-12 no_pad teamavg_hrs">10.5</div>
+              <div class="col-xs-12 no_pad teamavg_measur first_letter">this week</div>
+            </div>
+          </li>
+          <li class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad teamavg_in">
+              <div class="col-xs-12 no_pad teamavg_hrs">10.5</div>
+              <div class="col-xs-12 no_pad teamavg_measur first_letter">this month</div>
+            </div>
+          </li>
+          <li class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad teamavg_in">
+              <div class="col-xs-12 no_pad teamavg_hrs">
+                <div class="pull-left text-uppercase">tofa</div>
+                <div class="pull-left">-</div>
+                <div class="pull-left">6.6</div>
+              </div>
+              <div class="col-xs-12 no_pad teamavg_measur first_letter">yesterday</div>
+            </div>
+          </li>
+          <li class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad teamavg_in">
+              <div class="col-xs-12 no_pad teamavg_hrs">10.5</div>
+              <div class="col-xs-12 no_pad teamavg_measur first_letter">this week</div>
+            </div>
+          </li>
+          <li class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad teamavg_in">
+              <div class="col-xs-12 no_pad teamavg_hrs">10.5</div>
+              <div class="col-xs-12 no_pad teamavg_measur first_letter">this month</div>
+            </div>
+          </li>
+          <li class="col-xs-12 no_pad tofa_date">
+            <div class="col-xs-4 no_pad text-center text-capitalize font_twelve yest_day">01-Jan-2017</div>
+            <div class="col-xs-4 no_pad text-center font_twelve yest_day">01-Jan-2017 to 06-jan-2017</div>
+            <div class="col-xs-4 no_pad text-center text-capitalize font_twelve yest_day">Jan 2017</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Comparative analysis -->
+  <div class="col-xs-8 no_pad team_analytics project_tofa">
+    <div class="col-lg-12 no_pad  tofa_cls">
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span>Comparative analysis</span>
+          </ng-template>
+          <div class="col-lg-12 no_pad  ">
+            <div class="col-xs-12 no_pad header_brdr">
+              <div class="pull-left first_letter desc_hd teamana_hd">Project efforts trend</div>
+            </div>
+            <div class="col-xs-12 no_pad project-trend-head">
+              <div class="pull-left staggerRadio analytics-radio">
+                <mat-radio-group>
+                  <mat-radio-button value="1">Daily trends</mat-radio-button>
+                  <mat-radio-button value="2">Weekly trends</mat-radio-button>
+                  <mat-radio-button value="3">Monthly trends</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="pull-right">
+                <span>March 2017 </span>
+                <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+              </div>
+            </div>
+            <div class="pull-left col-xs-12 mt20">
+              <canvas id="mixed-chart" width="600" height="270"></canvas>
+            </div>
+            <div class="vertical-text-container">
+              <div class="vertical-text verticalABC">Weekly average time (hrs)</div>
+            </div>
+            <div class="col-xs-12 no_pad team_in projstatus_cls">
+              <div class="col-xs-12 no_pad attrition-detail">
+                <div class="col-xs-12 no_pad">
+                  <div class="col-xs-2 no_pad">
+                    <div class="rect_cls line-graph tof_cls">
+                      <div class="projstatus_txt">Time in campus</div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2 no_pad">
+                    <div class="rect_cls blue_box">
+                      <div class="projstatus_txt">Time on floor</div>
+                    </div>
+                  </div>
+                  <div class="col-xs-8 no_pad ">
+                    <div class="pull-right">
+                      <div>Click any of the bars to see that module trends</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span>Trend analysis</span>
+          </ng-template>
+          <div class="col-lg-12 no_pad  ">
+            <div class="col-xs-12 no_pad header_brdr">
+              <div class="pull-left first_letter desc_hd teamana_hd">Project efforts trend</div>
+            </div>
+            <div class="col-xs-12 no_pad project-trend-head">
+              <div class="pull-left staggerRadio analytics-radio">
+                <mat-radio-group>
+                  <mat-radio-button value="11">Daily trends</mat-radio-button>
+                  <mat-radio-button value="12">Weekly trends</mat-radio-button>
+                  <mat-radio-button value="13">Monthly trends</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="pull-right">
+                <span>March 2017 </span>
+                <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+              </div>
+            </div>
+            <div class=" col-xs-12 no_pad mt20">
+              <canvas baseChart height="117px" [datasets]="barChartData2" [labels]="barChartLabels2" [options]="barChartOptions2" [legend]="false" [colors]="barChartColors2" [chartType]="barChartType2" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <div class="col-xs-12 no_pad team_in projstatus_cls">
+              <div class="col-xs-12 no_pad attrition-detail">
+                <div class="col-xs-12 no_pad">
+                  <div class="col-xs-4 no_pad rect_cls attrition-blue">
+                    <div class="col-xs-12 no_pad projstatus_txt ">Attrition trend</div>
+                    <div class="col-xs-12 no_pad projstatus_txt mt5">
+                      <span class="first_letter note_hd">Note:</span>
+                      <span class="first_letter">Click here to see this project modules trend</span>
+                    </div>
+                  </div>
+                  <div class="col-xs-8 no_pad ">
+                    <div class="pull-right">
+                      <button aria-label="Drill down people" class="line-btn  pull-left  text-uppercase" mat-button title="search by attributes" tabindex="0">Click here to see list of drill down people</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <!-- low average TOFA -->
+  <div class="col-xs-4 no_pad team_analytics margin-bottom-10 pr0">
+    <div class="col-lg-12 no_pad tofa_cls">
+      <div class="col-lg-12 no_pad first_letter desc_hd theme_hd">
+        <div class="col-lg-8 no_pad first_letter">employees with low average TOFA</div>
+        <div class="pull-right col-lg-4 no_pad muted_text_color normal_weight">
+          <span>This Month </span>
+          <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+        </div>
+      </div>
+      <ul class="col-xs-12 no_pad tofa_ul">
+        <li class="col-xs-12 no_pad" role="link">
+          <div class="col-lg-9 no_pad tofa_left">
+            <div class="col-lg-1 round_cls user_pic tofa_img"></div>
+            <div class="col-lg-8 tofa_rgt">
+              <div class="col-xs-12 no_pad desc_hd tofaemp_name text-capitalize verticalABC">Prakash Kumar</div>
+              <div class="col-xs-12 no_pad tofa_hrs">12.00 Hrs</div>
+            </div>
+          </div>
+          <div class="pull-right tofargt_arrow icon-arrow_drop_right"></div>
+        </li>
+        <li class="col-xs-12 no_pad" role="link">
+          <div class="col-lg-9 no_pad tofa_left">
+            <div class="col-lg-1 round_cls user_pic tofa_img"></div>
+            <div class="col-lg-8 tofa_rgt">
+              <div class="col-xs-12 no_pad desc_hd tofaemp_name text-capitalize verticalABC">sekhar</div>
+              <div class="col-xs-12 no_pad tofa_hrs">12.00 Hrs</div>
+            </div>
+          </div>
+          <div class="pull-right tofargt_arrow icon-arrow_drop_right"></div>
+        </li>
+        <li class="col-xs-12 no_pad" role="link">
+          <div class="col-lg-9 no_pad tofa_left">
+            <div class="col-lg-1 round_cls user_pic tofa_img"></div>
+            <div class="col-lg-8 tofa_rgt">
+              <div class="col-xs-12 no_pad desc_hd tofaemp_name text-capitalize verticalABC">frakash</div>
+              <div class="col-xs-12 no_pad tofa_hrs">12.00 Hrs</div>
+            </div>
+          </div>
+          <div class="pull-right tofargt_arrow icon-arrow_drop_right"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- high average TOFA -->
+  <div class="col-xs-4 no_pad team_analytics margin-bottom-10 pr0">
+    <div class="col-lg-12 no_pad  tofa_cls">
+      <div class="col-lg-12 no_pad first_letter desc_hd theme_hd">
+        <div class="col-lg-8 no_pad first_letter">employees with high average TOFA</div>
+        <div class="pull-right col-lg-4 no_pad muted_text_color normal_weight">
+          <span>This Month </span>
+          <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+        </div>
+      </div>
+      <ul class="col-xs-12 no_pad tofa_ul">
+        <li class="col-xs-12 no_pad" role="link">
+          <div class="col-lg-9 no_pad tofa_left">
+            <div class="col-lg-1 round_cls user_pic tofa_img"></div>
+            <div class="col-lg-8 tofa_rgt">
+              <div class="col-xs-12 no_pad desc_hd tofaemp_name text-capitalize verticalABC">Prakash Kumar</div>
+              <div class="col-xs-12 no_pad tofa_hrs">12.00 Hrs</div>
+            </div>
+          </div>
+          <div class="pull-right tofargt_arrow icon-arrow_drop_right"></div>
+        </li>
+        <li class="col-xs-12 no_pad" role="link">
+          <div class="col-lg-9 no_pad tofa_left">
+            <div class="col-lg-1 round_cls user_pic tofa_img"></div>
+            <div class="col-lg-8 tofa_rgt">
+              <div class="col-xs-12 no_pad desc_hd tofaemp_name text-capitalize verticalABC">sekhar</div>
+              <div class="col-xs-12 no_pad tofa_hrs">12.00 Hrs</div>
+            </div>
+          </div>
+          <div class="pull-right tofargt_arrow icon-arrow_drop_right"></div>
+        </li>
+        <li class="col-xs-12 no_pad" role="link">
+          <div class="col-lg-9 no_pad tofa_left">
+            <div class="col-lg-1 round_cls user_pic tofa_img"></div>
+            <div class="col-lg-8 tofa_rgt">
+              <div class="col-xs-12 no_pad desc_hd tofaemp_name text-capitalize verticalABC">frakash</div>
+              <div class="col-xs-12 no_pad tofa_hrs">12.00 Hrs</div>
+            </div>
+          </div>
+          <div class="pull-right tofargt_arrow icon-arrow_drop_right"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad team_analytics project_tofa pr0">
+    <div class="col-lg-12 no_pad  tofa_cls">
+      <div class="col-xs-12 no_pad header_brdr">
+        <div class="pull-left first_letter desc_hd teamana_hd">Leave</div>
+      </div>
+      <div class="col-xs-12 no_pad team_in projstatus_cls">
+        <div class="col-xs-12 no_pad ">
+          <div class="col-xs-12 no_pad total-leaves-head">
+            <div class="pull-left">Total no. of applied leaves for your project over the next 30 days: 400 </div>
+            <div class="pull-right">
+              <span>March 2017 </span>
+              <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+            </div>
+          </div>
+          <div class="width96p pull-right">
+            <canvas baseChart height="100px" [datasets]="barChartData1" [labels]="barChartLabels1" [options]="barChartOptions1" [legend]="false" [colors]="barChartColors1" [chartType]="barChartType1" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+          <div class="vertical-text-container">
+            <div class="vertical-text verticalABC no-of-leaves">No. of leaves</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Trend analysis -->
+  <div class="col-xs-12 no_pad team_analytics project_tofa pr0">
+    <div class="col-lg-12 no_pad  tofa_cls">
+      <div class="col-xs-12 no_pad header_brdr">
+        <div class="pull-left first_letter desc_hd teamana_hd">Attrition trend</div>
+      </div>
+      <div class="col-xs-12 no_pad">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span>Comparative analysis</span>
+            </ng-template>
+            <div class="col-lg-12 no_pad  ">
+              <div class="col-xs-12 no_pad header_brdr">
+                <div class="pull-left first_letter desc_hd teamana_hd">Project efforts trend</div>
+              </div>
+              <div class="col-xs-12 no_pad project-trend-head">
+                <div class="pull-left staggerRadio analytics-radio">
+                  <mat-radio-group>
+                    <mat-radio-button value="21">Daily trends</mat-radio-button>
+                    <mat-radio-button value="22">Weekly trends</mat-radio-button>
+                    <mat-radio-button value="23">Monthly trends</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div class="pull-right">
+                  <span>March 2017 </span>
+                  <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+                </div>
+              </div>
+              <div class="pull-left col-xs-12 mt20">
+                <canvas id="comparative-analysis" width="600" height="200"></canvas>
+              </div>
+              <div class="vertical-text-container">
+                <div class="vertical-text verticalABC no-of-leaves">Attrition trend</div>
+              </div>
+              <div class="col-xs-12 no_pad team_in projstatus_cls">
+                <div class="col-xs-12 no_pad attrition-detail">
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-2 no_pad">
+                      <div class="rect_cls line-graph tof_cls">
+                        <div class="projstatus_txt">Time in campus</div>
+                      </div>
+                    </div>
+                    <div class="col-xs-2 no_pad">
+                      <div class="rect_cls blue_box">
+                        <div class="projstatus_txt">Time on floor</div>
+                      </div>
+                    </div>
+                    <div class="col-xs-8 no_pad ">
+                      <div class="pull-right chrtsInfo">
+                        <div class="pull-right">Click any of the bars to see that account trends</div>
+                        <span class="pull-right icon-info"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span>Trend analysis</span>
+            </ng-template>
+            <div class="col-lg-12 no_pad  ">
+              <div class="col-xs-12 no_pad header_brdr">
+                <div class="pull-left first_letter desc_hd teamana_hd">Project efforts trend</div>
+              </div>
+              <div class="col-xs-12 no_pad project-trend-head">
+                <div class="pull-left staggerRadio analytics-radio">
+                  <mat-radio-group>
+                    <mat-radio-button value="31">Daily trends</mat-radio-button>
+                    <mat-radio-button value="32">Weekly trends</mat-radio-button>
+                    <mat-radio-button value="33">Monthly trends</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div class="pull-right">
+                  <span>March 2017 </span>
+                  <button aria-label="datepicker" class="btndef_none icon-calendar icon_calender_myteam" title="datepicker"></button>
+                </div>
+              </div>
+              <div class="width96p pull-right mt20">
+                <canvas baseChart height="100px" [datasets]="barChartData2" [labels]="barChartLabels2" [options]="barChartOptions2" [legend]="false" [colors]="barChartColors2" [chartType]="barChartType2" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+              <div class="vertical-text-container">
+                <div class="vertical-text verticalABC ">Weekly average time (hrs)</div>
+              </div>
+              <div class="col-xs-12 no_pad team_in projstatus_cls">
+                <div class="col-xs-12 no_pad attrition-detail">
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-6 no_pad rect_cls attrition-blue">
+                      <div class="col-xs-12 no_pad projstatus_txt ">Attrition trend</div>
+                      <div class="col-xs-12 no_pad projstatus_txt mt5">
+                        <span class="first_letter note_hd">Note:</span>
+                        <span class="first_letter">Click here to see this project modules trend</span>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 no_pad ">
+                      <div class="pull-right">
+                        <button aria-label="Drill down people" class="line-btn  pull-left  text-uppercase" mat-button title="search by attributes" tabindex="0">Click here to see list of drill down people</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad header_brdr tofa_cls">
+    <div class="pull-left">
+      <div class="first_letter theme_hd desc_hd no-border-head">team split </div>
+    </div>
+    <div class="pull-right">
+      <div class="projstatus_drpdwn no-border-select abs-select">
+        <mat-form-field>
+          <mat-select name="select" [(ngModel)]="selValteamsplit" (change)="onChangeTeamsplit(selValteamsplit)">
+            <mat-option *ngFor="let teamsplitarr of teamsplit" [value]="teamsplitarr.value">
+              {{teamsplitarr.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="pull-right" *ngIf="accountComp">
+      <div class="projstatus_drpdwn no-border-select abs-select">
+        <mat-form-field>
+          <mat-select name="select" [(ngModel)]="selValteamsplit2" (change)="onChangeTeamsplit2(selValteamsplit2)">
+            <mat-option *ngFor="let teamsplitarr of teamsplit2" [value]="teamsplitarr.value">
+              {{teamsplitarr.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad team-split-tab-container teamSplt">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span (click)="showVerticalOvw()" class="team-split-tab">Vertical overview</span>
+        </ng-template>
+        <div class="col-xs-12 no_pad tofa_cls" *ngIf="bandGraph">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no_pad actual_planned">
+            <div class="col-xs-12 no_pad first_letter desc_hd backDated">Actual</div>
+            <div class="col-xs-6 no_pad">
+              <div class="col-xs-12 no_pad mt20">
+                <div class="aboveBandDiv">
+                  <div class="col-xs-12 no_pad aboveBandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="c2BandDiv">
+                  <div class="col-xs-12 no_pad c2BandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="c1BandDiv">
+                  <div class="col-xs-12 no_pad c1BandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="b1b2BandDiv">
+                  <div class="col-xs-12 no_pad b1b2BandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="teamRainBandDiv">
+                  <div class="col-xs-12 no_pad teamRainBandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="rookiesBandDiv">
+                  <div class="col-xs-12 no_pad rookiesBandContent"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 no_pad">
+              <span class="col-xs-12 no_pad  bandTexts">18% D1 & Above Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">16% C2 Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">20% C1 Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">10% B1+B2 Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">20% Team Rainbow(TRB)</span>
+              <span class="col-xs-12 no_pad  bandTexts">8% Rookies</span>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no_pad actual_planned right-graph">
+            <div class="col-xs-12 no_pad first_letter desc_hd backDated">Planned</div>
+            <div class="col-xs-12 no_pad right-graph-container ">
+              <div class="col-xs-6 no_pad ">
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="aboveBandDivPlanned">
+                    <div class="col-xs-12 no_pad aboveBandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="c2BandDivPlanned">
+                    <div class="col-xs-12 no_pad c2BandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="c1BandDivPlanned">
+                    <div class="col-xs-12 no_pad c1BandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="b1b2BandDivPlanned">
+                    <div class="col-xs-12 no_pad b1b2BandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="teamRainBandDivPlanned">
+                    <div class="col-xs-12 no_pad teamRainBandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="rookiesBandDivPlanned">
+                    <div class="col-xs-12 no_pad rookiesBandContent"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 no_pad">
+                <span class="col-xs-12 no_pad  bandTexts">18% D1 & Above Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">16% C2 Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">20% C1 Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">10% B1+B2 Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">20% Team Rainbow(TRB)</span>
+                <span class="col-xs-12 no_pad  bandTexts">8% Rookies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad tofa_cls onsitegrp_cls" *ngIf="onsiteGraph">
+          <div class="billable_onsite">
+            <div class="col-lg-8 col-md-8 no_pad">
+              <canvas baseChart height="200px" [data]="onsiteChartData" [labels]="onsiteChartLabels" [colors]="onsiteChartColors" [legend]="false" [chartType]="onsiteChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="col-lg-4 col-md-4 no_pad">
+              <ul class="col-xs-12 no_pad  onsitegraph_ul">
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-12 no_pad cir_cls present_cls">
+                      <div class="col-xs-12 no_pad  first_letter projstatus_num">onsite</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-12 no_pad cir_cls onleave_cls">
+                      <div class="col-xs-12 no_pad  first_letter projstatus_num">offshore</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad tofa_cls billablegrp_cls" *ngIf="billableGraph">
+          <div class="billable_onsite">
+            <div class="col-lg-8 col-md-6 no_pad">
+              <canvas baseChart height="200px" [data]="billableChartData" [labels]="billableChartLabels" [colors]="billableChartColors" [legend]="false" [chartType]="billableChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="col-xs-4 no_pad">
+              <ul class="col-xs-12 no_pad  billablegraph_ul">
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls present_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">Billable</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls onleave_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">non-billable</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls ood_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">support</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls noswipe_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">investment</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls oth_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">contractors</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span (click)="showAccountComp()" class="team-split-tab">Account comparison</span>
+        </ng-template>
+        <div class="col-xs-12 no_pad tofa_cls" *ngIf="bandGraph2">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no_pad actual_planned">
+            <div class="col-xs-12 no_pad first_letter desc_hd">Actual</div>
+            <div class="col-xs-6 no_pad">
+              <div class="col-xs-12 no_pad mt20">
+                <div class="aboveBandDiv">
+                  <div class="col-xs-12 no_pad aboveBandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="c2BandDiv">
+                  <div class="col-xs-12 no_pad c2BandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="c1BandDiv">
+                  <div class="col-xs-12 no_pad c1BandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="b1b2BandDiv">
+                  <div class="col-xs-12 no_pad b1b2BandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="teamRainBandDiv">
+                  <div class="col-xs-12 no_pad teamRainBandContent"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <div class="rookiesBandDiv">
+                  <div class="col-xs-12 no_pad rookiesBandContent"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 no_pad">
+              <span class="col-xs-12 no_pad  bandTexts">18% D1 & Above Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">16% C2 Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">20% C1 Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">10% B1+B2 Band</span>
+              <span class="col-xs-12 no_pad  bandTexts">20% Team Rainbow(TRB)</span>
+              <span class="col-xs-12 no_pad  bandTexts">8% Rookies</span>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no_pad actual_planned right-graph">
+            <div class="col-xs-12 no_pad first_letter desc_hd">Planned</div>
+            <div class="col-xs-12 no_pad right-graph-container ">
+              <div class="col-xs-6 no_pad ">
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="aboveBandDivPlanned">
+                    <div class="col-xs-12 no_pad aboveBandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="c2BandDivPlanned">
+                    <div class="col-xs-12 no_pad c2BandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="c1BandDivPlanned">
+                    <div class="col-xs-12 no_pad c1BandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="b1b2BandDivPlanned">
+                    <div class="col-xs-12 no_pad b1b2BandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="teamRainBandDivPlanned">
+                    <div class="col-xs-12 no_pad teamRainBandContent"></div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20">
+                  <div class="rookiesBandDivPlanned">
+                    <div class="col-xs-12 no_pad rookiesBandContent"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 no_pad">
+                <span class="col-xs-12 no_pad  bandTexts">18% D1 & Above Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">16% C2 Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">20% C1 Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">10% B1+B2 Band</span>
+                <span class="col-xs-12 no_pad  bandTexts">20% Team Rainbow(TRB)</span>
+                <span class="col-xs-12 no_pad  bandTexts">8% Rookies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad tofa_cls onsitegrp_cls" *ngIf="onsiteGraph2">
+          <div class="billable_onsite">
+            <div class="col-lg-8 col-md-8 no_pad">
+              <canvas baseChart height="200px" [data]="onsiteChartData" [labels]="onsiteChartLabels" [colors]="onsiteChartColors" [legend]="false" [chartType]="onsiteChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="col-lg-4 col-md-4 no_pad">
+              <ul class="col-xs-12 no_pad  onsitegraph_ul">
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-12 no_pad cir_cls present_cls">
+                      <div class="col-xs-12 no_pad  first_letter projstatus_num">onsite</div>
+                    </div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-12 no_pad cir_cls onleave_cls">
+                      <div class="col-xs-12 no_pad  first_letter projstatus_num">offshore</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad tofa_cls billablegrp_cls" *ngIf="billableGraph2">
+          <div class="billable_onsite">
+            <div class="col-lg-8 col-md-6 no_pad">
+              <canvas baseChart height="200px" [data]="billableChartData" [labels]="billableChartLabels" [colors]="billableChartColors" [legend]="false" [chartType]="billableChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="col-xs-4 no_pad">
+              <ul class="col-xs-12 no_pad  billablegraph_ul">
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls present_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">Billable</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls onleave_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">non-billable</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls ood_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">support</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls noswipe_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">investment</div>
+                  </div>
+                </li>
+                <li class="col-xs-12 no_pad">
+                  <div class="col-xs-12 no_pad cir_cls oth_cls">
+                    <div class="col-xs-12 no_pad  first_letter projstatus_num">contractors</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- <div class="col-xs-12 no_pad view_cls">
+        <div class="pull-right">
+          <button  md-button class="line-btn primary-btn pull-left text-uppercase view_btn" aria-label="view more" title="view more">view more</button>
+        </div>
+      </div> -->
+</div>
+<app-settings></app-settings>
+<button class="btndef_none icon-img_helpline iconhelp_main" aria-label="help" title="help"></button>

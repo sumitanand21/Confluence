@@ -1,0 +1,268 @@
+<div class="col-xs-12">
+  <div class="col-xs-12 back_pos">
+    <div class="col-xs-12 no_pad">
+      <div class="back-button-container projectDetailsHead searchHead ">
+        <button class="icon-back_arrow pull-left mt3 backArrw pdngLeft0" aria-label="Back" title="Back" (click)=" goBack()">
+        </button>
+        <h2 class="pull-left">Pending proposal</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad myteamContainer">
+    <div class="col-xs-12 no_pad project_details">
+      <div class="pull-left prjHeader">
+        <label class="bold font_family font14" aria-label="Project:">Project:</label>
+        <label class="font_family font14" aria-label="ABC Project">ABC Project</label>
+      </div>
+      <div class="pull-right">
+        <button class="'my_team_header_btn_active pull-right btndef_none text-uppercase view-more-btn view_btn':'pull-right btndef_none text-uppercase view-more-btn view_btn'" aria-label="see my demands" title="see my demands" routerLink="/allmydemandsDetails">see my demands<span class="btndef_none icon-arrow_drop_right"></span></button>
+      </div>
+    </div>
+    <div class="col-xs-12 no_pad demandtab_in myteam divheight">
+      <div class="col-xs-12 no_pad noLineHeight divheight scroll-window" slimScroll [options]="optemp">
+        <div class="col-xs-12 pendingproposaltab_in open_accord ">
+          <accordion [showArrows]="true" [closeOthers]="true">
+            <accordion-group [isOpened]="true">
+              <accordion-heading class="accordianpendingproposalhead">
+                <div class="col-xs-12 no_pad pull-left pendingproposalaccordian ">
+                  <div class="col-xs-12 no_pad bottommargin">
+                    <ul class="col-xs-12 no_pad ">
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">Indent number: <span class="no_pad first_letter label_text ">28273564917</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">Role: <span class="no_pad first_letter label_text">Test engineer</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">Location: <span class="no_pad first_letter label_text ">Mumbai</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">No of positions: <span class="no_pad first_letter label_text">34</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">No of proposals: <span class="no_pad first_letter label_text">02</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">No of expressed interests: <span class="no_pad first_letter label_text">04</span></div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </accordion-heading>
+              <div class="col-xs-12 no_pad checkbox_div">
+                <table class="myteam_emp_table mt10">
+                  <tr>
+                    <th colspan="3" class="">
+                      <div class="pull-left">
+                        <label class="mb0">
+                          <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+                        </label>
+                        <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                      </div>
+                    </th>
+                    <th colspan="4">
+                      <div class="pull-right">
+                        <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                      </div>
+                    </th>
+                  </tr>
+                </table>
+                <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                  <table class="myteam_emp_table mt10">
+                    <tr *ngFor="let n of names;let i = index">
+                      <td>
+                        <div class="col-xs-1 no_pad singleCheckbox">
+                          <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)"></mat-checkbox>
+                        </div>
+                        <div class="col-xs-6 no_pad empdetail">
+                          <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                          <div [ngClass]="n.expType == 'Proposed'? 'proposed':'expressed'">{{n.expType}}</div>
+                        </div>
+                        <div class="col-xs-6">
+                          <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                            <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                          </label>
+                          <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.email}}</span>
+                          <div class="email_skype_div">
+                            <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                            <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.matchtitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.match}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Startdatetitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Startdate}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Enddatetitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Enddate}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.ERDtitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.ERD}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Agingtitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Aging}}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </accordion-group>
+          </accordion>
+        </div>
+        <div class="col-xs-12 pendingproposaltab_in open_accord ">
+          <accordion [showArrows]="true" [closeOthers]="true">
+            <accordion-group [isOpened]="false">
+              <accordion-heading class="accordianpendingproposalhead">
+                <div class="col-xs-12 no_pad pull-left pendingproposalaccordian ">
+                  <div class="col-xs-12 no_pad bottommargin">
+                    <ul class="col-xs-12 no_pad ">
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">Indent number: <span class="no_pad first_letter label_text ">28273564917</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">Role: <span class="no_pad first_letter label_text ">Test engineer</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">Location: <span class="no_pad first_letter label_text ">Mumbai</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">No of positions: <span class="no_pad first_letter label_text ">34</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">No of proposals: <span class="no_pad first_letter label_text ">02</span></div>
+                      </li>
+                      <li class="col-lg-2 no_pad">
+                        <div class="col-xs-12 no_pad first_letter label_hd pad-top-18">No of expressed interests: <span class="no_pad first_letter label_text ">04</span></div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </accordion-heading>
+              <div class="col-xs-12 no_pad checkbox_div">
+                <table class="myteam_emp_table mt10">
+                  <tr>
+                    <th colspan="3" class="">
+                      <div class="pull-left">
+                        <label class="mb0">
+                          <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+                        </label>
+                        <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                      </div>
+                    </th>
+                    <th colspan="4">
+                      <div class="pull-right">
+                        <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                      </div>
+                    </th>
+                  </tr>
+                </table>
+                <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                  <table class="myteam_emp_table mt10">
+                    <tr *ngFor="let n of names;let i = index">
+                      <td>
+                        <div class="col-xs-1 no_pad singleCheckbox">
+                          <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)"></mat-checkbox>
+                        </div>
+                        <div class="col-xs-6 no_pad empdetail">
+                          <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                          <div [ngClass]="n.expType == 'Proposed'? 'proposed':'expressed'">{{n.expType}}</div>
+                        </div>
+                        <div class="col-xs-6">
+                          <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                            <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                          </label>
+                          <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.email}}</span>
+                          <div class="email_skype_div">
+                            <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                            <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.matchtitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.match}}</span>
+                      </td>
+                      <!-- <td>
+                       <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.iMarketscapetitle}}</label>
+                       <button class="icon-skype" aria-label="iMarket scape" title="iMarket scape"></button>
+                       </td> -->
+                      <!-- <td>
+                          <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.suitetitle}}</label>
+                          <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.suite}}</span>
+                       </td> -->
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Startdatetitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Startdate}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Enddatetitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Enddate}}</span>
+                      </td>
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.ERDtitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.ERD}}</span>
+                      </td>
+                      <!-- <td>
+                                  <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Statustitle}}</label>
+                                  <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Status}}</span>
+                                  </td> -->
+                      <td>
+                        <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.Agingtitle}}</label>
+                        <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.Aging}}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </accordion-group>
+          </accordion>
+        </div>
+      </div>
+      <!-- Employee Actions starts here -->
+    </div>
+    <div class="col-xs-12 mt20" *ngIf="showdropvalues">
+      <div class=" col-xs-10 pull-left">
+        <div class="col-xs-4 no_pad excel_select_myteam selectBold">
+          <mat-form-field>
+            <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValue" (change)="dropValuesChanged(selectedValue)">
+              <mat-option *ngFor="let resource of actions" [value]="resource.value">
+                {{resource.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-4" *ngIf="propel">
+          <div class=" col-xs-12 pull-left">
+            <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+              <mat-form-field>
+                <mat-select placeholder="AED-ASD < 30 days,therefore select a propel plan" name="propel" [(ngModel)]="selectedpropel" (change)="dropValuesChanged(selectedpropel)">
+                  <mat-option *ngFor="let selectedpropel of propelplanning" [value]="selectedpropel.value">
+                    {{selectedpropel.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pull-right">
+        <button aria-label="submit" class="line-btn primary-btn pull-left text-uppercase view_btn mrg_rgt0" md-button="" title="submit" (click)="submitmodal()">Submit </button>
+      </div>
+    </div>
+  </div>
+</div>

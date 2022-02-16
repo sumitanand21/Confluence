@@ -1,0 +1,553 @@
+<div class="col-xs-12 no_pad settingsMenu">
+<div class="settingsoverlayPage " *ngIf="showOverlay" (click)="overlayClick()"></div>
+		<div class="taskActiveback left_border" [ngClass]="{'task': settingsWindow}" >
+			<button data-rol="none" class="icon-settings" (click)="showSettings()" aria-label="settings" title="settings"></button>
+			<div class="settingheadbackground ">
+					<div class="pull-left first_letter settingsHead">Settings</div>
+					<!-- <button data-rol="none" class="pull-right btndef_background icon-close" (click)="showSettings()" aria-label="close" title="close"></button> -->
+					<button (click)="showSettings()" class="pull-right btndef_none close_left icon-close" aria-label="close" title="close"></button>
+			</div>
+		
+			<div class="col-xs-12 no_pad" >
+				<div class="col-xs-12 scroll-window no_padding" slimScroll [options]="opts">
+				<div class="col-xs-12 no_pad setdiv1 pad_lr_15">
+					<div class="col-lg-12 no_pad mt10 ">
+						<div class="pull-left font12 settingsOptions label_text1">My tasks / reminders</div>
+						<div class="pull-right toggleBtn">
+							<div class="pull-left switch switchdisabled">
+								<input type="checkbox" checked="true" disabled id="mytask" title="disabled" aria-label="disabled" class="switchInput"/>
+								<label for="mytask"><span class="ui"></span></label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 line_height ">
+							<label class="pull-left  empBilling1 label_text" aria-label="sort by?">Sort by</label>
+						 <div class="col-xs-12 no_pad staggerRadio">
+						   <mat-radio-group [(ngModel)]="settingval" (change)="displayduedays(settingval)">
+							 <mat-radio-button value="1" checked=true class="col-lg-3 no_pad label_text">Object</mat-radio-button>
+							 <mat-radio-button value="2" class="col-lg-3 no_pad label_text">Type</mat-radio-button>
+							 <mat-radio-button value="3" class="col-lg-4 no_pad label_text" >Due Days</mat-radio-button>
+							 <mat-radio-button value="4" class="col-lg-2 no_pad label_text">Band</mat-radio-button>
+						   </mat-radio-group>
+						 </div>
+						 
+					   </div>
+					   <div class="col-xs-12 no_pad " *ngIf="duedays">
+							<div class="pull-left first_letter divbordersettings speech-bubbleduedays lineheight40">
+					
+					<div class="col-xs-12 no_pad  ">
+						<div class="col-xs-12 col-lg-3 no_pad label_text ">
+							<mat-checkbox checked=true>Due Today</mat-checkbox>
+						</div>
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox checked=true>Due in 2 days</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox checked=true>Due in 5 days</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox checked=true>Overview</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text">
+							<mat-checkbox checked=true>Other notifications</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text">
+							<!-- <button class="AddmoreBtn pull-left  text-uppercase" aria-label="add more" title="add more"><span class="pluscolor">+</span>ADD MORE</button> -->
+							
+									<button class="AddmoreBtn pull-left line-btn " aria-label="add more" title="add more" (click)="openDialog()">
+									  <span class="icon-add">  ADD MORE</span>
+									</button>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="col-xs-12 no_pad " *ngIf="mytasks">
+						<div class="pull-left first_letter divbordersettings speech-bubblemytasks lineheight40">
+				
+				<div class="col-xs-12 no_pad  ">
+					<div class="col-xs-12 col-lg-6 no_pad label_text ">
+						<mat-checkbox checked=true>Eligible for other roles</mat-checkbox>
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Up for propel planning</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Pending Clarifications</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Pending proposal</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Project extension at risk</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+							<mat-checkbox checked=true>Serving notice period</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-6 no_pad label_text">
+								<mat-checkbox checked=true>Employee release date approaching </mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-6 no_pad label_text">
+									<mat-checkbox checked=true>Investment end date approaching</mat-checkbox>
+									
+								</div>
+				
+				</div>
+			</div>
+			</div>
+				 <div class="col-xs-12 no_pad " *ngIf="mytasks">
+				<label class="pull-left  empBilling1 label_text" aria-label="No of Requests in each bucket">No of Requests in each bucket:</label>
+				<!-- <button data-role="none" class="col-lg-1 settingpageCountBtn pull-left  text-uppercase" aria-label="No of requests in each bucket" title="No of requests in each bucket" >2</button> -->
+				<input type="text" class="no_requests" title="No. of Requests" value="2">
+				</div>
+				<div class="col-xs-12 no_pad " *ngIf="duedays">
+						<label class="pull-left  empBilling1 label_text" aria-label="No of days">Number of days:</label>
+						<!-- <button data-role="none" class="col-lg-1 settingpageCountBtn pull-left  text-uppercase" aria-label="No of requests in each bucket" title="No of requests in each bucket" >2</button> -->
+						<input type="text" class="no_requests" title="No. of days" value="2">
+						</div>
+				</div>
+			
+				<div class="col-xs-12 no_pad setdiv1 pad_lr_15">
+						<div class="col-xs-12 no_pad mt10 ">
+							<div class="pull-left font12 settingsOptions label_text1">My request status</div>
+							<div class="pull-right toggleBtn">
+								<div class="pull-left switch slideTogglesetting">
+									<input type="checkbox" checked="true"  id="myrequest" class="switchInput"/>
+									<label for="myrequest"><span class="ui"></span></label>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 line_height ">
+							<label class="pull-left  empBilling1 label_text" aria-label="sort by?">Sort by</label>
+						 <div class="col-xs-12 no_pad staggerRadio">
+						   <mat-radio-group [(ngModel)]="settingval1" (change)="displayduedays1(settingval1)">
+							 <mat-radio-button value="11" checked=true class="col-lg-3 no_pad label_text">Object</mat-radio-button>
+							 <mat-radio-button value="12" class="col-lg-3 no_pad label_text">Type</mat-radio-button>
+							 <mat-radio-button value="13" class="col-lg-4 no_pad label_text" >Due Days</mat-radio-button>
+							 <mat-radio-button value="14" class="col-lg-2 no_pad label_text">Band</mat-radio-button>
+						   </mat-radio-group>
+						 </div>
+						 
+					   </div>
+					   <div class="col-xs-12 no_pad " *ngIf="duedays1">
+							<div class="pull-left first_letter divbordersettings speech-bubbleduedays lineheight40">
+					
+					<div class="col-xs-12 no_pad  ">
+						<div class="col-xs-12 col-lg-3 no_pad label_text ">
+							<mat-checkbox checked=true>Due Today</mat-checkbox>
+						</div>
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox checked=true>Due in 2 days</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox checked=true>Due in 5 days</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox checked=true>Overview</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text">
+							<mat-checkbox checked=true>Other notifications</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text">
+							<!-- <button class="AddmoreBtn pull-left  text-uppercase" aria-label="add more" title="add more"><span class="pluscolor">+</span>ADD MORE</button> -->
+							
+									<button class="AddmoreBtn pull-left line-btn " aria-label="add more" title="add more" (click)="openDialog()">
+									  <span class="icon-add">  ADD MORE</span>
+									</button>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="col-xs-12 no_pad " *ngIf="mytasks1">
+						<div class="pull-left first_letter divbordersettings speech-bubblemytasks lineheight40">
+				
+				<div class="col-xs-12 no_pad  ">
+					<div class="col-xs-12 col-lg-6 no_pad label_text ">
+						<mat-checkbox checked=true>Eligible for other roles</mat-checkbox>
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Up for propel planning</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Pending Clarifications</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Pending proposal</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+						<mat-checkbox checked=true>Project extension at risk</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 col-lg-6 no_pad label_text">
+							<mat-checkbox checked=true>Serving notice period</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-6 no_pad label_text">
+								<mat-checkbox checked=true>Employee release date approaching </mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-6 no_pad label_text">
+									<mat-checkbox checked=true>Investment end date approaching</mat-checkbox>
+									
+								</div>
+				
+				</div>
+			</div>
+			</div>
+				 <div class="col-xs-12 no_pad " *ngIf="mytasks1">
+				<label class="pull-left  empBilling1 label_text" aria-label="No of Requests in each bucket">No of Requests in each bucket:</label>
+				<!-- <button data-role="none" class="col-lg-1 settingpageCountBtn pull-left  text-uppercase" aria-label="No of requests in each bucket" title="No of requests in each bucket" >2</button> -->
+				<input type="text" class="no_requests" title="No. of Requests" value="2">
+				</div>
+				<div class="col-xs-12 no_pad " *ngIf="duedays1">
+						<label class="pull-left  empBilling1 label_text" aria-label="No of days">Number of days:</label>
+						<!-- <button data-role="none" class="col-lg-1 settingpageCountBtn pull-left  text-uppercase" aria-label="No of requests in each bucket" title="No of requests in each bucket" >2</button> -->
+						<input type="text" class="no_requests" title="No. of days" value="2">
+						</div>
+				
+			
+						   <div class="col-xs-12 line_height ">
+								<div class="first_letter">
+										<label class="pull-left  empBilling1 label_text" aria-label="sort by?">Filter by</label>
+						<div class="col-xs-12 no_pad">
+							<div class="col-xs-12 col-lg-4 no_pad label_text ">
+								<mat-checkbox checked=true>Approval</mat-checkbox>
+							</div>
+							<div class="col-xs-12 col-lg-4 no_pad label_text">
+								<mat-checkbox checked=true>Rejected</mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-4 no_pad label_text">
+								<mat-checkbox checked=true>Pending</mat-checkbox>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+					</div>
+
+
+
+					<div class="col-xs-12 no_pad setdiv1 pad_lr_15">
+						<div class="col-xs-12 no_pad mt10 ">
+							<div class="pull-left font12 settingsOptions label_text1">Highlighted SOW section</div>
+							<div class="pull-right toggleBtn">
+								<div class="pull-left switch slideTogglesetting">
+									<input type="checkbox" checked="true" id="mysow" class="switchInput"/>
+									<label for="mysow"><span class="ui"></span></label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-12 line_height ">
+							<label class="pull-left  empBilling1 label_text" aria-label="sort by?">Sort by</label>
+						 <div class="col-xs-12 no_pad staggerRadio">
+						   <mat-radio-group [(ngModel)]="settingval2" (change)="displayduedays2(settingval1)">
+							 <mat-radio-button value="15" checked=true class="col-lg-4 no_pad label_text">Revenue</mat-radio-button>
+							 <mat-radio-button value="16" class="col-lg-4 no_pad label_text">bhc</mat-radio-button>
+							 <mat-radio-button value="17" class="col-lg-4 no_pad label_text" >Support head count</mat-radio-button>
+							 <mat-radio-button value="18" class="col-lg-4 no_pad label_text">Investment</mat-radio-button>
+							 <mat-radio-button value="19" checked=true class="col-lg-4 no_pad label_text">non billable hc</mat-radio-button>
+							 <mat-radio-button value="20" class="col-lg-4 no_pad label_text">Order dates</mat-radio-button>
+						   </mat-radio-group>
+						 </div>
+						 
+					   </div>
+						   <div class="col-xs-12 line_height ">
+								<div class="first_letter">
+										<label class="pull-left  empBilling1 label_text" aria-label="sort by?">Filter by</label>
+						<div class="col-xs-12 no_pad">
+							<div class="col-xs-12 col-lg-3 no_pad label_text ">
+								<mat-checkbox checked=true>opp at risk</mat-checkbox>
+							</div>
+							<div class="col-xs-12 col-lg-3 no_pad label_text">
+								<mat-checkbox checked=true>order at risk</mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-3 no_pad label_text">
+								<mat-checkbox checked=true>confirmed order</mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-3 no_pad label_text">
+								<mat-checkbox checked=true>t&m/fpp</mat-checkbox>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 no_pad ">
+					<label class="pull-left  empBilling1 label_text" aria-label="No of Requests in each bucket">Number of SOW's:</label>
+					<!-- <button data-role="none" class="col-lg-1 settingpageCountBtn pull-left  text-uppercase" aria-label="No of requests in each bucket" title="No of requests in each bucket" >2</button> -->
+					<input type="text" class="no_requests" title="No. of sow" value="2">
+					</div>
+					</div>
+				<!-- <div class="col-xs-12 no_pad mb20">
+					<div class="col-xs-12 no_pad mt10 ">
+						<div class="pull-left font12 settingsOptions label_text">MY TEAM</div>
+						<div class="pull-right toggleBtn">
+							<div class="pull-left switch slideTogglesetting">
+				                <input type="checkbox" id="myteam" class="switchInput"/>
+				                <label for="myteam"><span class="ui"></span></label>
+				            </div>
+						</div>
+					</div>
+					<div class="col-xs-12 no_pad label_text">
+						<mat-checkbox>Show all</mat-checkbox>
+						
+					</div>
+					<div class="col-xs-12 no_pad label_text">
+						<div class="col-xs-12 col-lg-4 no_pad ">
+							<mat-checkbox>TIC - TOFA</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text ">
+							<mat-checkbox>Top5</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text">
+							<mat-checkbox>Bottom5</mat-checkbox>
+							
+						</div>
+					</div>
+				</div> -->
+				<div class="col-xs-12 no_pad setdiv1 pad_lr_15" *ngIf="dc.myleadership">
+						<div class="col-xs-12 no_pad mt10 ">
+							<div class="pull-left font12 settingsOptions label_text1">Leadership/ Revenue/ Budget</div>
+							<div class="pull-right toggleBtn">
+								<div class="pull-left switch slideTogglesetting">
+									<input type="checkbox" checked="true" id="myleadership" class="switchInput"/>
+									<label for="myleadership"><span class="ui"></span></label>
+								</div>
+							</div>
+						</div>
+						
+						   <div class="col-xs-12 no_pad ">
+								<div class=" first_letter ">
+						
+						<div class="col-xs-12 no_pad botmargin">
+							<div class="col-xs-12 col-lg-4 no_pad label_text ">
+								<mat-checkbox checked=true>Leadership</mat-checkbox>
+							</div>
+							<div class="col-xs-12 col-lg-4 no_pad label_text">
+								<mat-checkbox checked=true>Revenue</mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-4 no_pad label_text">
+								<mat-checkbox checked=true>Budget</mat-checkbox>
+								
+							</div>
+							
+						</div>
+					</div>
+					</div>
+					
+					</div>
+					<div class="col-xs-12 no_pad setdiv1 pad_lr_15" *ngIf="dc.myteam">
+							<div class="col-xs-12 no_pad mt10 ">
+								<div class="pull-left font12 settingsOptions label_text1">Team analytics</div>
+								<div class="pull-right toggleBtn">
+									<div class="pull-left switch slideTogglesetting">
+										<input type="checkbox" checked="true" id="myteam" class="switchInput"/>
+										<label for="myteam"><span class="ui"></span></label>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 line_height ">
+								<label class="pull-left  empBilling1 label_text" aria-label="select the time period">Sort by</label>
+							 <div class="col-xs-12 no_pad staggerRadio">
+							   <mat-radio-group>
+								 <mat-radio-button value="21" checked=true class="col-lg-4 no_pad label_text">Yesterday</mat-radio-button>
+								 <mat-radio-button value="22" class="col-lg-4 no_pad label_text">Last Week</mat-radio-button>
+								 <mat-radio-button value="23" class="col-lg-4 no_pad label_text" >Last Month</mat-radio-button>
+							
+							   </mat-radio-group>
+							 </div>
+							 
+						   </div>
+							   <div class="col-xs-12 no_pad ">
+									<div class="first_letter ">
+										<label class="pull-left  empBilling1 label_text" aria-label="filter by?">Filter by</label>
+							<div class="col-xs-12 no_pad botmargin">
+								<div class="col-xs-12 col-lg-3 no_pad label_text ">
+									<mat-checkbox checked=true>Project stats</mat-checkbox>
+								</div>
+								<div class="col-xs-12 col-lg-3 no_pad label_text" >
+									<mat-checkbox checked=true>TIC/TOFA</mat-checkbox>
+									
+								</div>
+								<div class="col-xs-12 col-lg-3 no_pad label_text">
+									<mat-checkbox checked=true>Others</mat-checkbox>
+									
+								</div>
+								<div class="col-xs-12 col-lg-3 no_pad label_text">
+										<mat-checkbox checked=true>Team Split</mat-checkbox>
+										
+									</div>
+								
+							</div>
+							
+						</div>
+						</div>
+						
+						</div>
+				<!-- <div class="col-xs-12 no_pad mb20">
+					
+					<div class="col-xs-12 no_pad   mrgnleft0 settingsOptions mb10 label_text">Employee split</div>
+						
+					
+					<div class="col-xs-12 no_pad">
+						<div class="col-xs-12 col-lg-3 no_pad label_text">
+							<mat-checkbox>Rookies</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-4 no_pad label_text">
+							<mat-checkbox>Contactors</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-5 no_pad label_text">
+							<mat-checkbox>Onsite employees</mat-checkbox>
+							
+						</div>
+						<div class="col-xs-12 col-lg-6 no_pad label_text ">
+							<mat-checkbox>Offshore employees</mat-checkbox>
+							
+						</div>
+					</div>
+				</div> -->
+				<div class="col-xs-12 no_pad setdiv1 pad_lr_15" *ngIf="dc.mydemands">
+						<div class="col-xs-12 no_pad mt10 ">
+							<div class="pull-left font12 settingsOptions label_text1">All my demands</div>
+							<div class="pull-right toggleBtn">
+								<div class="pull-left switch slideTogglesetting">
+									<input type="checkbox" checked="true" id="mydemands" class="switchInput"/>
+									<label for="mydemands"><span class="ui"></span></label>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 line_height">
+								<label class="empBilling1 label_text" aria-label="sort by?">Sort by</label>
+							 <div class="col-xs-12 no_pad staggerRadio">
+							   <mat-radio-group>
+								 <mat-radio-button value="9" checked=true class="col-lg-3 no_pad label_text">Object</mat-radio-button>
+								 <mat-radio-button value="10" class="col-lg-3 no_pad label_text">Type</mat-radio-button>
+								 <mat-radio-button value="11" class="col-lg-4 no_pad label_text">Due Days</mat-radio-button>
+								 <mat-radio-button value="12" class="col-lg-2 no_pad label_text">Band</mat-radio-button>
+							   </mat-radio-group>
+							 </div>
+							 
+						   </div>
+						   <div class="col-xs-12 line_height ">
+								<div class="first_letter ">
+										<label class="pull-left  empBilling1 label_text" aria-label="filter by?">Filter by</label>
+						<div class="col-xs-12 no_pad">
+							<div class="col-xs-12 col-lg-4 no_pad label_text ">
+								<mat-checkbox checked=true>Approval</mat-checkbox>
+							</div>
+							<div class="col-xs-12 col-lg-4 no_pad label_text">
+								<mat-checkbox checked=true>Rejected</mat-checkbox>
+								
+							</div>
+							<div class="col-xs-12 col-lg-4 no_pad label_text">
+								<mat-checkbox checked=true>Pending</mat-checkbox>
+								
+							</div>
+						</div>
+					</div>
+					</div>
+					
+					</div>
+					<div class="col-xs-12 no_pad setdiv1 pad_lr_15" *ngIf="dc.myproject">
+							<div class="col-xs-12 no_pad mt10 ">
+								<div class="pull-left font12 settingsOptions label_text1">Manage Project</div>
+								<div class="pull-right toggleBtn">
+									<div class="pull-left switch switchdisabled">
+										<input type="checkbox" disabled checked="true" title="disabled" aria-label="disabled"  id="myprojects" class="switchInput"/>
+										<label for="myprojects"><span class="ui"></span></label>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 no_pad ">
+									<label class="empBilling1 label_text" aria-label="Select the graph type in which you would like to see the data">Select the graph type in which you would like to see the data.</label>
+								 <div class="col-xs-12 no_pad staggerRadio">
+								   <mat-radio-group>
+									 <mat-radio-button value="13" checked=true class="col-lg-4 no_pad label_text">Donut</mat-radio-button>
+									 <mat-radio-button value="14" class="col-lg-4 no_pad label_text">Pie chart</mat-radio-button>
+									 <mat-radio-button value="15" class="col-lg-4 no_pad label_text">Bar graph</mat-radio-button>
+									 
+								   </mat-radio-group>
+								 </div>
+								 
+							   </div>
+							   <div class="col-xs-12 no_pad ">
+									<label class="empBilling1 label_text" aria-label="How do you want to see the data in these graphs?">How do you want to see the data in these graphs?</label>
+								 <div class="col-xs-12 no_pad staggerRadio">
+								   <mat-radio-group>
+									 <mat-radio-button value="1" checked=true class="col-lg-6 no_pad label_text">Absolute Numbers</mat-radio-button>
+									 <mat-radio-button value="2" class="col-lg-6 no_pad label_text">Percentages</mat-radio-button>
+								   </mat-radio-group>
+								 </div>
+								 
+							   </div>
+							  
+						
+						</div>
+						<div class="col-xs-12 no_pad setdiv1 pad_lr_15">
+							<div class="col-xs-12 no_pad mt10 ">
+								<div class="pull-left font12 settingsOptions label_text1">Search Results</div>
+								<div class="pull-right toggleBtn">
+									<div class="pull-left switch slideTogglesetting ">
+										<input type="checkbox"  checked="true" id="myresults" class="switchInput"/>
+										<label for="myresults"><span class="ui"></span></label>
+									</div>
+								</div>
+							</div>
+						
+							   <div class="col-xs-12 no_pad ">
+									<label class="empBilling1 label_text" aria-label="important contacts">Do you like to see important contacts?</label>
+								 <div class="col-xs-12 no_pad staggerRadio">
+								   <mat-radio-group>
+									 <mat-radio-button value="51" checked=true class="col-lg-4 no_pad label_text">Yes</mat-radio-button>
+									 <mat-radio-button value="52" class="col-lg-4 no_pad label_text">No</mat-radio-button>
+								   </mat-radio-group>
+								 </div>
+								 
+							   </div>
+							  
+						
+						</div>
+				</div>
+				
+<div class="col-xs-12">
+				<div class="pull-right">
+					<!-- <button type="reset" class="line-btn settingpageBtn pull-left  text-uppercase" aria-label="reset" title="reset" (click)="resetcontents()">RESET</button> -->
+					
+					<button class="pull-left line-btn " aria-label="reset" title="reset">
+						RESET
+						  </button>
+					<button type="submit" class="line-btn primary-btn pull-left text-uppercase view_btn marginRight0" aria-label="save" title="save">SAVE</button>
+				</div>
+			</div> 
+ 
+
+			</div>
+		
+		</div>
+	</div>

@@ -1,0 +1,72 @@
+<div class="col-xs-12 no_pad employee_details">
+    <mat-dialog-actions>
+        <div class="col-xs-12 no_pad">
+            <div class="col-xs-12 no_pad allPopHeader"><h1 class="pull-left">Complete propel planning</h1>
+                <button class="pull-right icon-close" mat-dialog-close aria-label="close" (click)="removeScroll()"></button>
+                
+            </div>
+            <div class="col-xs-12 no_pad popInnerPadd">
+                <!-- <div class="col-xs-12 no_pad demandtab_in scroll-window" slimScroll [options]="opts"> -->
+                                    <!-- <ul class="col-xs-4 no_pad mt20">
+                                            <li class="col-xs-12 col-lg-12 searchAttrLi marTop5">
+                                                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                                                            <mat-form-field>
+                                                              <mat-select placeholder="Reason for rejection ?" name="skill" [(ngModel)]="selectedvalue" (change)="additionalfield(selectedvalue)" required>
+                                                                <mat-option *ngFor="let skill of resources" [value]="skill.value">
+                                                                  {{skill.viewValue}}
+                                                                </mat-option>
+                                                              </mat-select>
+                                                            </mat-form-field>
+                                                        </form>
+                                                    </li>
+                                          </ul> -->
+                                          <ul class="col-xs-4 no_pad mt20">
+                                            <li class="col-xs-12 col-lg-12 pdngLeft0 autosuggestLi searchAttrLi" >
+                                              <div ng2-auto-complete 
+                                                [source]="arrayofskills"
+                                               >
+                                                <input type="text" [(ngModel)]="selectedskill" id="skills" (change)="additionalfield(selectedskill)" placeholder="Reason for rejection" required/>
+                                              </div>
+                                              
+                                            </li>
+                                            </ul>
+                                          <ul class="col-xs-4 no_pad mt20" >
+                                            <li class="col-xs-12 col-lg-12 pdngLeft0 autosuggestLi searchAttrLi" >
+                                                <div ng2-auto-complete 
+                                                  [source]="arrayofskill"
+                                                 >
+                                                  <input type="text" [ngModel]="selectedskills" id="skill"  placeholder="select skills" required/>
+                                                </div>
+                                                
+                                              </li>
+                                    </ul>
+                                    <ul class="col-xs-4 no_pad mt20">
+                                        <li class="col-xs-12 col-lg-12 pdngLeft0 autosuggestLi searchAttrLi" >
+                                            <div ng2-auto-complete 
+                                              [source]="arrayofpmdm"
+                                            >
+                                              <input type="text" [ngModel]="pmdm" id="skills"  placeholder="PM-DM section"  required/>
+                                            </div>
+                                            
+                                          </li>
+                                </ul>
+                                          <ul class="col-xs-4 no_pad mt20">
+                                            <li class="col-xs-12 col-lg-12 pdngLeft0  searchAttrLi">
+                                                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                                                            <mat-form-field>
+                                                             <input matInput placeholder="Remarks">
+                                                          </mat-form-field>
+                                                         </form>
+                                        </li>
+                                    </ul>
+                <!-- </div> -->
+            </div>
+                <div class="col-xs-12">
+                        <div class="pull-right acc_span">
+                            <button type="submit" class="line-btn primary-btn pull-left text-uppercase acc_span" mat-dialog-close aria-label="close" (click)="removeScroll()" aria-label="Reject" title="reject">REJECT</button>
+                        </div>
+                    </div> 
+          
+        </div>
+    </mat-dialog-actions>
+    </div>

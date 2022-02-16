@@ -1,0 +1,333 @@
+<div class="col-xs-12 no_pad">
+<div class="overLay" (click)="closeOverlay()"></div>
+<div  [ngClass]="savedSOWContent === true ? 'display_none col-xs-12 no_pad' : 'col-xs-12 no_pad'">
+	<!-- accord1 starts here -->
+		<div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+			<div class="col-xs-12 no_pad accordionItem open_accord">
+				<div class="col-xs-12 no_pad accordionItemHeading">
+	      			<div class="pull-left desc_hd first_letter">Leadership</div>
+	      			<div class="pull-right">
+	      				<button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+	      				<button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+	      			</div>
+	      		</div>
+		      	<div class="col-xs-12 no_pad accordionItemContent">
+		      		<div class="col-xs-12 no_pad accordionInnerContent">
+						<app-leadership></app-leadership>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- accord2 starts here -->
+		<div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+			<div class="col-xs-12 no_pad accordionItem close_accord">
+	      		<div class="col-xs-12 no_pad accordionItemHeading">
+	      			<div class="pull-left desc_hd first_letter">These are your order's role details pulled from rls</div>
+	      			<div class="pull-right">
+	      				<button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+	      				<button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+	      			</div>
+	      		</div>
+		      	<div class="col-xs-12 no_pad accordionItemContent">
+		      		<div class="col-xs-12 no_pad accordionInnerContent task_main">
+		      			<div class="col-xs-12 no_pad mt20 mb20">
+		      				<div class="col-lg-5 no_pad">
+		      					<div class="col-xs-12">
+		      						<div class="col-xs-12 no_pad first_letter label_text mb10">10 Developers</div>
+		      						<div class="col-xs-12 no_pad first_letter label_text mb10">10 Designers</div>
+		      						<div class="col-xs-12 no_pad first_letter label_text mb10">03 Business analysts</div>
+		      						<div class="col-xs-12 no_pad first_letter label_text">03 Team leads</div>
+		      					</div>
+		      				</div>
+		      				<div class="col-lg-7 no_pad">
+		      					
+							<div class="col-xs-12 no_pad mb20">
+								<div class="pull-left first_letter note_hd">*note</div>
+								<div class="pull-left col_cls">:</div>
+								<div class="pull-left first_letter font_twelve note_txt myteamnote">You can change the details here. These will automatically raise efforts deviation requests. Once your ADH approves the requests, the details will be changed here and in RLS automatically, and you will be notified through your myTasks.</div>
+							</div>
+		      				</div>
+		      			</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- accord3 starts here -->
+		<div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+			<div class="col-xs-12 no_pad accordionItem close_accord">
+	      		<div class="col-xs-12 no_pad accordionItemHeading">
+	      			<div class="pull-left desc_hd first_letter">Please verify your order structure</div>
+	      			<div class="pull-right">
+	      				<button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+	      				<button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+	      			</div>
+	      		</div>
+		      	<div class="col-xs-12 no_pad accordionItemContent">
+		      		<div class="col-xs-12 no_pad accordionInnerContent task_main">
+						<div class="col-xs-12 no_pad mt20 mb20">
+							<div class="col-lg-4 no_pad">
+								<form class="dropdownSelect example-form col-xs-12 ">
+	                           				<mat-form-field>
+											  <mat-select placeholder="Project structure" required>
+											    <mat-option *ngFor="let band of bands" [value]="band.value">
+											      {{ band.viewValue }}
+											    </mat-option>
+											  </mat-select>
+											</mat-form-field>
+										</form>
+							</div>
+							<div class="col-lg-8 no_pad">
+								<div class="col-xs-12 font12">
+		      						<span class="pull-left first_letter note_hd">*NOTE: </span>
+		      						The order structure selected by default here is based on your TCV. However, you can change the structure from the dropdown given.
+		      					</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- accord4 starts here -->
+		<div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+			<div class="col-xs-12 no_pad accordionItem close_accord">
+	      		<div class="col-xs-12 no_pad accordionItemHeading">
+	      			<div class="pull-left desc_hd first_letter">Let's fill in the structure details</div>
+	      			<div class="pull-right">
+	      				<button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+	      				<button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+	      			</div>
+	      		</div>
+		      	<div class="col-xs-12 no_pad accordionItemContent">
+		      		<div class="col-xs-12 no_pad accordionInnerContent">
+		      			<div class="col-xs-12 no_pad">
+	<div class="col-xs-12 no_pad task_main">
+		<div class="col-xs-12 no_pad mt20 mb20">
+			<div class="col-xs-12 no_pad mb20">
+				<div class="col-lg-4 no_pad bpsText brdrRight">
+					BPS - $200 M
+				</div>
+				<div class="col-lg-4 no_pad bpsText brdrRight">
+					BPS - $200 M
+				</div>
+				<div class="col-lg-4 no_pad bpsText">
+					BPS - $200 M
+				</div>
+			</div>
+			<div class="col-xs-12 font12">
+				<span class="pull-left first_letter note_hd">*NOTE:  </span>
+				 These are the costs defined service line wise,for this order in RLS
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 no_pad task_main">
+		<div class="col-xs-12 no_pad">
+			<div class="col-xs-12 no_pad first_letter desc_hd">Select your delivery manager</div>
+			<div class="col-lg-6 dropdownContent mb20">
+ <div class="overLay"  (click)="closeOverlay()"></div>
+	<div class="col-xs-12 no_pad ">
+		<div class="col-xs-12 no_pad selectDiv">
+			<button class="col-lg-8 no_pad dropdownDiv " (click)="myMethod()" aria-label="press enter to select the delivery manager">
+				<div class="user_img user_pic pull-left"></div>
+				<div class="user_name pull-left selectedVal">
+					<input type="text" id="name" [value]="name1" placeholder="Select DM" readonly="readonly" >
+				</div>
+				<div class="downArrw icon-arrow_drop_down pull-right"></div>
+			</button>
+		</div>
+		<div class="col-xs-12 no_pad contentScroll selectDrop" *ngIf="showDropDwn">
+			<div class="col-lg-4 no_pad dropdownBg filterBody mt10">
+				<div class="col-xs-12 no_pad">
+					<div class="col-xs-12 no_pad mt10 drpdwnInput">
+					
+						      <input type="text" placeholder="Employee ID/Name/BU" class="col-xs-12 no_pad">
+						      <button class="searchIcon" aria-label="search training" title="search training" ><span class="icon-search"></span></button>
+						   
+					</div>
+					<div class="col-xs-12 scroll-window dropdownHt" slimScroll [options]="opts">
+					
+						<div class="col-xs-12 no_pad cantFindText">
+							<span class="pull-left search_name marginLeft0">Cant'find DM ? click here </span>
+						 	<button data-role="none" class="icon-arrow_drop_right btndef_none pull-left" title="click here" aria-label="click here"></button>
+						 </div>
+					
+					<div class="col-xs-12 no_pad dropdownVal mt20">
+						<a href="#" class="col-xs-12 no_pad mb10 userNames" *ngFor="let f of items; let i = index" (click)="edit(i)" title={{f.name}}>
+							<div class="user_img user_pic pull-left"></div>
+							<div class="search_name pull-left" >{{f.name}}</div>
+						</a>
+						
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div class="col-lg-6 no_pad">
+	<div class="pull-right">
+		<button class="pull-right line-btn addProject marginTop0">
+		<span class="pull-left icon-add"></span>ADD PROJECT
+		</button> 
+	</div>
+</div>
+		</div>
+		<div class="col-xs-12  label_hd mb10">
+			These are empty templates based on the order structure defined, created based on service line, practice, sub practice and location to ease order creation. You can add, modify or delete these templates to create your own structure.
+		</div>
+	</div>
+	<div class="col-xs-12 no_pad">
+		<div class="col-lg-4 no_pad mb20 paddingRight10">
+		<div class="col-xs-12 no_pad whiteBg pd10">
+			<div class="col-xs-12 no_pad projectHeading mb10">
+				<div class="pull-left desc_hd mt10">PROJECT 1</div>
+				<div class="pull-right">
+					<button data-role="none" class="icon-delete" aria-label="delete" title="delete"></button>
+					<button data-role="none" class="icon-edit" aria-label="edit" title="edit"></button>
+					<button data-role="none" class="icon-more_v" aria-label="more" title="more"></button>
+				</div>
+			</div>
+			<div class="col-xs-12 no_pad mt20">
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >SERVICE LINE :  </label>
+						<span class="pull-left label_text"> GIS</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >PRACTICE :  </label>
+						<span class="pull-left label_text"> GIS</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >SUB PRACTICE :  </label>
+						<span class="pull-left label_text"> GIS - CCX</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >LOCATION :  </label>
+						<span class="pull-left label_text"> MUMBAI</span>
+					</li>
+				</ul>
+			</div>
+			</div>
+			<div class="col-xs-12 no_pad">
+			<button class="line-btn primary-btn pull-right text-uppercase searchtl_btn margin0">CLICK HERE TO ADD OTHER PROJECT DETAILS</button>
+		</div>
+		</div>
+		<div class="col-lg-4 no_pad mb20 paddingRight10">
+		<div class="col-xs-12 no_pad whiteBg pd10 ">
+			<div class="col-xs-12 no_pad projectHeading mb10">
+				<div class="pull-left desc_hd mt10">PROJECT 1</div>
+				<div class="pull-right">
+					<button data-role="none" class="icon-delete" aria-label="delete" title="delete"></button>
+					<button data-role="none" class="icon-edit" aria-label="edit" title="edit"></button>
+					<button data-role="none" class="icon-more_v" aria-label="more" title="more"></button>
+				</div>
+			</div>
+			<div class="col-xs-12 no_pad mt20">
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >SERVICE LINE :  </label>
+						<span class="pull-left label_text"> GIS</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >PRACTICE :  </label>
+						<span class="pull-left label_text"> GIS</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >SUB PRACTICE :  </label>
+						<span class="pull-left label_text"> GIS - CCX</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >LOCATION :  </label>
+						<span class="pull-left label_text"> MUMBAI</span>
+					</li>
+				</ul>
+			</div>
+			</div>
+			<div class="col-xs-12 no_pad">
+			<button class="line-btn primary-btn pull-right text-uppercase searchtl_btn margin0">CLICK HERE TO ADD OTHER PROJECT DETAILS</button>
+		</div>
+		</div>
+		<div class="col-lg-4 no_pad mb20">
+		<div class="col-xs-12 no_pad whiteBg pd10">
+			<div class="col-xs-12 no_pad projectHeading mb10">
+				<div class="pull-left desc_hd mt10">PROJECT 1</div>
+				<div class="pull-right">
+					<button data-role="none" class="icon-delete" aria-label="delete" title="delete"></button>
+					<button data-role="none" class="icon-edit" aria-label="edit" title="edit"></button>
+					<button data-role="none" class="icon-more_v" aria-label="more" title="more"></button>
+				</div>
+			</div>
+			<div class="col-xs-12 no_pad mt20">
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >SERVICE LINE :  </label>
+						<span class="pull-left label_text"> GIS</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >PRACTICE :  </label>
+						<span class="pull-left label_text"> GIS</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >SUB PRACTICE :  </label>
+						<span class="pull-left label_text"> GIS - CCX</span>
+					</li>
+				</ul>
+				<ul class="col-xs-12 no_pad paddingBttm5">
+					<li class="col-xs-12 no_pad">
+						<label class="pull-left first_letter label_hd mb0 mt3" >LOCATION :  </label>
+						<span class="pull-left label_text"> MUMBAI</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-xs-12 no_pad">
+			<button class="line-btn primary-btn pull-right text-uppercase searchtl_btn margin0">CLICK HERE TO ADD OTHER PROJECT DETAILS</button>
+		</div>
+		</div>
+	</div>
+	<div class="col-xs-12 no_pad task_main">
+		<div class="col-xs-12  mt20 mb10">
+			<span class="col-lg-12 no_pad label_text">You can add another delivery manager for this order and their projects here.</span>
+			<div class="col-xs-12 no_pad">
+				<button class="line-btn addProject marginLeft0">
+				<span class="pull-left icon-add"></span>ADD PROJECT
+				</button> 
+			</div>
+		</div>
+		<div class="col-xs-12 no_pad mb20">
+			<div class="col-xs-9 font12">
+					<span class="pull-left first_letter note_hd">*NOTE:  </span>
+					 You can change the details here. These will automatically raise cost/effort deviation requests. Once your ADH approves the requests, the details will be changed here and in RLS.
+			</div>
+			<div class="pull-right">
+				<button  aria-label="save" title="save" class="pull-right line-btn primary-btn pull-left text-uppercase view_btn marginTop0" md-button="" (click)="showSavedSOWContent()">save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+		      		</div>
+		      	</div>
+		    </div>
+		</div>
+		</div>
+		<div class="col-xs-12 no_pad" *ngIf="savedSOWContent">
+		<app-sow-view-saved-profile ></app-sow-view-saved-profile>
+		</div>
+</div>

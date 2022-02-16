@@ -1,0 +1,686 @@
+<section class="container-fluid col-xs-12 no_pad mainContainer">
+  <div class="search_overley" *ngIf="overley_search" (click)="hideSearch()"></div>
+  <div class="col-xs-12 no_pad landing_tabs">
+    <div class="col-xs-12 tabs_search">
+      <div class="pull-left tabs_main">
+        <button [ngClass]="showtabcontent == '1'? 'tab_active tab_normal pull-left btndef_none icon-tree_view':'tab_normal pull-left btndef_none icon-tree_view'" aria-label="Tree view" title="Tree view" (click)="showTab(1)"></button>
+        <button [ngClass]="showtabcontent  == '2'? 'tab_active tab_normal pull-left btndef_none icon-list':'tab_normal pull-left btndef_none icon-list'" aria-label="List view" title="List view" (click)="showTab(2)"></button>
+      </div>
+      <div class="global_search">
+        <div class="col-xs-12 no_pad searchinpt_img">
+          <input type="text" class="col-xs-12 no_pad search_input" placeholder="Search by: Account, SOW, Large program, Project, Module, Employee">
+        </div>
+        <button class="pull-left btndef_none icon-search" aria-label="Search" title="Search" (click)="myMethod()"></button>
+        <div class="clear"></div>
+        <div [ngClass]="searchResult ? 'col-xs-12 no_pad search_results':'display_none'">
+          <div class="col-xs-12 no_pad">
+            <div class="Searched_div col-xs-12 no_pad">
+              <input type="" name="" class="col-xs-11 no_pad pull-left searchInputBox" />
+              <button class="pull-right searchBtn icon-search" aria-label="Search" title="Search"></button>
+            </div>
+            <div class="col-xs-12 no_pad searchBackWht">
+              <div class="col-xs-12 no_pad searchResults">
+                <div class="col-xs-9 no_pad">
+                  <span class="pull-left name_text">Shravanti Chaudhuri -</span>
+                  <span class="pull-left designation">Practice Head(Application Management Group)</span><span class="pull-left withinTeam">Within team</span>
+                  <span class="col-xs-12 no_pad allDetails">747583 | shravanti.chaudhuri@wipro.com | 9902155911</span>
+                </div>
+                <div class="col-xs-3 no_pad">
+                  <button class="pull-right line-btn margLR0" aria-label="download profile" title="download profile">download profile</button>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad padd15">
+                <div class="col-xs-12 no_pad queText">What do you want to do with this employee?</div>
+                <div class="col-xs-12 no_pad" *ngIf="firstPage">
+                  <div class="col-xs-12 no_pad mt10 search_borderAll">
+                    <div class="col-xs-12 no_pad padd10">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-calendar pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                          <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 1 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="extend end date" title="extend end date" (click)="showNextPage(1)"><span class="pull-left icon-status_complete"></span>extend end date</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no_pad padd10 searchBorTop">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-calendar pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                          <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 2 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="shrink end date" title="shrink end date" (click)="showNextPage(2)"><span class="pull-left icon-status_complete"></span>shrink end date</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no_pad padd10 searchBorTop">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-calendar pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                          <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 3 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="de-alocate" title="de-allocate" (click)="showNextPage(3)"><span class="pull-left icon-status_complete"></span>de allocate</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no_pad padd10 searchBorTop">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-calendar pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                          <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 4 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="allocate" title="allocate" (click)="showNextPage(4)"><span class="pull-left icon-status_complete"></span>allocate</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no_pad padd10 searchBorTop">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-location pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current location</label>
+                          <span class="col-xs-12 no_pad label_text">Bangalore</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 5 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="change location" title="change location" (click)="showNextPage(5)"><span class="pull-left icon-status_complete"></span>change location</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no_pad padd10 searchBorTop">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-business pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current project</label>
+                          <span class="col-xs-12 no_pad label_text">HDFC bank</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 6 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="change project" title="change project" (click)="showNextPage(6)"><span class="pull-left icon-status_complete"></span>change project</button>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no_pad padd10 searchBorTop">
+                      <div class="pull-left searchGlobal">
+                        <span class="icon-selectedrole pull-left"></span>
+                        <div class="pull-left num_module">
+                          <label class="col-xs-12 no_pad label_hd">Current role</label>
+                          <span class="col-xs-12 no_pad label_text">Practice head</span>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button [ngClass]="datesIndex === 7 ? 'pull-right datesBtns active' : 'pull-right datesBtns'" aria-label="change role" title="change role" (click)="showNextPage(7)"><span class="pull-left icon-status_complete"></span>change role</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 no_pad mt20">
+                    <button class="line-btn pull-left" aria-label="reset" title="reset">reset</button>
+                    <button class="pull-right line-btn primary-btn" (click)="hideSearch()" aria-label="save" title="save">save</button>
+                    <button class="pull-right line-btn" (click)="hideSearch()" aria-label="cancel" title="cancel">cancel</button>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20" *ngIf="secondPage">
+                  <div [ngClass]="datesIndex === 1 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-calendar pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                        <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="New end date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div [ngClass]="datesIndex === 2 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-calendar pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                        <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="shrinkdate" placeholder="New end date">
+                        <mat-datepicker-toggle matSuffix [for]="shrinkdate"></mat-datepicker-toggle>
+                        <mat-datepicker #shrinkdate></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div [ngClass]="datesIndex === 3 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-calendar pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                        <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="deallocatedate" placeholder="New end date">
+                        <mat-datepicker-toggle matSuffix [for]="deallocatedate"></mat-datepicker-toggle>
+                        <mat-datepicker #deallocatedate></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div [ngClass]="datesIndex === 4 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-calendar pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current end date</label>
+                        <span class="col-xs-12 no_pad label_text">12.Dec.2016</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="allocatedate" placeholder="New end date">
+                        <mat-datepicker-toggle matSuffix [for]="allocatedate"></mat-datepicker-toggle>
+                        <mat-datepicker #allocatedate></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div [ngClass]="datesIndex === 5 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-location pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current location</label>
+                        <span class="col-xs-12 no_pad label_text">Bangalore</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <mat-select placeholder="New location">
+                          <mat-option *ngFor="let searchLocation of locations" [value]="searchLocation.value">
+                            {{ searchLocation.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div [ngClass]="datesIndex === 6 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-business pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current project</label>
+                        <span class="col-xs-12 no_pad label_text">HDFC bank</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <mat-select placeholder="New project">
+                          <mat-option *ngFor="let searchProject of projects" [value]="searchProject.value">
+                            {{ searchProject.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div [ngClass]="datesIndex === 7 ? 'col-xs-12 no_pad padd10 search_borderAll' : 'display_none'">
+                    <div class="pull-left searchGlobal">
+                      <span class="icon-selectedrole pull-left"></span>
+                      <div class="pull-left num_module">
+                        <label class="col-xs-12 no_pad label_hd">Current role</label>
+                        <span class="col-xs-12 no_pad label_text">Practice head</span>
+                      </div>
+                    </div>
+                    <div class="pull-left">
+                      <mat-form-field>
+                        <mat-select placeholder="New role">
+                          <mat-option *ngFor="let searchRole of roles" [value]="searchRole.value">
+                            {{ searchRole.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="pull-left">
+                      <span class="icon-status_complete status_completed pull-left"></span>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 no_pad mt20">
+                    <button class="line-btn pull-left" aria-label="reset" title="reset" (click)="showFirstPage()">reset</button>
+                    <button class="pull-right line-btn primary-btn" aria-label="save" title="save" (click)="hideSearch()">save</button>
+                    <button class="pull-right line-btn" aria-label="cancel" title="cancel" (click)="hideSearch()">cancel</button>
+                  </div>
+                </div>
+                <!--ends here-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12" *ngIf="showReport === true">
+      <app-reports></app-reports>
+    </div>
+    <div class="col-xs-12 tab_content" *ngIf="showtabcontent === 1 && showReport === false" [ngClass]="{'enu_active':showCollapse['enuview']==true,'account_active':showCollapse['accountview']==true,'order_active':showCollapse['orderview']==true,'project_active':showCollapse['projectview']==true,'singlelinemenu_active':collapaseToOneLine==true}">
+      <div class="pull-left left_navigation" [ngClass]="{'one-line-menu': collapaseToOneLine==true}" [style.height.px]="rightcontHeight.offsetHeight">
+        <div class="col-xs-12 no_pad left-nav-container" [ngClass]="{'singlevdh_active':activeOneLine=='vdh','singleacc_active':activeOneLine=='accountview','singleorder_active':activeOneLine=='orderview','singleproject_active':activeOneLine=='projectview'}">
+          <!-- First tab -->
+          <div class="left-nav-panel" *ngIf="showEnu" [ngClass]="showCollapse['enuview']?'collapseMenu':''">
+            <div class="left-nav-panel-header" (click)="goToEnuView('enuview')">
+              <div class="wrapper">
+                <div class="inner_text blockview enu_text">ENU - VDH view</div>
+                <div class="inner_text oneline-view vdh_text" [ngClass]="{'active':activeOneLine=='vdh'}" (click)="('vdh')">Vertical</div>
+                <button class="pull-left btndef_none collapse_accor" aria-label="Collapse" title="Collapse"></button>
+                <button (click)="oneLineMenu('vdh')" class="pull-left btndef_none btnsingle_line icon-close_left" aria-label="Single line view" title="Single line view"></button>
+              </div>
+            </div>
+            <div class="pull-left left-nav-panel-body listaccounts_cls" *ngIf="showEnuPanel">
+              <button (click)="collapseMenu('enuview')" class="pull-right btndef_none close_left icon-close" aria-label="Close" title="Close"></button>
+              <div class="col-xs-12 no_pad collapse-icon-container" (click)="OpenSearchView('enuview')">
+                <button class="pull-left btndef_none opensearch_list icon-open_right" aria-label="Open List" title="Open List"></button>
+                <div class="collapse-back">Search account list<span></span></div>
+              </div>
+              <div class="col-xs-12 no_pad collapsible-comp">
+                <div class="col-xs-12 no_pad search_filter">
+                  <div class="col-lg-10 no_pad left_search">
+                    <input type="text" name="Search accounts" placeholder="Search accounts" class="col-lg-12 no_pad accsearch_inpt " />
+                    <button class="pull-left btndef_none search_left icon-search" aria-label="Search accounts" title="Search accounts"></button>
+                  </div>
+                  <div class="dropdown" dropdown>
+                    <button class="pull-right btndef_none filter_left icon-filter" aria-label="Filter" title="Filter" dropdown-open></button>
+                    <ul class="filter_ul dropdown-menu">
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by deal size</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by date</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by no of leaves</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad list_header">
+                  <h2 class="pull-left blue-header">List of accounts</h2>
+                  <div class="pull-right num_module font_twelve">
+                    <div class="pull-left mod_num">{{dataServiceCall.g_accountscount}}</div>
+                    <div class="pull-left">accounts</div>
+                  </div>
+                </div>
+                <ul class="col-xs-12 no_pad left-nav-list listaccounts_ul">
+                  <li class="col-xs-12 no_pad" role="link" (click)="accountView('accountview',accounts.account)" [contextMenu]="stdbankMenu" [contextMenuSubject]="stdbankMenu" *ngFor="let accounts of dataServiceCall.g_accounts">
+                    <div class="pull-left first_letter leftmenu_text">{{accounts.account_desc}}</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" [ngClass]="{'active': addFavouriteAcc == true}"></button>
+                    <context-menu #stdbankMenu>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">assign leadership</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">modify delivery structure</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">manage budget</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter" (click)="makeFavouriteAcc()">make favourite</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">see account trends</div>
+                      </template>
+                    </context-menu>
+                  </li>
+                  <!-- <li class="col-xs-12 no_pad" role="link" (click)="accountView()" [contextMenu]="sunwestMenu" [contextMenuSubject]="sunwestMenu">
+                    <div class="pull-left first_letter leftmenu_text">sunwest mortgate</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled"></button>
+                    <context-menu #sunwestMenu>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">assign leadership</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">modify delivery structure</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">manage budget</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">make favourite</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">see account trends</div>
+                      </template>
+                    </context-menu>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="accountView()">
+                    <div class="pull-left first_letter leftmenu_text">shell corporations</div>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="accountView()">
+                    <div class="pull-left first_letter leftmenu_text">city bank</div>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="accountView()">
+                    <div class="pull-left first_letter leftmenu_text">SAP information technologies</div>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="accountView()">
+                    <div class="pull-left leftmenu_text text-uppercase">bhel</div>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Second tab -->
+          <div class="left-nav-panel" *ngIf="showAccount" [ngClass]="showCollapse['accountview'] ? 'collapseMenu':''">
+            <div class="left-nav-panel-header" (click)="goToAccountView('accountview')">
+              <div class="wrapper">
+                <div class="inner_text blockview stdchart_text">{{dataServiceCall.g_selectedaccountname}} - Account view</div>
+                <div class="inner_text oneline-view accunt_text" [ngClass]="{'active':activeOneLine=='account','active':activeOneLine=='accountview'}" (click)="viewfullAccount('account')">Account</div>
+                <button class="pull-left btndef_none btncollapse_single icon-open_right" (click)="removeAccSingleLine()" [ngClass]="{'active':activeOneLine=='account'}" aria-label="collapse single view" title="collapse single view"></button>
+                <button class="pull-left btndef_none collapse_accor" aria-label="Collapse" title="Collapse"></button>
+                <button (click)="oneLineMenu('account')" class="pull-left btndef_none btnsingle_line icon-close_left" aria-label="Single line view" title="Single line view"></button>
+              </div>
+            </div>
+            <div class="pull-left left-nav-panel-body orders_cls" *ngIf="showAccountPanel">
+              <button (click)="collapseMenu('accountview')" class="pull-right btndef_none close_left icon-close" aria-label="Close" title="Close"></button>
+              <div class="col-xs-12 no_pad collapse-icon-container" (click)="OpenSearchView('accountview')" role="link">
+                <button class="pull-left btndef_none opensearch_list icon-open_right" aria-label="Open List" title="Open List"></button>
+                <div class="collapse-back">Search account list<span></span></div>
+              </div>
+              <div class="col-xs-12 no_pad collapsible-comp">
+                <div class="col-xs-12 no_pad search_filter">
+                  <div class="col-lg-10 no_pad left_search">
+                    <input type="text" name="Search orders/opportunities" placeholder="Search orders/opportunities" class="col-lg-12 no_pad accsearch_inpt " />
+                    <button class="pull-left btndef_none search_left icon-search" aria-label="Search accounts" title="Search accounts"></button>
+                  </div>
+                  <div class="dropdown" dropdown>
+                    <button class="pull-right btndef_none filter_left icon-filter" aria-label="Filter" title="Filter" dropdown-open></button>
+                    <ul class="filter_ul dropdown-menu">
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by deal size</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by date</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by no of leaves</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad list_header">
+                  <h2 class="pull-left blue-header">List of orders</h2>
+                  <div class="pull-right num_module font_twelve">
+                    <div class="pull-left mod_num">{{dataServiceCall.g_orderscount}}</div>
+                    <div class="pull-left">orders</div>
+                  </div>
+                </div>
+                <ul class="left-nav-list orders_ul">
+                  <li class="col-xs-12 no_pad" role="link" (click)="orderView('orderview',order.orderid)" [contextMenu]="neworderMenu" [contextMenuSubject]="neworderMenu" *ngFor = "let order of dataServiceCall.g_orders">
+                    <div class="pull-left leftmenu_text">
+                      <!-- <div class="pull-left first_letter">{{order.ordername}}</div>
+                      <div class="pull-left order_col">-</div> -->
+                      <div class="pull-left first_letter">{{order.ordername}}</div>
+                    </div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" [ngClass]="{'active': addFavouriteOrder == true}"></button>
+                    <context-menu #neworderMenu>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">assign leadership</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">modify delivery structure</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">manage budget</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter" (click)="makeFavouriteOrder()">make favourite</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">see account trends</div>
+                      </template>
+                    </context-menu>
+                  </li>
+                  <!-- <li class="col-xs-12 no_pad" role="link" (click)="orderView('sowView')">
+                    <div class="pull-left leftmenu_text">
+                      <div class="pull-left first_letter">new order2</div>
+                      <div class="pull-left order_col">-</div>
+                      <div class="pull-left first_letter">name</div>
+                    </div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="orderView()">
+                    <div class="pull-left leftmenu_text">
+                      <div class="pull-left first_letter"> order3</div>
+                      <div class="pull-left order_col">-</div>
+                      <div class="pull-left first_letter">name</div>
+                    </div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="orderView()">
+                    <div class="pull-left leftmenu_text">
+                      <div class="pull-left first_letter"> order4</div>
+                      <div class="pull-left order_col">-</div>
+                      <div class="pull-left first_letter">name</div>
+                    </div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Third tab -->
+          <div class="left-nav-panel " *ngIf="showOrder" [ngClass]="showCollapse['orderview'] ? 'collapseMenu':''">
+            <div class="left-nav-panel-header " (click)="goToOrderView('orderview')">
+              <div class="wrapper">
+                <div class="inner_text blockview ordername_text">{{dataServiceCall.g_selectedordername}} - Order view </div>
+                <div class="inner_text oneline-view order_text" [ngClass]="{'active':activeOneLine=='order','active':activeOneLine=='orderview'}" (click)="viewfullOrder('order')">SOW</div>
+                <button class="pull-left btndef_none btncollapse_single icon-open_right" (click)="removeOrderSingleLine()" [ngClass]="{'active':activeOneLine=='order'}" aria-label="collapse single view" title="collapse single view"></button>
+                <button class="pull-left btndef_none collapse_accor" aria-label="Collapse" title="Collapse"></button>
+                <button (click)="oneLineMenu('order')" class="pull-left btndef_none btnsingle_line icon-close_left" aria-label="Single line view" title="Single line view"></button>
+              </div>
+            </div>
+            <div class="pull-left left-nav-panel-body listprojetcs_cls" *ngIf="showOrderPanel">
+              <button (click)="collapseMenu('orderview')" class="pull-right btndef_none close_left icon-close" aria-label="Close" title="Close"></button>
+              <div class="col-xs-12 no_pad collapse-icon-container" (click)="OpenSearchView('orderview')" role="link">
+                <button class="pull-left btndef_none opensearch_list icon-open_right" aria-label="Open List" title="Open List"></button>
+                <div class="collapse-back">Search account list<span></span></div>
+              </div>
+              <div class="col-xs-12 no_pad collapsible-comp">
+                <div class="col-xs-12 no_pad search_filter">
+                  <div class="col-lg-10 no_pad left_search">
+                    <input type="text" name="Search projects" placeholder="Search projects" class="col-lg-12 no_pad accsearch_inpt" />
+                    <button class="pull-left btndef_none search_left icon-search" aria-label="Search projects" title="Search projects"></button>
+                  </div>
+                  <div class="dropdown" dropdown>
+                    <button class="pull-right btndef_none filter_left icon-filter" aria-label="Filter" title="Filter" dropdown-open></button>
+                    <ul class="filter_ul dropdown-menu">
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by deal size</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by date</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by no of leaves</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad addmodal_cls">
+                  <div class="addmodal_in">
+                    <button class="pull-left line-btn addmodal_btn" aria-label="add project" title="add project">
+                      <span class="icon-add addmodule_icon"></span>add project
+                    </button>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad list_header">
+                  <h2 class="pull-left blue-header">List of projects</h2>
+                  <div class="pull-right num_module font_twelve">
+                    <div class="pull-left mod_num">{{dataServiceCall.g_projectscount}}</div>
+                    <div class="pull-left">projects</div>
+                  </div>
+                </div>
+                <ul class="left-nav-list listprojetcs_ul">
+                  <li class="col-xs-12 no_pad" role="link" (click)="projectView('projectview', project.projectid)" [contextMenu]="projectMenu" [contextMenuSubject]="projectMenu" *ngFor = "let project of dataServiceCall.g_projects">
+                    <div class="pull-left leftmenu_text first_letter">{{project.projectname}}</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" [ngClass]="{'active': addFavouriteProject == true}"></button>
+                    <context-menu #projectMenu>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">assign leadership</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">modify delivery structure</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">manage budget</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter" (click)="makeFavouriteProject()">make favourite</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">see account trends</div>
+                      </template>
+                    </context-menu>
+                  </li>
+                  <!-- <li class="col-xs-12 no_pad" role="link" (click)="projectView('addProject')">
+                    <div class="pull-left leftmenu_text first_letter">project 2</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="projectView()">
+                    <div class="pull-left leftmenu_text first_letter">project 3</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="projectView()">
+                    <div class="pull-left leftmenu_text first_letter">project 4</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- 4th tab -->
+          <div class="left-nav-panel " *ngIf="showProject" [ngClass]="showCollapse['projectview'] ? 'collapseMenu':''">
+            <div class="left-nav-panel-header " (click)="goToProjectView('projectview')">
+              <div class="wrapper">
+                <div class="inner_text blockview projectname_txt">{{dataServiceCall.g_selectedprojectname}} - Project view</div>
+                <div class="inner_text oneline-view project_text" [ngClass]="{'active':activeOneLine=='project','active':activeOneLine=='projectview'}" (click)="viewfullProject('project')">Project</div>
+                <button class="pull-left btndef_none btncollapse_single icon-open_right" (click)="removeProjectSingleLine()" [ngClass]="{'active':activeOneLine=='project'}" aria-label="collapse single view" title="collapse single view"></button>
+                <button class="pull-left btndef_none collapse_accor" aria-label="Collapse" title="Collapse"></button>
+                <button (click)="oneLineMenu('project')" class="pull-left btndef_none btnsingle_line icon-close_left" aria-label="Single line view" title="Single line view"></button>
+              </div>
+            </div>
+            <div class="pull-left left-nav-panel-body serachacc_list">
+              <button (click)="collapseMenu('projectview')" class="pull-right btndef_none close_left icon-close" aria-label="Close" title="Close"></button>
+              <div class="col-xs-12 no_pad collapse-icon-container" (click)="OpenSearchView('projectview')">
+                <button class="pull-left btndef_none opensearch_list icon-open_right" aria-label="Open List" title="Open List"></button>
+                <div class="collapse-back">Search account list<span></span></div>
+              </div>
+              <div class="col-xs-12 no_pad collapsible-comp">
+                <div class="col-xs-12 no_pad search_filter">
+                  <div class="col-lg-10 no_pad left_search">
+                    <input type="text" name="Search module list" placeholder="Search module list" class="col-lg-12 no_pad accsearch_inpt " />
+                    <button class="pull-left btndef_none search_left icon-search" aria-label="Search accounts" title="Search accounts"></button>
+                  </div>
+                  <div class="dropdown" dropdown>
+                    <button class="pull-right btndef_none filter_left icon-filter" aria-label="Filter" title="Filter" dropdown-open></button>
+                    <ul class="filter_ul dropdown-menu">
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by deal size</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by date</button>
+                      </li>
+                      <li class="col-xs-12 no_pad">
+                        <button class="pull-left btndef_none first_letter">sort by no of leaves</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad addmodal_cls">
+                  <div class="addmodal_in">
+                    <button class="pull-left line-btn addmodal_btn" aria-label="add module" title="add module" (click)="openDialog()">
+                      <span class="icon-add addmodule_icon"></span>add module
+                    </button>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad list_header">
+                  <div class="pull-left blue-header">Module list</div>
+                  <div class="pull-right num_module font_twelve">
+                    <div class="pull-left mod_num">{{dataServiceCall.g_modulescount}}</div>
+                    <div class="pull-left">modules</div>
+                  </div>
+                </div>
+                <ul class="left-nav-list">
+                  <li class="col-xs-12 no_pad" role="link" [contextMenu]="moduleMenu" [contextMenuSubject]="moduleMenu" *ngFor = "let module of dataServiceCall.g_modules">
+                    <div class="pull-left leftmenu_text first_letter" [ngClass]="{'activeText': addColorModule == true}" (click)="colorModule()">{{module.modulename}}</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" [ngClass]="{'active': addFavouriteModule == true}"></button>
+                    <context-menu #moduleMenu>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">assign leadership</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">modify delivery structure</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">manage budget</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter" (click)="makeFavouriteModule()">make favourite</div>
+                      </template>
+                      <template contextMenuItem>
+                        <div class="col-xs-12 no_pad text-left first_letter">see account trends</div>
+                      </template>
+                    </context-menu>
+                  </li>
+                  <!-- <li class="col-xs-12 no_pad" role="link">
+                    <div class="pull-left leftmenu_text first_letter">Module 2</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link">
+                    <div class="pull-left leftmenu_text first_letter">Module 3</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li>
+                  <li class="col-xs-12 no_pad" role="link" (click)="goToAnalytics('analytics')">
+                    <div class="pull-left leftmenu_text first_letter">Module 4</div>
+                    <button class="pull-right btndef_none leftmenu_favicon icon-fav_filled" aria-label="favorite" title="favorite"></button>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="pull-left right_content" #rightcontHeight>
+        <app-vdh *ngIf="rightcontent === 'enuview'"></app-vdh>
+        <app-projectview *ngIf="rightcontent === 'projectview'" (viewMorePageSend)="getAnalyticsView($event)"></app-projectview>
+        <app-order *ngIf="rightcontent === 'orderview'"></app-order>
+        <app-account *ngIf="rightcontent === 'accountview'"></app-account>
+        <app-add-project *ngIf="rightcontent === 'addProject'"></app-add-project>
+        <app-sow-landing-page *ngIf="rightcontent === 'sowView'"></app-sow-landing-page>
+        <app-analytics-expanded *ngIf="rightcontent === 'analytics'"></app-analytics-expanded>
+      </section>
+    </div>
+    <div class="col-xs-12 tab_content" *ngIf="showtabcontent === 2">
+      <app-list-view></app-list-view>
+    </div>
+  </div>
+  <app-settings></app-settings>
+  <button class="btndef_none icon-img_helpline iconhelp_main" aria-label="help" title="help"></button>
+</section>

@@ -1,0 +1,22 @@
+<header class="col-xs-12 no_pad">
+	<div class="pull-left">
+		<div title="confluence logo" class="pull-left confluence_logo"></div>
+    	<h1 class="pull-left text-uppercase title_cls">confluence</h1>
+    </div>
+    <div class="pull-right">
+       
+     	<div class="pull-left analytics_cls" (click)="goToAnalytics('analytics')">
+     		<button title="Analytics" aria-label="analytics" class="pull-left btndef_none icon-trendnxt header_btn"></button>
+     		<button title="Analytics" aria-label="analytics" class="pull-left text-uppercase btndef_none">analytics</button>
+     	</div>
+         <div class="pull-left reports_cls" (click)="goToAnalytics('report')" routerLinkActive="active">
+            <button title="Reports" aria-label="analytics" class="pull-left btndef_none icon-goals_objectives header_btn"></button>
+            <button title="Reports" aria-label="reports" class="pull-left text-uppercase btndef_none">reports</button>
+        </div>
+     	<div class="pull-left chat_cls">
+     		<button title="Ask me" aria-label="ask me" class="pull-left btndef_none icon-chatbot header_btn"></button>
+     		<button title="Ask me" aria-label="ask me" class="pull-left text-uppercase btndef_none">ask me</button>
+     	</div>
+    	<button class="pull-left btndef_none icon-logout text-capitalize" aria-label="Logout" title="Logout"></button>
+    </div>
+</header>

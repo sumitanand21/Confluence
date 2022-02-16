@@ -1,0 +1,62 @@
+<div class="col-xs-12 no_pad employee_details">
+  <mat-dialog-actions>
+    <div class="col-xs-12 no_pad allPopHeader">
+      <h1 class="pull-left">Add module</h1>
+      <button class="pull-right icon-close" aria-label="Close" title="Close" mat-dialog-close aria-label="close" (click)="removeScroll()"></button>
+    </div>
+    <div class="col-xs-12 no_pad popInnerPadd">
+      <div class="col-xs-12 no_pad">
+        <form class="col-xs-5 no_pad popModuleName">
+          <mat-form-field class="col-xs-12 no_pad example-full-width">
+            <input matInput placeholder="Provide module name">
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-xs-3 no_pad posRel">
+        <span class="pull-left agile_mode">Agile mode</span>
+        <div class="pull-right switch mt10">
+          <input type="checkbox" id="client" class="switchInput" />
+          <label For="client"><span class="ui"></span></label>
+        </div>
+      </div>
+      <div class="col-xs-12 no_pad  popModuleName">
+        <div class="col-xs-5 no_pad">
+          <mat-form-field>
+            <mat-select placeholder="Delivery model type">
+              <mat-option *ngFor="let modalType of modalTypes" [value]="modalType.value">
+                {{ modalType.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-xs-12 no_pad mt20">
+        <div class="col-xs-12 no_pad">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">Name is mandatory.</span>
+        </div>
+        <div class="col-xs-12 no_pad marTop10">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">Maximum 24 characters.</span>
+        </div>
+        <div class="col-xs-12 no_pad marTop10">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">No special characters other than hyphen(-), underscore(_) or space( ).</span>
+        </div>
+        <div class="col-xs-12 no_pad marTop10">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">A temporary ID would be generated for the new structure, you would be able to modify it once before creating / releasing it.</span>
+        </div>
+        <div class="col-xs-12 no_pad marTop10">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">'Delivery model type' is mandatory field.</span>
+        </div>
+        <div class="col-xs-12 no_pad marTop10">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">Please note, for delivery model type 'Service line'. The fields 'Service line' & 'Practice' are mandatory.</span>
+        </div>
+        <div class="col-xs-12 no_pad marTop10">
+          <span class="pull-left instruction_dot"></span><span class="pull-left instruction_text">Also note, the delivery model for 'Agile team(Scrum/ Kanban)' cannot be modified, it inherits the delivery model of the parent project by default.</span>
+        </div>
+      </div>
+      <div class="col-xs-12 no_pad">
+        <button class="pull-right line-btn primary-btn" aria-label="ok" title="ok" mat-dialog-close aria-label="ok" (click)="removeScroll()">ok</button>
+        <button class="pull-right line-btn popNoBtn" aria-label="cancel" title="cancel" mat-dialog-close aria-label="cancel" (click)="removeScroll()">cancel</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+</div>

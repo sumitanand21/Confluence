@@ -1,0 +1,270 @@
+<div class="col-xs-12 no_pad mt60">
+  <div class="col-xs-12 no-pad greayBg mb20">
+    <div class="col-xs-12  projectDetailsHead headingClr searchHead mt10 mb20">
+      <button data-role="none" class="icon-back_arrow pull-left mt3 backArrw pdngLeft0" aria-label="back" title="back" routerLink="/" routerLinkActive="active"></button>
+      <h2>Search and allocate</h2>
+    </div>
+    <div class="col-xs-12 mb20">
+      <div class="col-xs-12 searchBg no_pad">
+        <div class="col-xs-12 no_pad header_brdr">
+          <div class="pull-left first_letter desc_hd teamana_hd">Project name</div>
+        </div>
+        <div class="col-xs-12 mb10">
+          <div class="col-xs-12 whiteBg mt20  pd10 searchBrdr">
+            <div class="col-xs-12 no_pad labelText">Know a person? Allocate him directly</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no_pad">
+              <div class="col-xs-12 col-sm-2 col-md-10 col-lg-10 no_pad">
+                <div class="addProjectSearchDiv col-xs-12 no_pad">
+                  <input type="text" name="" class="addPrj_searchInput" placeholder="Search by AD ID /Name /Email ID">
+                  <button class="pull-right icon-search addPrj_searchBtn" aria-label="search" title="search" [routerLink]="['/directSearch']"></button>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <button data-role="none" class="pull-right line-btn primary-btn text-uppercase view_btn " title="search" aria-label="search" [routerLink]="['/directSearch']">SEARCH</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 no-pad mt10 mb10">
+            <div class="centerLine">
+              <div class="horizontalLine"></div>
+              <div class="pull-left OrText">OR</div>
+              <div class="horizontalLine"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 whiteBg   pd10 searchBrdr">
+            <div class="col-xs-12 no_pad labelText">Want to clone by the attributes of a known person?</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no_pad">
+              <div class="col-xs-12 col-sm-2 col-md-10 col-lg-10 no_pad">
+                <div class="addProjectSearchDiv col-xs-12 no_pad">
+                  <input type="text" name="" class="addPrj_searchInput" placeholder="Search by AD ID /Name /Email ID">
+                  <button class="pull-right icon-search addPrj_searchBtn" aria-label="search" title="search" [routerLink]="['/clonesearch']"></button>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <button data-role="none" class="pull-right line-btn primary-btn text-uppercase view_btn " title="search" aria-label="search" [routerLink]="['/clonesearch']">SEARCH</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 no-pad mt10 mb10">
+            <div class="centerLine">
+              <div class="horizontalLine"></div>
+              <div class="pull-left OrText">OR</div>
+              <div class="horizontalLine"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 whiteBg mb10 detailPdng">
+            <div class="col-xs-12  labelText detailSearch">Search by attributes</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  mb10">
+              <ul class="col-xs-12 no_pad  selectedItemUl">
+                <li class=" mt10 mb10 " *ngFor="let n of model1">
+                  <div class="col-xs-12 no_pad selectedItem redClr">
+                    <span class="pull-left selectedText">{{n}}</span>
+                    <button data-role="none" class="icon-close pull-right btndef_none" title="close" aria-label="close" (click)="removeItem(n)"></button>
+                  </div>
+                </li>
+                <li class="mt10 mb10 " *ngFor="let k of model2">
+                  <div class="col-xs-12 no_pad selectedItem blueClr">
+                    <span class="pull-left selectedText">{{k}}</span>
+                    <button data-role="none" class="icon-close pull-right btndef_none" aria-label="close" title="close" (click)="removeItemOptionalSkill(k)" aria-label="close"></button>
+                  </div>
+                </li>
+              </ul>
+              <ul class="col-xs-12 no_pad mt20">
+                <li class="col-xs-12 col-lg-4 pdngLeft0 autosuggestLi searchAttrLi mt4">
+                  <div ng2-auto-complete [source]="arrayOfStrings" (valueChanged)="valueChanged($event)">
+                    <input type="text" [ngModel]="selectedValue" placeholder="Skill name" />
+                  </div>
+                </li>
+                <li class="col-xs-12 col-lg-4 autosuggestLi searchAttrLi mt4">
+                  <div ng2-auto-complete [source]="arrayOfStringsOptionalSkill" (valueChanged)="valueChangedOptionalSkill($event)">
+                    <input type="text" [ngModel]="selectedValueOptional" placeholder="Optional skill" />
+                  </div>
+                </li>
+                <li class="col-xs-12 col-lg-4 searchAttrLi">
+                  <form class="dropdownSelect  example-form col-xs-12 no_pad ">
+                    <mat-form-field>
+                      <mat-select placeholder="Band">
+                        <mat-option *ngFor="let band of bands" [value]="band.value">
+                          {{ band.viewValue }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </li>
+              </ul>
+              <ul class="col-xs-12 no_pad mt20">
+                <li class="col-xs-12 col-lg-4 no_pad">
+                  <div class="dropdownSelect example-form col-xs-12 pdngLeft0">
+                    <mat-form-field>
+                      <input type="text" [ngModel]="selectedrole" placeholder="Role" aria-label="Role" matInput [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of arrayofroles" [value]="option">
+                          {{ option }}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+                </li>
+                <li class="col-xs-12 col-lg-4 no_pad">
+                  <div class="dropdownSelect example-form col-xs-12">
+                    <mat-form-field>
+                      <input type="text" [ngModel]="selectedlocation" placeholder="Location" aria-label="Location" matInput [matAutocomplete]="auto1">
+                      <mat-autocomplete #auto1="matAutocomplete">
+                        <mat-option *ngFor="let optionLoc of arrayoflocation" [value]="optionLoc">
+                          {{ optionLoc }}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+                </li>
+                <li class="col-xs-12 col-lg-4 searchAttrLi mt5">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <mat-select placeholder="Job description">
+                        <mat-option *ngFor="let job of jobs" [value]="job.value">
+                          {{ job.viewValue }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </li>
+              </ul>
+              <ul class="col-xs-12 no_pad mt20">
+                <li class="col-xs-12 col-lg-4 pdngLeft0 searchAttrLi">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="Assignment start date" (click)="picker.open()">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </form>
+                </li>
+                <li class="col-xs-12 col-lg-4 searchAttrLi">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker1" placeholder="Assignment end date" (click)="picker1.open()">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </form>
+                </li>
+                <li class="col-xs-12 col-lg-4 searchAttrLi">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="Expected billing date" (click)="picker2.open()">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </form>
+                </li>
+                <li class="col-xs-12 col-lg-4 pdngLeft0 searchAttrLic mt20">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <mat-select placeholder="Indent classification">
+                        <mat-option *ngFor="let ind_cl of indent_classification" [value]="ind_cl.value">
+                          {{ ind_cl.viewValue }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xs-12">
+              <div class="col-xs-12 no_pad mb10">
+                <div class="col-xs-4 no_pad">
+                  <button class="pull-left btndef_none staggerAllocation line-btn margin0" aria-label="Do you want to create a staggered allocation period" aligh="left" (click)="StaggerAllocationButton()">
+                    <span class="pull-left">Do you want to create a staggered allocation period </span>
+                    <button data-role="none" class="icon-arrow_drop_right btndef_none pull-right myteamleft15"></button>
+                  </button>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad allcationPeriod mb10" *ngIf="ShowAllocationPeriodContent">
+                <ul class="col-xs-12 no_pad mt20 filterBody">
+                  <li class="col-xs-12 col-lg-4 ">
+                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker4" placeholder="Assignment start date" (click)="picker4.open()">
+                        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                        <mat-datepicker #picker4></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </li>
+                  <li class="col-xs-12 col-lg-4 ">
+                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker3" placeholder="Assignment end date" (click)="picker3.open()">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-12 no_pad mt20">
+                <label class="pull-left  empBilling label_text" aria-label="Who will this employee be billed to?">Who will this employee be billed to?</label>
+                <div class="col-xs-12 no_pad staggerRadio">
+                  <mat-radio-group>
+                    <mat-radio-button value="1" checked=true class="col-lg-2 no_pad">Wipro</mat-radio-button>
+                    <mat-radio-button value="2" class="col-lg-2 no_pad">Customer</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad staggerRadio mt20">
+                <label class="col-xs-12 no_pad empBilling label_text" aria-label="How will this employee be billed radio buttons">How will this employee be billed?</label>
+                <div class="col-xs-12 no_pad staggerRadio">
+                  <mat-radio-group>
+                    <mat-radio-button value="3" class="col-lg-2 no_pad" (click)="billable()">Billable</mat-radio-button>
+                    <mat-radio-button value="4" class="col-lg-2 no_pad" (click)="support()">Support</mat-radio-button>
+                    <mat-radio-button value="5" class="col-lg-2 no_pad" (click)="investment()">Investment</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad" *ngIf="billableOption">
+                <ul class="col-xs-12 no_pad mt20 filterBody">
+                  <li class="col-xs-12 col-lg-4 no_pad">
+                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="billable" placeholder="Expected billing date" (click)="billable.open()">
+                        <mat-datepicker-toggle matSuffix [for]="billable"></mat-datepicker-toggle>
+                        <mat-datepicker #billable></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-12 no_pad" *ngIf="investOption">
+                <ul class="col-xs-12 no_pad mt20 filterBody">
+                  <li class="col-xs-12 col-lg-4 no_pad">
+                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="invest1" placeholder="Investment start date" (click)="invest1.open()">
+                        <mat-datepicker-toggle matSuffix [for]="invest1"></mat-datepicker-toggle>
+                        <mat-datepicker #invest1></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </li>
+                  <li class="col-xs-12 col-lg-4 ">
+                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="invest2" placeholder="Investment end date" (click)="invest2.open()">
+                        <mat-datepicker-toggle matSuffix [for]="invest2"></mat-datepicker-toggle>
+                        <mat-datepicker #invest2></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="pull-right mt20 mb20">
+                <button class="line-btn  pull-left text-uppercase view_btn" aria-label="save" title="save" (click)="askforhelp() ; dc.wmgtitle=false">SAVE DEMAND</button>
+                <button class="line-btn primary-btn pull-left text-uppercase view_btn mrgnRight10" title="search" aria-label="search" [routerLink]="['/searchResults']">SEARCH</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

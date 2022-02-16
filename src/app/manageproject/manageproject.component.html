@@ -1,0 +1,153 @@
+<div class="col-xs-12 no_pad manage_proj">
+  <div class="col-xs-12 no_pad paddngLeft10">
+    <div class="col-xs-6 no_pad typeproj_select">
+      <div class="pull-left first_letter typeproj_hd third_hd manageProj_header">type of project : FPP</div>
+      <div class="col-lg-12 no_pad typeof_left">
+        <ul class="col-lg-6 no_pad readonly_ul">
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">project budget</label>
+            <div class="col-xs-12 no_pad first_letter label_text">USD 10,49,949.00</div>
+          </li>
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">allocated budget</label>
+            <div class="col-xs-12 no_pad first_letter label_text">USD 10,49,949.00</div>
+          </li>
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">actual budget</label>
+            <div class="col-xs-12 no_pad first_letter label_text">USD 10,49,949.00</div>
+          </li>
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">planned resources</label>
+            <button class="col-xs-12 no_pad btndef_none text-uppercase view-more-btn planact_btn label_text" aria-label="Planned resources" title="Planned resources">
+              <span class="pull-left ttlrsr_num">30</span>
+              <span class="pull-left">resources</span>
+              <span class="pull-left btndef_none icon-arrow_drop_right"></span>
+            </button>
+          </li>
+        </ul>
+        <ul class="col-lg-6 no_pad readonly_ul">
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">cost deviation</label>
+            <div class="col-xs-12 no_pad first_letter label_text">USD 10,49,949.00</div>
+          </li>
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">PSAT</label>
+            <div class="col-xs-12 no_pad first_letter label_text">USD 10,49,949.00</div>
+          </li>
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">planned budget in RLS</label>
+            <div class="col-xs-12 no_pad first_letter label_text">USD 10,49,949.00</div>
+          </li>
+          <li class="col-xs-12 no_pad">
+            <label class="col-xs-12 no_pad first_letter label_hd">actual resources</label>
+            <button class="col-xs-12 no_pad btndef_none text-uppercase view-more-btn planact_btn label_text" aria-label="Actual resources" title="Actual resources">
+              <span class="pull-left ttlrsr_num">30</span>
+              <span class="pull-left">resources</span>
+              <span class="pull-left btndef_none icon-arrow_drop_right"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-6 no_pad paddingRight10">
+      <div class="pull-right mt30">
+        <mat-form-field>
+          <mat-select placeholder="Select project action" name="action" [(ngModel)]="selectedValue" (change)="actionSelected(selectedValue)">
+            <mat-option *ngFor="let project of projects" [value]="project.value">
+              {{project.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12 no_pad typeof_rgt">
+        <div class="col-xs-12 no_pad charts_cls">
+          <div class="col-xs-8 no_pad">
+            <canvas baseChart height="200px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [colors]="doughnutChartColors" [legend]="false" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+          <div class="col-xs-4 no_pad">
+            <div class="col-xs-12 no_pad">
+              <span class="pull-left doghnutLegends allocatedColor"></span>
+              <span class="pull-left font_twelve legendTexts">Allocated budget</span>
+            </div>
+            <div class="col-xs-12 no_pad mt20"><span class="pull-left doghnutLegends actualColor"></span><span class="pull-left font_twelve legendTexts">Actual budget</span></div>
+            <div class="col-xs-12 no_pad mt20"><span class="pull-left doghnutLegends costDeviation"></span><span class="pull-left font_twelve legendTexts">Cost deviation</span></div>
+            <div class="col-xs-12 no_pad mt20"><span class="pull-left doghnutLegends psatColor"></span><span class="pull-left font_twelve legendTexts">PSAT</span></div>
+            <div class="col-xs-12 no_pad mt20"><span class="pull-left doghnutLegends plannedColor"></span><span class="pull-left font_twelve legendTexts">Planned budget</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 no_pad">
+      <div class="pull-left revenue_bkd">
+        <div class="pull-left first_letter revenue_txt" role="link">revenue booked</div>
+        <button class="pull-left btndef_none revenue_arrow icon-arrow_drop_right" aria-label="More on Revenue Booked" title="More on Revenue Booked"></button>
+      </div>
+      <div class="pull-right revenue_bkd" (click)="viewMore()">
+        <button class="pull-right btndef_none text-uppercase view-more-btn view_btn" aria-label="More" title="More">more<span class="btndef_none icon-arrow_drop_right"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-xs-12 no_pad pend_alloc">
+  <div class="col-xs-12 no_pad">
+    <div class="pull-left  first_letter desc_hd allocationHeader">pending allocation</div>
+    <button class="pull-right btndef_none text-uppercase  pendaloc_btn" (click)="openDialog()" aria-label="Bulk allocation" title="Bulk allocation">bulk allocation<span class="btndef_none icon-arrow_drop_right"></span></button>
+  </div>
+  <div class="col-xs-12">
+    <div class="notesDiv">
+      <span class="pull-left col-xs-12 no_pad"><span class="pull-left noteTexts">NOTE :</span>You can change the details here. These will automatically raise cost/effort deviation requests. Once your ADH approves the requests, the details will be changed here and in RLS automatically, and you will be notified through your myTasks.</span>
+    </div>
+    <button class="pull-right line-btn primary-btn addResources mt0" aria-label="Add Resources" title="Add Resources"><span class="pull-left icon-add"></span><span class="lineheight18">add resources</span></button>
+  </div>
+  <div class="col-xs-12 no_pad pendalloc_dwn">
+    <div class="col-xs-12 no_pad first_letter typeproj_hd third_hd manageProj_header">team lead1</div>
+    <ul class="col-lg-12 no_pad readonly_ul pendingalloc_ul mt10">
+      <li class="col-xs-3 no_pad">
+        <label class="col-xs-12 no_pad first_letter label_hd">desired skills</label>
+        <div class="col-xs-12 no_pad skills_cls">
+          <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS/JAVA</div>
+          <div class="dropdown" dropdown>
+            <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+3</button>
+            <div class="dropdown-menu skills_main">
+              <span class="pull-left text-uppercase">JAVA,</span><span class="pull-left text-uppercase">html5,</span><span class="pull-left text-uppercase">css</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-xs-3 no_pad">
+        <label class="col-xs-12 no_pad first_letter label_hd">mandatory skills</label>
+        <div class="col-xs-12 no_pad skills_cls">
+          <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS/JAVA</div>
+          <div class="dropdown" dropdown>
+            <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+5</button>
+            <div class="dropdown-menu skills_main">
+              <span class="pull-left text-uppercase">JAVA,</span><span class="pull-left text-uppercase">html5,</span><span class="pull-left text-uppercase">css,</span><span class="pull-left first_letter">bootstrap,</span><span class="pull-left first_letter">jquery</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-xs-2 no_pad">
+        <label class="col-xs-12 no_pad first_letter label_hd">role</label>
+        <div class="col-xs-12 no_pad first_letter label_text">team lead</div>
+      </li>
+      <li class="col-xs-1 no_pad">
+        <label class="col-xs-12 no_pad first_letter label_hd">band</label>
+        <div class="col-xs-12 no_pad first_letter label_text">b3</div>
+      </li>
+      <li class="col-xs-2 no_pad">
+        <label class="col-xs-12 no_pad first_letter label_hd">location</label>
+        <div class="col-xs-12 no_pad first_letter label_text">bangalore</div>
+      </li>
+      <li class="col-xs-1 no_pad">
+        <label class="col-xs-12 no_pad first_letter label_hd">experience</label>
+        <div class="col-xs-12 no_pad first_letter label_text">
+          <div class="pull-left yrs_exp">6-7</div>
+          <div class="pull-left">years</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-xs-12 no_pad paddingRight10">
+    <button md-button class="line-btn pull-right text-uppercase searchtl_btn searchLeadMargin" aria-label="search teamlead" title="search teamlead" routerLink="/gotosearchallocate" routerLinkActive="active">search team lead</button>
+  </div>
+</div>

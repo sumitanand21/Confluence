@@ -1,0 +1,315 @@
+<div class="col-xs-12 no_pad mt60 mainContent">
+<div class="overlayPage" *ngIf="showOverlay" (click)="overlayClick()"></div>
+	<div class="col-xs-12 no-pad greayBg mb20">       
+        <div class="col-xs-12 mb20">
+		 <div class="col-xs-12 no_pad projectDetailsHead headingClr searchHead mt10 mb20">
+					<button data-role="none" class="icon-back_arrow pull-left mt3 backArrw pdngLeft0" aria-label="back" title="back" routerLink="/gotosearchallocate" routerLinkActive="active"></button>
+					<h2>Search results</h2>
+			   </div>
+            <div class="col-xs-12 searchBg">
+			    <div class="col-xs-12 no_pad labelText sowName">SOW name</div>
+			    <div class="col-xs-12 no_pad mb20">
+					<div class="pull-left first_letter note_hd">*note</div>
+					<div class="pull-left col_cls">:</div>
+					<div class="pull-left first_letter font_twelve note_txt myteamnote">We recommend that you contact the previous/current managers of these employees through the options given here for feedback on them before allocation.The manager details are available in "Important contacts" dropdown for each search result.</div>
+				</div>
+		       <div class="col-xs-12 no_pad  checkboxPdng whiteBg">
+		       		<div class="col-lg-3 results pdngLeft0">
+		       			<label class="col-xs-12 no_pad">Experience</label>
+		       			<mat-checkbox checked=true class="pull-left col-lg-6 no_pad">3 to 5 Years</mat-checkbox>
+		       			<mat-checkbox  class="pull-left col-lg-6 no_pad">5 to 15 Years</mat-checkbox>
+		       		</div>
+		       		<div class="col-lg-4 results pdngLeft0">
+		       			<label class="col-xs-12 no_pad">Location</label>
+		       			<mat-checkbox checked=true class="pull-left col-lg-4 no_pad">Banglore</mat-checkbox>
+		       			<mat-checkbox  class="pull-left col-lg-4 no_pad">Chennai</mat-checkbox>
+		       			<mat-checkbox  class="pull-left col-lg-4 no_pad">Hyderabad</mat-checkbox>
+		       		</div>
+		       		<div class="col-lg-4 results pdngLeft0">
+		       			<label class="col-xs-12 no_pad">Skill</label>
+		       			<mat-checkbox checked=true class="pull-left col-lg-4 no_pad">Angular</mat-checkbox>
+		       			<mat-checkbox  class="pull-left col-lg-4 no_pad">React</mat-checkbox>
+		       			<mat-checkbox  class="pull-left col-lg-4 no_pad">Javascript</mat-checkbox>
+		       		</div>
+		       </div>
+		       <div class="col-xs-12  mt20">
+		       	<div class="pull-left">
+								<label class="mb0"><mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()" (click)="showresources()"></mat-checkbox></label>
+								<label class="bold font12 font_family text_align_left">Select all</label>
+								</div>
+		       </div>
+                <div class="col-xs-12 no_pad ">
+                	<div class="col-xs-12 no_pad  whiteBg searchBrdr mt10" *ngFor="let n of names;let i=index" id="parent{{i}}">
+	                	<div class="col-xs-12 no_pad task_head selectAllContentPdng">
+		                	<div class="pull-left singleCheckbox">
+								<mat-checkbox  [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)" (click)="showresources()"></mat-checkbox>
+		                     </div>
+	                		<div class="col-lg-3 no_pad empDetails mt10">
+	                			<div class="user_pic pull-left" aria-label="profile pic"></div>
+	                			<div class="pull-left col-lg-9">
+	                				<div class="col-xs-12 no_pad">
+		                				<label class="col-xs-12 no_pad">
+			                				<span class="pull-left font12 fontBold">{{n.profilename}}</span>
+											<button class="btndef_none icon-info icon_info_myteam pull-left search_top0" aria-label="info icon" title="info icon" (click)="openDialogEmp()"></button>
+			                				<!-- <button class="icon-circle_alert pull-left"></button> -->
+		                				</label>
+		                				<span class="col-xs-12 no_pad font12">{{n.number}}</span>
+	                				</div>
+	                				<div class="col-xs-12 no_pad mt10">
+	                					<button data-role="none" class="icon-email" aria-label="mail" title="mail"></button>
+	                					<button data-role="none" class="icon-skype" aria-label="skype" title="skype"></button>
+	                				</div>
+	                			</div>
+	                		</div>
+	                		<div class="col-lg-3 no_pad empDetails mt10" matTooltip="You can only modify some selected fields in your demand. To modify the non-editable fields here, please delete this demand and create a new demand.">
+	                			<div class="no_pad col-lg-12">
+	                				<div class="col-xs-12 no_pad">
+		                				<label class="col-xs-12 no_pad">
+			                				<span class="pull-left font12 mt3">Available from</span>
+											<button class="icon-calendar pull-left" aria-label="date icon" title="date icon"></button>
+											<!-- <mat-form-field>
+													<input matInput [matDatepicker]="picker10"> 
+													<mat-datepicker-toggle matSuffix [for]="picker10"></mat-datepicker-toggle>
+													<mat-datepicker #picker10></mat-datepicker>
+												</mat-form-field> -->
+		                				</label>
+		                				<span class="col-xs-12 no_pad font12 label_text">03-Jan-2017 to 18-Jan-2017</span>
+		                				<span class="col-xs-12 no_pad font12 label_text">24-Jan-2017 to 30-Jan-2017</span>
+	                				</div>
+	                			</div>
+	                		</div>
+	                		<div class="col-lg-3 no_pad empDetails mt10">
+	                			<div class="no_pad col-lg-12">
+	                				<div class="col-xs-12 no_pad">
+		                				<label class="col-xs-12 no_pad">
+			                				<span class="pull-left font12 mt3">100% billable?</span>
+			                				<div class="pull-left switch slideToggle" *ngIf="n.profilename == 'Dinesh Kumar'" matTooltip="You can only modify some selected fields in your demand. To modify the non-editable fields here, please delete this demand and create a new demand.">
+								                <input type="checkbox" id="client1" class="switchInput" [disabled]="true" checked="true"/>
+								                <label for="client1"><span class="ui"></span></label>
+								             </div>
+											 <div class="pull-left switch slideToggle" *ngIf="n.profilename == 'Prakash Kumar'" matTooltip="You can only modify some selected fields in your demand. To modify the non-editable fields here, please delete this demand and create a new demand.">
+								                <input type="checkbox" id="client2" class="switchInput" [disabled]="true" checked="true" />
+								                <label for="client2"><span class="ui"></span></label>
+								             </div>
+											 <div class="pull-left switch slideToggle" *ngIf="n.profilename == 'Anu Dev'" matTooltip="You can only modify some selected fields in your demand. To modify the non-editable fields here, please delete this demand and create a new demand.">
+								                <input type="checkbox" id="client3" class="switchInput" [disabled]="true" checked="true"/>
+								                <label for="client3"><span class="ui"></span></label>
+								             </div>
+								             <div class="pull-left switch slideToggle mt13" *ngIf="n.profilename == 'Padma Sekhar Ayyappan'">
+								             
+								                <input type="checkbox" id="client4" class="switchInput" checked="true" (change)="changeEvent($event)" />
+								                <label for="client4"><span class="ui"></span></label>
+								             </div>
+								             <div class="col-xs-12 no_pad" *ngIf="toggleTrue">
+								                <div  
+								                 *ngIf="n.profilename == 'Padma Sekhar Ayyappan'">
+								                	<form class="example-form">
+													  <mat-form-field class="example-full-width">
+													    <input matInput placeholder="Change the billability percentage" (blur)="onBlurMethod()">
+													  </mat-form-field>
+													</form>
+								                </div>
+								                </div>
+		                				</label>
+	                				</div>
+	                			</div>
+	                		</div>
+	                		<div class="col-lg-3 no_pad empDetails mt10">
+		                		<div class="col-lg-12 no_pad selectAction">
+		                				<button data-role="none" class=" mb10 pull-right  text-uppercase " title="select action" aria-label="select action" (click)="showSelectDropdown(i)" aria-label="select action">
+
+		                				<span class="pull-left selectText">{{n.selectbutton}}</span>
+		                				<span [ngClass]="{'selectedNumber': selectedCount[i]}">{{selectedCount[i]}}</span>
+		                				<span class="icon-arrow_down arrwDown pull-right"></span>
+
+		                				</button>
+		                				<div class="col-xs-12 no_pad display_none" id="{{i}}" >
+		                				<div class="whiteBg multiSelectCheckbox" >
+		                					
+		                					<mat-checkbox [disabled]="checkOptionIndex(n,i)" class="pull-left col-lg-12 no_pad" *ngFor="let c of check;let n=index;" (change)="selectedCheck($event,i)" >{{c.checkbox}}</mat-checkbox>
+		                					</div>
+		                				</div>
+		                			</div>
+		                			<div class="col-lg-12 no_pad">
+		                				<button data-role="none" aria-label="check budget impact"  title="check budget impact" class="line-btn checkBudgetBtn pull-right margin0 text-uppercase " >{{n.check}}</button>
+		                			</div>
+	                			</div>
+	                		</div>
+	                		<div class="col-xs-12 pdngLeft0 accrdionSection mt10 mb10">
+	                		
+		                	<div class="col-xs-12 no_pad pend_alloc">
+							<div class="pull-left">
+								<div class="pull-left blockedEmp"  *ngIf="n.profilename == 'Dinesh Kumar' || n.profilename == 'Prakash Kumar' || n.profilename == 'Anu Dev'">
+		                			<button data-role="none" class="icon-circle_alert pull-left" aria-label="alert" title="alert" ></button>
+
+		                			<span class="pull-left font12 blockedText">{{n.alertmsg}}</span>
+		                			<button class="pull-left font12 btndef_none btnHover" *ngIf="n.profilename == 'Dinesh Kumar'" (click)="openDialogtransBudget()" aria-label="Transfer budget" title="Transfer budget"><span class="pull-left">{{n.alertmsg1}}</span>
+		                			<button class="pull-left btndef_none icon-arrow_drop_right" aria-label="click here" title="click here" *ngIf="n.profilename == 'Dinesh Kumar'"></button></button>
+		                			<button class="pull-left font12  btndef_none btnHover" *ngIf="n.profilename == 'Dinesh Kumar'" aria-label="Request cost deviation" title="request cost deviation" (click)="openDialogCostDev()"><span class="pull-left">{{n.alertmsg2}}</span>
+		                			<button class="pull-left btndef_none icon-arrow_drop_right" aria-label="click here" title="click here" *ngIf="n.profilename == 'Dinesh Kumar'"></button>
+									</button>
+		                			</div>
+	                			</div>
+		                		<div class="col-xs-12 no_pad ">
+		                			<mat-accordion class="col-xs-12 no_pad">
+									  <mat-expansion-panel>
+									    <mat-expansion-panel-header class=" pull-right">
+									      <mat-panel-title>
+										  <div class="col-xs-12 no_pad ">
+									      <div class="pull-right accrdion_head"> Important contacts</div>
+										   </div>
+									      </mat-panel-title>
+									    </mat-expansion-panel-header>
+									    	<ul class="related_dcontacts_ul">
+									    		<li class="myteam_borderrgt">
+									    			<div class="col-xs-12 no_pad">
+									    				<div class="col-xs-4 no_pad">
+															<label class="font-family related_contacts_myteam_color mb0">WMG Spoc</label>
+														</div>
+									    				<div class="col-xs-6 no_pad">
+									    				<div class="user_pic pull-left" aria-label="profile pic"></div>
+							                				<span class="pull-left first_letter label_text capitalize mb0 myteamleft15">Prakash kumar</span>
+							                				<span class="pull-left first_letter label_hd capitalize myteam_color myteamleft15">9876543213</span>
+						                				</div>
+						                				<div class="col-xs-2 no_pad mt10">
+						                					<button data-role="none" class="pull-left icon-email" aria-label="mail" title="mail"></button>
+						                					<button data-role="none" class="pull-left icon-skype" aria-label="skype" title="skype"></button>
+						                				</div>
+									    			</div>
+									    		</li>
+									    		<li class="myteam_borderrgt relatedContactsPL">
+									    			<div class="col-xs-12 no_pad">
+									    				<div class="col-xs-4 no_pad">
+															<label class="font-family related_contacts_myteam_color mb0">HR Spoc</label>
+														</div>
+									    				<div class="col-xs-6 no_pad">
+									    				<div class="user_pic pull-left" aria-label="profile pic"></div>
+							                				<span class="pull-left first_letter label_text capitalize mb0 myteamleft15">Prakash kumar</span>
+							                				<span class="pull-left first_letter label_hd capitalize myteam_color myteamleft15">9876543213</span>
+						                				</div>
+						                				<div class="col-xs-2 no_pad mt10">
+						                					<button data-role="none" class="pull-left icon-email" aria-label="mail" title="mail"></button>
+						                					<button data-role="none" class="pull-left icon-skype" aria-label="skype" title="skype"></button>
+						                				</div>
+									    			</div>
+									    		</li>
+									    		<li>
+									    			<div class="col-xs-12 no_pad">
+									    				<div class="col-xs-4 no_pad relatedContactsPL">
+															<label class="font-family col-xs-11 no_pad related_contacts_myteam_color mb0">L1 Manager Spoc</label>
+														</div>
+									    				<div class="col-xs-6 no_pad">
+									    				<div class="user_pic pull-left" aria-label="profile pic"></div>
+							                				<span class="pull-left first_letter label_text capitalize mb0 myteamleft15">Prakash kumar</span>
+							                				<span class="pull-left first_letter label_hd capitalize myteam_color myteamleft15">9876543213</span>
+						                				</div>
+						                				<div class="col-xs-2 no_pad mt10">
+						                					<button data-role="none" class="pull-left icon-email" aria-label="mail" title="mail"></button>
+						                					<button data-role="none" class="pull-left icon-skype" aria-label="skype" title="skype"></button>
+						                				</div>
+									    			</div>
+									    		</li>
+									    		<div class="col-xs-12 no_pad mt10 mb20 notePdng"  *ngIf="n.profilename == 'Dinesh Kumar'">
+	                		<div class="col-lg-12 no_pad font12">{{n.para1}}
+	                		</div>
+							<div class="col-lg-12 no_pad font12 mt10">{{n.para2}} </div> 
+	                	</div>
+								    	</ul>
+
+								  </mat-expansion-panel>
+								 </mat-accordion>
+	                		</div>
+	                	</div>
+                	</div>
+					
+                	</div>
+                	
+                	
+                	
+                </div>
+				<div class="col-xs-12 no_pad mb20">
+					<div class="col-lg-4 no_pad mt20"  *ngIf="showDemandSelect">
+					
+						<div class="col-xs-12 extraWidth selectBold">
+							<mat-form-field>
+							  <mat-select placeholder="What you want to do with these resources ?"  name="resource" [(ngModel)]="selectedValue" (change)="onChange(selectedValue)">
+									      <mat-option *ngFor="let resource of resources" [value]="resource.value" >
+									        {{resource.viewValue}}
+									      </mat-option>
+									    </mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<!-- <div class="col-xs-8 no_pad mt10" *ngIf="showSubmit">
+							<div class="col-xs-12 no_pad staggerRadio mt_radio15">
+							<div class="col-xs-10 no_pad">
+	                             		<mat-radio-group>
+										  <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+										   <mat-radio-button value="2" class="col-lg-3 no_pad">De allocate</mat-radio-button>
+										  <mat-radio-button value="3" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+										</mat-radio-group>
+	                             	</div>
+									</div>
+									<div class="col-xs-12 no_pad">
+									<span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+									<div class="col-xs-8 no_pad">
+								<div class="col-xs-12 no_pad staggerRadio mt_radio15">
+	                             		<mat-radio-group>
+										  <mat-radio-button value="4" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+										   <mat-radio-button value="5" class="col-lg-4 no_pad">NG release</mat-radio-button>
+										  <mat-radio-button value="6" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+										</mat-radio-group>
+	                             	</div>	
+									</div>
+									<div class="col-xs-4 no_pad">
+									<div class="col-xs-12">
+	                                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+	                                	<mat-form-field>
+											<input matInput [matDatepicker]="picker" placeholder="Assignment start date"> 
+											<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+											<mat-datepicker #picker></mat-datepicker>
+										</mat-form-field>
+									</form>
+								</div>
+									</div>
+									</div>
+									<div class="col-xs-12 no_pad">
+									<span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+									<div class="col-xs-12 no_pad reason">
+								<div class="col-xs-12 no_pad staggerRadio mt_radio15">
+	                             		<mat-radio-group>
+										  <mat-radio-button value="7" checked=true class="col-lg-12 no_pad">Reason one</mat-radio-button>
+										   <mat-radio-button value="8" class="col-lg-12 no_pad">Reason two</mat-radio-button>
+										  <mat-radio-button value="9" class="col-lg-12 no_pad">Reason three</mat-radio-button>
+										  <mat-radio-button value="10" class="col-lg-12 no_pad">Reason four</mat-radio-button>
+										  <mat-radio-button value="11" class="col-lg-12 no_pad">Others</mat-radio-button>
+										</mat-radio-group>
+	                             	</div>	
+									</div>
+									</div>
+									
+							<div class="col-xs-12 no_pad">
+								<div class="styled-input wide mt40 myteam_textarea">
+									<textarea maxlength="500" required></textarea>
+									<label>Description</label>
+									<span></span> 
+								</div>
+								<span class="pull-right text-count"><span class="pull-left chars-count">0</span><span class="pull-left total-words">/ 500 Characters</span></span>
+								
+							</div>
+							
+							</div> -->
+						<div class="col-xs-6 pull-right no_pad" [ngClass]="{'width100':showSubmit}">
+						<div class="pull-right mt20">
+								<button class="line-btn  pull-left text-uppercase view_btn" aria-label="ASK WMG FOR HELP" title="ASK WMG FOR HELP" (click)="askforhelp()">ASK WMG FOR HELP</button>
+							<button  aria-label="submit" class="pull-right mrg_rgt0  line-btn primary-btn text-uppercase view_btn " title="submit" md-button="" (click)="submitContentModal()">submit</button>
+							</div>
+						</div>
+					</div>
+			</div>
+</div>
+</div>
+
+</div>
+<app-settings></app-settings>
+<button class="btndef_none icon-img_helpline iconhelp_main" aria-label="help" title="help"></button>

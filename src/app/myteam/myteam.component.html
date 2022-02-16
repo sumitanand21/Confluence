@@ -1,0 +1,1147 @@
+<div class="col-xs-12">
+  <div class="col-xs-12 back_pos" *ngIf="myteamback">
+    <div class="col-xs-12 no_pad">
+      <div class="back-button-container projectDetailsHead searchHead">
+        <button class="icon-back_arrow pull-left mt3 backArrw pdngLeft0" aria-label="Back" title="Back" (click)=" goBack()">
+        </button>
+        <h2 class="pull-left">My team</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 back_pos" *ngIf="this.selectedBtn=='two'">
+    <div class="back-button-container">
+      <button class=" btndef_none more_icon icon-back_arrow" aria-label="Back" title="Back" (click)=" goBack()">
+      </button>
+      <h2 class="back-head">Previously ramped down resources</h2>
+    </div>
+  </div>
+  <div class="col-xs-12 back_pos" *ngIf="this.selectedBtn=='one'">
+    <div class="back-button-container">
+      <button class=" btndef_none more_icon icon-back_arrow" aria-label="Back" title="Back" (click)=" goBack()">
+      </button>
+      <h2 class="back-head">Saved profiles</h2>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad myteamContainer">
+    <div class="col-xs-12 no_pad project_details">
+      <div class="pull-left prjHeader">
+        <label class="bold font_family font14" aria-label="Project:">Project:</label>
+        <label class=" font_family font14" aria-label="ABC Project" *ngIf="selectedEmployeesrampsave">Accounts</label>
+        <label class=" font_family font14" aria-label="ABC Project" *ngIf="!selectedEmployeesrampsave">ABC Project</label>
+      </div>
+      <div class="pull-right">
+        <button [ngClass]="this.selectedBtn == 'one'? 'my_team_header_btn_active pull-right btndef_none text-uppercase view-more-btn view_btn':'pull-right btndef_none text-uppercase view-more-btn view_btn'" aria-label="saved profiles" title="saved profiles" (click)="showrampsaveprof('one')">saved profiles<span class="btndef_none icon-arrow_drop_right"></span></button>
+        <button [ngClass]="this.selectedBtn == 'two'? 'my_team_header_btn_active1 pull-right btndef_none text-uppercase view-more-btn view_btn':'pull-right btndef_none text-uppercase view-more-btn view_btn'" aria-label="previously ramped down resources" title="previously ramped down resources" (click)="showrampsaveprof('two')">previously ramped down resources<span class="btndef_none icon-arrow_drop_right"></span></button>
+      </div>
+    </div>
+    <div class="col-xs-12 no_pad demandtab_in myteam">
+      <div class="col-xs-12 no_pad" *ngIf="previouslyramped">
+        <accordion [showArrows]="true">
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad font_family font14 my_acc_color accordion_head bold">My team insights</div>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content">
+              <div class="col-xs-12 no_pad">
+                <div class="pull-left">
+                  <label class="font_family font12" aria-label="Project:">Total strength -</label>
+                  <label class="bold font_family font12" aria-label="ABC Project"> 50</label>
+                </div>
+                <div class="pull-right">
+                  <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad acc_table">
+                <table class="myteam_table">
+                  <tr>
+                    <th></th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="2 days to go">2 days to go</label>
+                    </th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="5 days to go">5 days to go</label>
+                    </th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="More than 5 days to go">More than 5 days to go</label>
+                    </th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="Total">Total</label>
+                    </th>
+                  </tr>
+                  <tr (click)="showonlyselectedemp()">
+                    <td class="text_align_left">
+                      <label class="bold font12 font_family" aria-label="People with valid work visa">People with valid work visa</label>
+                    </td>
+                    <td>
+                      <label class="bold font12 font_family" aria-label="blank">-</label>
+                    </td>
+                    <td>
+                      <label class="bold font12 font_family" aria-label="blank">-</label>
+                    </td>
+                    <td>
+                      <label class="bold font12 font_family" aria-label="blank">-</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family" aria-label="22">22</label>
+                    </td>
+                  </tr>
+                  <tr (click)="showonlyselectedemp()">
+                    <td class="text_align_left">
+                      <label class="bold font12 font_family text_align_left" aria-label="People who see approching">People who see approching</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="6">6</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="4">4</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="3">3</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family" aria-label="13">13</label>
+                    </td>
+                  </tr>
+                  <tr (click)="showonlyselectedemp()">
+                    <td class="text_align_left">
+                      <label class="bold font12 font_family text_align_left" aria-label="People who are serving notice period">People who are serving notice period</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="6">6</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="4">4</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="3">3</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family" aria-label="13">13</label>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+      <div class="col-xs-12 no_pad background_wht" *ngIf="selectedEmployees1">
+        <mat-tab-group>
+          <!--employee tab starts here-->
+          <mat-tab label="Employees">
+            <div class="col-xs-12 no_pad checkbox_div border_b_cc">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names;let i = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                        <div [ngClass]="n.expType == 'Consultant'? 'consultant':'fresher'">{{n.expType}}</div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td class="skillsShow">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <div class="col-xs-12 no_pad skills_cls">
+                        <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS</div>
+                        <div class="dropdown" dropdown>
+                          <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+4</button>
+                          <div class="dropdown-menu skills_main">
+                            <span class="pull-left text-uppercase">JAVA,</span>
+                            <span class="pull-left text-uppercase">html5,</span>
+                            <span class="pull-left text-uppercase">css</span>
+                            <span class="pull-left text-uppercase">Angular 4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr  searchByattributeBtn" aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase  propelheight " (click)="openpropelplanning()" aria-label="complete propel planning" title="complete propel planning" *ngIf="n.profilename == 'Prakash Kumar'">{{n.propelplanning}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- Employee Actions starts here -->
+            <div [ngClass]="showRole ? 'col-xs-12 no_padding':'col-xs-12 mt10'" *ngIf="showdropvaluesEmp">
+              <div [ngClass]="showRole ? 'col-xs-4 pull-left changeRoleTableColor minht250 no_pad':'col-xs-4 pull-left mt5'">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold" *ngIf="!showRole">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValue" (change)="dropValuesChanged(selectedValue)">
+                      <mat-option *ngFor="let resource of resources" [value]="resource.value">
+                        {{resource.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="showRole">
+                  <table class="myteam_emp_table no_pad">
+                    <thead>
+                      <tr class="whght">
+                        <td class="color_th pt10">Resource Name</td>
+                        <td class="color_th pt10">Current Role</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let erlist of empRolesList">
+                        <td class="pt10">{{ erlist.profilename }}</td>
+                        <td class="pt10">{{ erlist.currentRole }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-xs-8 pull-right" *ngIf="showEditOptionsEmpFlg">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                  <div class="col-xs-10 no_pad mt10">
+                    <mat-radio-group (change)="editOptionsEmpChanged(selectAction)" [(ngModel)]="selectAction">
+                      <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+                      <mat-radio-button value="2" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+                      <mat-radio-button value="25" class="col-lg-4 no_pad">Extend</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20" *ngIf="showRampedDownOpt">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-8 no_pad">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group (change)="showReleaseType(rampedDownType)" [(ngModel)]="rampedDownType">
+                        <mat-radio-button value="3" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+                        <mat-radio-button value="4" class="col-lg-4 no_pad">NG release</mat-radio-button>
+                        <mat-radio-button value="5" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" placeholder="Assignment start date" (click)="picker.open()">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <!-- NC Release -->
+                  <div class="col-xs-12 no_pad mt20" *ngIf="showNcRelease">
+                    <div class="col-xs-4 no_pad">
+                      <div class="col-xs-12 no_pad">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="newNcDate" placeholder="New date" (click)="newNcDate.open()">
+                            <mat-datepicker-toggle matSuffix [for]="newNcDate"></mat-datepicker-toggle>
+                            <mat-datepicker #newNcDate></mat-datepicker>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad mt4">
+                      <div class="col-xs-12">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <mat-select placeholder="NC release plan" name="ncReleasePlan" [(ngModel)]="ncReleasePlan" (change)="ncReleasePlanChanged(ncReleasePlan)">
+                              <mat-option *ngFor="let nrplan of ncReleasePlans" [value]="nrplan.value">
+                                {{nrplan.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad" *ngIf="showBackfillDet">
+                      <div class="col-xs-12">
+                        <form class="col-xs-12 no_pad">
+                          <mat-form-field class="backfillDet">
+                            <input matInput placeholder="Search employee">
+                            <button mat-icon-button matSuffix>
+                              <mat-icon aria-label="Search Employees Button">search</mat-icon>
+                            </button>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <extend> -->
+                  <!-- NG Release -->
+                  <div class="col-xs-12 no_pad mt20" *ngIf="showNgRelease">
+                    <div class="col-xs-4 no_pad">
+                      <div class="col-xs-12 no_pad">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="newNgEndDate" placeholder="New end eate" (click)="newNgEndDate.open()">
+                            <mat-datepicker-toggle matSuffix [for]="newNgEndDate"></mat-datepicker-toggle>
+                            <mat-datepicker #newNgEndDate></mat-datepicker>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad mt4">
+                      <div class="col-xs-12">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <mat-select placeholder="Category" name="Category" [(ngModel)]="ngCategory">
+                              <mat-option *ngFor="let ngcat of ngCategories" [value]="ngcat.value">
+                                {{ngcat.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad mt4">
+                      <div class="col-xs-12">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <mat-select placeholder="Select reason" name="reason" [(ngModel)]="ngReasons">
+                              <mat-option *ngFor="let ngreasn of ngReasn" [value]="ngreasn.value">
+                                {{ngreasn.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Normal Release -->
+                  <div class="col-xs-12 no_pad mt20" *ngIf="showNormalRelease">
+                    <div class="col-xs-4 no_pad">
+                      <div class="col-xs-12 no_pad">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="newNormalEndDate" placeholder="New end date" (click)="newNormalEndDate.open()">
+                            <mat-datepicker-toggle matSuffix [for]="newNormalEndDate"></mat-datepicker-toggle>
+                            <mat-datepicker #newNormalEndDate></mat-datepicker>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad mt4">
+                      <div class="col-xs-12">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <mat-select placeholder="Propel reason" name="Propel reasons" [(ngModel)]="normalPropelReasons">
+                              <mat-option *ngFor="let npropresn of propelReasons" [value]="npropresn.value">
+                                {{npropresn.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Billing Percentage Change -->
+                <div class="col-xs-12 no_pad mt20" *ngIf="showChangedBillingPercent">
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12 no_pad">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="reebd" placeholder="RE - EBD" (click)="reebd.open()">
+                          <mat-datepicker-toggle matSuffix [for]="reebd"></mat-datepicker-toggle>
+                          <mat-datepicker #reebd></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad mt4">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <mat-select placeholder="Billing status" name="billingstatus" [(ngModel)]="billingstatus">
+                            <mat-option *ngFor="let billstatus of billingStatus" [value]="billstatus.value">
+                              {{billstatus.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad mt4">
+                    <div class="col-xs-4">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad percentShow">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Total %" value="100" disabled>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                    <div class="col-xs-8">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field class="backfillDet">
+                          <input matInput placeholder="Allocation %">
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 no_pad">
+                    <div class="col-xs-4 no_pad mt4">
+                      <div class="col-xs-12 no_pad">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field class="billingreasonclass">
+                            <mat-select placeholder="Billing sub category reason" name="billingreason" [(ngModel)]="billsubcatreason">
+                              <mat-option *ngFor="let bscatereasn of billingSubCategoryReason" [value]="bscatereasn.value">
+                                {{bscatereasn.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad">
+                      <div class="col-xs-12 ">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="effectiveDate" placeholder="Effective date" (click)="effectiveDate.open()">
+                            <mat-datepicker-toggle matSuffix [for]="effectiveDate"></mat-datepicker-toggle>
+                            <mat-datepicker #effectiveDate></mat-datepicker>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 no_pad">
+                      <div class="col-xs-12">
+                        <form class="dropdownSelect example-form col-xs-12 no_pad">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="endDate" placeholder="End date" (click)="endDate.open()">
+                            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                            <mat-datepicker #endDate></mat-datepicker>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Change Location -->
+              <div class="col-xs-8 pull-right" *ngIf="showChangeLocation">
+                <div class="col-xs-4 no_pad">
+                  <div class="col-xs-12">
+                    <form class="dropdownSelect example-form col-xs-12 no_pad">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="effDate" placeholder="Effective date" (click)="effDate.open()">
+                        <mat-datepicker-toggle matSuffix [for]="effDate"></mat-datepicker-toggle>
+                        <mat-datepicker #effDate></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-xs-4 no_pad">
+                  <div class="col-xs-12">
+                    <form class="col-xs-12 no_pad">
+                      <mat-form-field class="backfillDet">
+                        <input matInput placeholder="New location">
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- Change propel plan -->
+              <div class="col-xs-8 pull-right" *ngIf="propelplanning">
+                <div class="col-xs-4 no_pad">
+                  <div class="col-xs-12">
+                    <form class="col-xs-12 no_pad">
+                      <mat-form-field class="backfillDet">
+                        <input matInput placeholder="Existing propel plan">
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-xs-4 no_pad mt4">
+                  <ul class="col-xs-12 no_pad ">
+                    <li class="col-xs-12 searchAttrLi">
+                      <form class="dropdownSelect example-form no_pad">
+                        <mat-form-field>
+                          <mat-select placeholder="Select a new propel plan" name="propel" [(ngModel)]="selectedpropel">
+                            <mat-option *ngFor="let propel of propelReasons" [value]="propel.value">
+                              {{propel.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-8 pull-right">
+                <!-- Change Role -->
+                <div class="col-xs-12 no_pad" *ngIf="showRole">
+                  <div class="col-xs-12 no_pad mt20">
+                    <div class="col-xs-6 no_pad excel_select_myteam selectBold">
+                      <mat-form-field>
+                        <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValue" (change)="dropValuesChanged(selectedValue)">
+                          <mat-option *ngFor="let resource of resources" [value]="resource.value">
+                            {{resource.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad mt20">
+                    <div class="col-xs-12 no_pad">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="effectiveDate" placeholder="Effective date" (click)="effectiveDate.open()">
+                          <mat-datepicker-toggle matSuffix [for]="effectiveDate"></mat-datepicker-toggle>
+                          <mat-datepicker #effectiveDate></mat-datepicker>
+                        </mat-form-field> 
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 mt20">
+                    <div class="col-xs-12">
+                      <form class="col-xs-12 no_pad">
+                        <mat-form-field class="backfillDet">
+                          <input matInput placeholder="New role">
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20" *ngIf="extendregion">
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12 no_pad">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="newDate" placeholder="New date" (click)="newDate.open()">
+                          <mat-datepicker-toggle matSuffix [for]="newDate"></mat-datepicker-toggle>
+                          <mat-datepicker #newDate></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad mt4">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <mat-select placeholder="Select reason" name="billingstatus" [(ngModel)]="billingstatuss">
+                            <mat-option *ngFor="let billstatus of billingStatus" [value]="billstatus.value">
+                              {{billstatus.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- Change Project -->
+                <div class="col-xs-12 no_pad" *ngIf="showProject">
+                  <div class="col-xs-4 no_pad mt4">
+                    <div class="col-xs-12 no_pad">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field class="billingreasonclass">
+                          <mat-select placeholder="Destination project" name="destproj" [(ngModel)]="destproject">
+                            <mat-option *ngFor="let dp of destProj" [value]="dp.value">
+                              {{dp.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="roleStrtDate" placeholder="Role start date" (click)="roleStrtDate.open()">
+                          <mat-datepicker-toggle matSuffix [for]="roleStrtDate"></mat-datepicker-toggle>
+                          <mat-datepicker #roleStrtDate></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="roleEndDate" placeholder="Role end date" (click)="roleEndDate.open()">
+                          <mat-datepicker-toggle matSuffix [for]="roleEndDate"></mat-datepicker-toggle>
+                          <mat-datepicker #roleEndDate></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 pull-right">
+                  <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="showEmployeesSubmitBtn">submit</button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <!--contractors tab starts here-->
+          <mat-tab label="Contractors">
+            <div class="col-xs-12 no_pad checkbox_div border_b_cc">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll1" (change)="selectAll1()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names1;let i = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected1(i)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td class="skillsShow">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <div class="col-xs-12 no_pad skills_cls">
+                        <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS</div>
+                        <div class="dropdown" dropdown>
+                          <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+4</button>
+                          <div class="dropdown-menu skills_main">
+                            <span class="pull-left text-uppercase">JAVA,</span>
+                            <span class="pull-left text-uppercase">html5,</span>
+                            <span class="pull-left text-uppercase">css</span>
+                            <span class="pull-left text-uppercase">Angular 4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr  searchByattributeBtn" aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase  propelheight " (click)="openpropelplanning()" aria-label="complete propel planning" title="complete propel planning" *ngIf="n.profilename == 'Prakash Kumar'">{{n.propelplanning}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- Contractors Actions starts here -->
+            <div class="col-xs-12 mt20" *ngIf="showdropvaluesCont">
+              <div class=" col-xs-4 pull-left">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValueCont" (change)="dropValuesChangedCont(selectedValueCont)">
+                      <mat-option *ngFor="let resourceCont of resourcesCont" [value]="resourceCont.value">
+                        {{resourceCont.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 pull-right">
+              <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="showSubmitBtnCont">submit</button>
+            </div>
+          </mat-tab>
+          <!--rookies tab starts here-->
+          <mat-tab label="Investment">
+            <div class="col-xs-12 no_pad checkbox_div border_b_cc">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll2" (change)="selectAll2()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names2;let i = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected2(i)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td class="skillsShow">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <div class="col-xs-12 no_pad skills_cls">
+                        <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS</div>
+                        <div class="dropdown" dropdown>
+                          <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+4</button>
+                          <div class="dropdown-menu skills_main">
+                            <span class="pull-left text-uppercase">JAVA,</span>
+                            <span class="pull-left text-uppercase">html5,</span>
+                            <span class="pull-left text-uppercase">css</span>
+                            <span class="pull-left text-uppercase">Angular 4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr  searchByattributeBtn" aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase  propelheight " (click)="openpropelplanning()" aria-label="complete propel planning" title="complete propel planning" *ngIf="n.profilename == 'Prakash Kumar'">{{n.propelplanning}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- Rookies Actions starts here -->
+            <div class="col-xs-12 mt20" *ngIf="showdropvaluesRook">
+              <div class=" col-xs-4 pull-left">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValueRook" (change)="dropValuesChangedRook(selectedValueRook)">
+                      <mat-option *ngFor="let resourceRook of resourcesRook" [value]="resourceRook.value">
+                        {{resourceRook.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 pull-right">
+              <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="showSubmitBtnRook">submit</button>
+            </div>
+          </mat-tab>
+          <mat-tab label="Allocated/Reserved">
+            <div class="col-xs-12 no_pad checkbox_div border_b_cc">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll4" (change)="selectAll4()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names4;let i = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected4(i)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td class="skillsShow">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <div class="col-xs-12 no_pad skills_cls">
+                        <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS</div>
+                        <div class="dropdown" dropdown>
+                          <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+4</button>
+                          <div class="dropdown-menu skills_main">
+                            <span class="pull-left text-uppercase">JAVA,</span>
+                            <span class="pull-left text-uppercase">html5,</span>
+                            <span class="pull-left text-uppercase">css</span>
+                            <span class="pull-left text-uppercase">Angular 4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash' || n.profilename == 'Prakash Kumar'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr  searchByattributeBtn" aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase  propelheight " (click)="openpropelplanning()" aria-label="complete propel planning" title="complete propel planning" *ngIf="n.profilename == 'Prakash Kumar'">{{n.propelplanning}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- Allocated Actions starts here -->
+            <div class="col-xs-12 mt20" *ngIf="showdropvaluesAll">
+              <div class=" col-xs-4 pull-left">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValueAllocate" (change)="deallocatefunc(selectedValueAllocate)">
+                      <mat-option value="Deallocate">Deallocate</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xs-8 pull-right" *ngIf="showEditOptionsFlgAllocate">
+                <div class="col-xs-12 pull-right">
+                  <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit">submit</button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="col-xs-12 no_pad background_wht" *ngIf="selectedEmployees">
+        <div class="col-xs-12 no_pad checkbox_div border_b_cc">
+          <table class="myteam_emp_table">
+            <tr>
+              <th colspan="3">
+                <div class="pull-left">
+                  <label class="mb0">
+                    <mat-checkbox class="mb0" [(ngModel)]="selectedAll1" (change)="selectAll1()"></mat-checkbox>
+                  </label>
+                  <label class="bold font14 font_family first_letter">People whos ERD approching</label>
+                </div>
+              </th>
+              <th colspan="4">
+                <div class="pull-right">
+                  <button class="pull-right btndef_none filter_left icon-close myteam_filter_color myteam_close_pad12" (click)="showhomepagemyteam()" aria-label="close" title="close"></button>
+                  <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color myteam_flter_pad15" aria-label="Filter" title="Filter"></button>
+                </div>
+              </th>
+            </tr>
+            <tr *ngFor="let n of names1;let j = index">
+              <td>
+                <div class="col-xs-1 no_pad singleCheckbox">
+                  <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected1(j)"></mat-checkbox>
+                </div>
+                <div class="col-xs-4 no_pad empdetail">
+                  <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                </div>
+                <div class="col-xs-8">
+                  <label class="col-xs-12 no_pad first_letter label_text capitalize mb0 myteamleft15">{{n.profilename}}
+                    <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                  </label>
+                  <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                  <div class="email_skype_div">
+                    <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                    <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+              </td>
+              <td class="skillsShow">
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                <div class="col-xs-12 no_pad skills_cls">
+                  <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS</div>
+                  <div class="dropdown" dropdown>
+                    <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+4</button>
+                    <div class="dropdown-menu skills_main">
+                      <span class="pull-left text-uppercase">JAVA,</span>
+                      <span class="pull-left text-uppercase">html5,</span>
+                      <span class="pull-left text-uppercase">css</span>
+                      <span class="pull-left text-uppercase">Angular 4</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+              </td>
+              <td class="alert_padding">
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alert}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alertmsg}}</span>
+              </td>
+              <td>
+                <div class="col-xs-12 no_pad">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr  " aria-label="search by attributes" title="search by attributes" (click)="openDialog()" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                </div>
+                <div class="col-xs-12 no_pad mt10">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                </div>
+                <div class="col-xs-12 no_pad mt10">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-xs-12 mt20" *ngIf="showdropvalues1">
+          <div class=" col-xs-4 pull-left">
+            <div class="col-xs-12 no_pad excel_select_myteam">
+              <mat-form-field>
+                <mat-select placeholder="What you want to do with these resources ?" name="resource1" [(ngModel)]="selectedValue1">
+                  <mat-option value="Allocate"></mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+            <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+          </div>
+        </div>
+      </div>
+      <!-- Ramp -->
+      <div class="col-xs-12 no_pad background_wht" *ngIf="selectedEmployeesrampsave">
+        <div class="col-xs-12 no_pad checkbox_div border_b_cc">
+          <table class="myteam_emp_table">
+            <tr>
+              <th colspan="3" class="">
+                <div class="pull-left">
+                  <label class="mb0">
+                    <mat-checkbox [(ngModel)]="selectedAll2" (change)="selectAll2()"></mat-checkbox>
+                  </label>
+                  <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                </div>
+              </th>
+              <th colspan="4">
+                <div class="pull-right">
+                  <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                </div>
+              </th>
+            </tr>
+            <tr *ngFor="let n of names2;let k = index ">
+              <td>
+                <div class="col-xs-1 no_pad singleCheckbox ">
+                  <mat-checkbox class="checkbox_myteam_align " [(ngModel)]="n.selected " (change)="checkIfAllSelected3(k) "></mat-checkbox>
+                </div>
+                <div class="col-xs-4 no_pad empdetail ">
+                  <div class="user_pic pull-left myteam_pic " aria-label="profile pic "></div>
+                </div>
+                <div class="col-xs-8 ">
+                  <label class="col-xs-12 no_pad first_letter label_text capitalize mb0 myteamleft15 ">{{n.profilename}}
+                    <button class="btndef_none icon-info icon_info_myteam " aria-label="information " title="information " (click)="openDialogEmpolyee() "></button>
+                  </label>
+                  <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15 ">{{n.number}}</span>
+                  <div class="email_skype_div ">
+                    <button class="pull-rleft btndef_none icon-email myteam_mail_color " aria-label="mail " title="mail "></button>
+                    <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color " aria-label="skype " title="skype "></button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0 ">{{n.emid}}</label>
+                  <span class="col-xs-12 no_pad first_letter label_text text_align_left ">{{n.empid}}</span>
+                </div>
+              </td>
+              <td class="skillsShow">
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                <div class="col-xs-12 no_pad skills_cls">
+                  <div class="col-xs-9 no_pad first_letter label_text skills_label">angular JS</div>
+                  <div class="dropdown" dropdown>
+                    <button class="pull-left btndef_none text-center skill_num" aria-label="more skills" title="more skills" dropdown-open>+4</button>
+                    <div class="dropdown-menu skills_main">
+                      <span class="pull-left text-uppercase">JAVA,</span>
+                      <span class="pull-left text-uppercase">html5,</span>
+                      <span class="pull-left text-uppercase">css</span>
+                      <span class="pull-left text-uppercase">Angular 4</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0 ">{{n.exp}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text text_align_left ">{{n.expyears}}</span>
+              </td>
+              <td>
+                <div>
+                  <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0 ">{{n.loc}}</label>
+                  <span class="col-xs-12 no_pad first_letter label_text capitalize ">{{n.place}}</span>
+                </div>
+              </td>
+              <td class="padd0 ">
+                <div class="col-xs-12 no_pad ">
+                  <button md-button class="col-xs-12 line-btn pull-right text-uppercase searchby_attr " aria-label="search by attributes " title="search by attributes " routerLink="/gotosearchallocate " routerLinkActive="active ">{{n.searchby}}</button>
+                </div>
+                <div class="col-xs-12 no_pad ">
+                  <button md-button class="col-xs-12 line-btn pull-right text-uppercase searchby_attr myteammarn_top8 " aria-label="proceed to allocate " title="proceed to allocate " routerLink="/ProceedToAllocate " routerLinkActive="active ">{{n.allocate}}</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-xs-12 mt20 " *ngIf="showdropvalues2">
+          <div class=" col-xs-4 pull-left">
+            <div class="col-xs-12 no_pad excel_select_myteam">
+              <mat-form-field>
+                <mat-select placeholder="What you want to do with these resources ?" name="resource1" [(ngModel)]="selectedValue2">
+                  <mat-option value="Allocate">Allocate
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+            <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

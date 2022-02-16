@@ -1,0 +1,427 @@
+<div class="col-xs-12 no_pad demand_cls">
+	<div class="col-xs-12 tabs_search">
+			<div class="pull-left tabs_main">
+				<button [ngClass]="showtabcontent == '1'? 'tab_active tab_normal pull-left btndef_none icon-tree_view':'tab_normal pull-left btndef_none icon-tree_view'" (click)="showTab(1)"  aria-label="Tree view" title="Tree view"></button>
+				<button [ngClass]="showtabcontent  == '2'? 'tab_active tab_normal pull-left btndef_none icon-list':'tab_normal pull-left btndef_none icon-list'" (click)="showTab(2)"  aria-label="List view" title="List view"></button>
+			</div>
+			<div class="global_search">
+				<div class="col-xs-12 no_pad searchinpt_img">
+		      		<input type="text" class="col-xs-12 no_pad search_input" placeholder="Search by: Account, SOW, Large programs,Projects,Modules,Employee">
+		    	</div>
+		    	<button class="pull-left btndef_none icon-search"  aria-label="Search" title="Search"></button>
+		    	<div class="clear"></div>
+			</div>
+		</div>
+		<div class="expanded-page ">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="allmyDemands-back">
+					<button class=" btndef_none more_icon icon-back_arrow" aria-label="Back" title="Back" (click)=" goBack()" >
+					</button>
+					<h2 class="back-head">All my demands</h2>
+				</div>
+			</div>
+		</div>
+	
+
+	<div class="allmyDemandBack col-xs-12 no_pad myTaskMoreAccr">
+		<div class="filter-container">
+			<button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+		</div>
+		<!-- <div class="col-xs-12">
+			<div class="pull-right acc_span">
+				<button type="submit" class="line-btn primary-btn pull-left text-uppercase acc_span" aria-label="close" (click)="removeScroll()" aria-label="confirm" title="confirm">CONFIRM</button>
+			</div>
+		</div>  -->
+		<mat-tab-group>
+			<mat-tab >
+			<ng-template mat-tab-label>
+			   <span>Open demands </span><span class="tab-count"> 05</span>
+			</ng-template>
+			<div >
+				<div class="col-xs-12 no_pad demandtab_in scroll-window" slimScroll [options]="opts">
+					<div class="global_search search-demand">
+						<div class="col-xs-12 no_pad ">
+							<input  class="col-xs-12 no_pad " placeholder="Search by demand/location/skill/role" type="text">
+						</div>
+						<button  class="pull-left btndef_none icon-search" aria-label="Search demands" title="Search demands"></button>
+						<div  class="clear"></div>
+					</div>
+					
+					<div class="col-xs-12">
+							<div class="select-all-container">
+							<mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()" >Select all</mat-checkbox>
+							</div>
+							
+						</div>
+					<div >
+						
+						<accordion [showArrows]="true" [closeOthers]="true">
+							<accordion-group *ngFor="let d of demands ;let i = index">
+								<accordion-heading>
+									
+									<div class="col-xs-12 no_pad text-uppercase accordion_head">
+										<mat-checkbox [(ngModel)]="d.selected" (change)="checkIfAllSelected(i)">{{d.header}}</mat-checkbox>
+									</div>
+									<ul class="col-xs-12 no_pad forms_ul expanded-page-panel">
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.demandText}}</label>
+											<div class="col-xs-12 no_pad first_letter label_text">{{d.demandValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.position}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.positionValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.startDate}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.startDateValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.endDate}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.endDateValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.locationText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.locationValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<div class="pull-right paddRight20">
+												<button class="pull-left btndef_none edit_idon icon-edit mr50" aria-label="Edit" title="Edit" (click)="editdemands()"></button>
+												<button class="pull-left btndef_none  fav_icon icon-fav_line" aria-label="Favourite" title="Favourite"></button>
+												
+											</div>
+										</li>
+									</ul>
+								</accordion-heading>
+								<div class="col-xs-12 no_pad accordion_content">
+									<ul class="col-xs-12 no_pad forms_ul ">
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.indentText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.indentValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.etaText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.etaValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.noPosText}}</label>
+											<div class="col-xs-12 no_pad first_letter label_text">{{d.noPosValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.roleText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.roleValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.suiteText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.suiteValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.expText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.expValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad margin-top-15">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.skillsText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.skillsValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad margin-top-15">
+											<div class="">
+												<button class="pull-left line-btn clickHereBtn" aria-label="Analytics" title="Analytics">Match check analytics</button>
+												
+											</div>
+										</li>
+									</ul>
+								</div>
+							</accordion-group>
+							
+							
+						
+						</accordion>
+					</div>
+					
+				</div>
+				
+				<div  class="col-xs-12 demand-submit"  *ngIf="showDemandSelect">
+					<div class="pull-left col-xs-4 no_pad">
+						<!-- <label class="label_text">What do you want to do with this demand?</label> -->
+						<div class=" wider-select selectBold">
+							<mat-form-field>
+								<mat-select placeholder="What do you want to do with these demands?"  name="select" [(ngModel)]="selectedValue" (change)="onChange(selectedValue)">
+								  <mat-option *ngFor="let projarr of project" [value]="projarr.value" >
+									{{projarr.viewValue}}
+								  </mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div  class="pull-right">
+						
+						<button  aria-label="view more" class="line-btn primary-btn pull-left text-uppercase view_btn mrg_rgt0" md-button="" title="view more" *ngIf="showSubmit">Submit </button>
+						
+					</div>
+				</div>
+				</div>
+			</mat-tab>
+			<mat-tab >
+				<ng-template mat-tab-label>
+				   <span>Favourite demands </span><span class="tab-count"> 05</span>
+				</ng-template>
+				<div >
+				<div class="col-xs-12 no_pad demandtab_in scroll-window" slimScroll [options]="opts">
+					<div class="global_search search-demand">
+						<div class="col-xs-12 no_pad ">
+							<input  class="col-xs-12 no_pad " placeholder="Search by demand/location/skill/role" type="text">
+						</div>
+						<button  class="pull-left btndef_none icon-search" aria-label="search demand" title="Search demand"></button>
+						<div  class="clear"></div>
+					</div>
+					<div class="col-xs-12 no_pad notetext_main myteamnotepad25 ">
+						<div class="pull-left first_letter note_hd">note</div>
+						<div class="pull-left col_cls">:</div>
+						<div class="pull-left first_letter font_twelve note_txt myteamnote">Favorite demands are unfulfilled demands previously marked "favorite" by you</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="select-all-container">
+						<mat-checkbox class="mb0" [(ngModel)]="selectedAllFav" (change)="selectAllFav()" >Select all</mat-checkbox>
+						</div>
+						
+					</div>
+					<div >
+						
+						<accordion [showArrows]="true">
+							<accordion-group *ngFor="let d of favDemands ;let j = index">
+								<accordion-heading>
+									
+									<div class="col-xs-12 no_pad text-uppercase accordion_head">
+										<mat-checkbox [(ngModel)]="d.selected" (change)="checkIfAllSelectedFav(j)">{{d.header}}</mat-checkbox>
+									</div>
+									<ul class="col-xs-12 no_pad forms_ul expanded-page-panel">
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.demandText}}</label>
+											<div class="col-xs-12 no_pad first_letter label_text">{{d.demandValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.position}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.positionValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.startDate}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.startDateValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.endDate}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.endDateValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.locationText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.locationValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<div class="pull-right paddRight20">
+												<button class="pull-left btndef_none edit_idon icon-edit mr50" aria-label="Edit" title="Edit" (click)="editDemand2()"></button>
+												<button class="pull-left btndef_none  fav_icon icon-fav_line" aria-label="Favourite" title="Favourite"></button>
+												
+											</div>
+										</li>
+									</ul>
+								</accordion-heading>
+								<div class="col-xs-12 no_pad accordion_content">
+									<ul class="col-xs-12 no_pad forms_ul ">
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.indentText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.indentValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.etaText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.etaValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.noPosText}}</label>
+											<div class="col-xs-12 no_pad first_letter label_text">{{d.noPosValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.roleText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.roleValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.suiteText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.suiteValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.expText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.expValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad margin-top-15">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.skillsText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.skillsValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad margin-top-15">
+											<div class="">
+												<button class="pull-left line-btn clickHereBtn" aria-label="Analytics" title="analytics">Match check analytics</button>
+												
+											</div>
+										</li>
+									</ul>
+								</div>
+							</accordion-group>
+							
+							
+						
+						</accordion>
+					</div>
+					
+				</div>
+				
+				<div  class="col-xs-12 demand-submit"  *ngIf="showDemandSelectFav">
+					<div class="pull-left ">
+						<!-- <label class="label_text">What do you want to do with this demand?</label> -->
+						<div class=" wider-select selectBold">
+							<mat-form-field>
+								<mat-select placeholder="What do you want to do with these demands?"  name="select" [(ngModel)]="selectedValue2" (change)="onChange(selectedValue2)">
+								  <mat-option *ngFor="let projarr of favDemandsSelect" [value]="projarr.value" >
+									{{projarr.viewValue}}
+								  </mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div  class="pull-right">
+						
+						<button  aria-label="view more" class="line-btn primary-btn pull-left text-uppercase view_btn mrg_rgt0" md-button="" title="view more" *ngIf="showSubmit">Submit </button>
+						
+					</div>
+				</div>
+				</div>
+			</mat-tab>
+			 <mat-tab label="">
+			 <ng-template mat-tab-label>
+				   <span>Saved demands </span><span class="tab-count"> 06</span>
+				</ng-template>
+			<div >
+				<div class="col-xs-12 no_pad demandtab_in scroll-window" slimScroll [options]="opts">
+					<div class="global_search search-demand">
+						<div class="col-xs-12 no_pad ">
+							<input  class="col-xs-12 no_pad " placeholder="Search by demand/location/skill/role" type="text">
+						</div>
+						<button  class="pull-left btndef_none icon-search" title="search demand" aria-label="search demand"></button>
+						<div  class="clear"></div>
+					</div>
+					<div class="col-xs-12 no_pad notetext_main myteamnotepad25 ">
+						<div class="pull-left first_letter note_hd">note</div>
+						<div class="pull-left col_cls">:</div>
+						<div class="pull-left first_letter font_twelve note_txt myteamnote">Saved demands are fulfilled or unfulfilled demands previously saved by you</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="select-all-container">
+						<mat-checkbox class="mb0" [(ngModel)]="selectedAllSaved" (change)="selectAllSaved()" >Select all</mat-checkbox>
+						</div>
+						
+					</div>
+					<div >
+						
+						<accordion [showArrows]="true">
+							<accordion-group *ngFor="let d of savedDemands ;let k = index">
+								<accordion-heading>
+									
+									<div class="col-xs-12 no_pad text-uppercase accordion_head">
+										<mat-checkbox [(ngModel)]="d.selected" (change)="checkIfAllSelectedSaved(k)">{{d.header}}</mat-checkbox>
+									</div>
+									<ul class="col-xs-12 no_pad forms_ul expanded-page-panel">
+										
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.demandText}}</label>
+											<div class="col-xs-12 no_pad first_letter label_text">{{d.demandValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.position}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.positionValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.startDate}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.startDateValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.endDate}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.endDateValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.locationText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.locationValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<div class="pull-right paddRight20">
+												<button class="pull-left btndef_none edit_idon icon-edit mr50" aria-label="Edit" title="Edit" (click)="editDemand3()"></button>
+												<button class="pull-left btndef_none  fav_icon icon-fav_line" aria-label="Favourite" title="Favourite"></button>
+												
+											</div>
+										</li>
+									</ul>
+								</accordion-heading>
+								<div class="col-xs-12 no_pad accordion_content">
+									<ul class="col-xs-12 no_pad forms_ul ">
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.indentText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.indentValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.noPosText}}</label>
+											<div class="col-xs-12 no_pad first_letter label_text">{{d.noPosValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.roleText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.roleValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.suiteText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.suiteValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.expText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.expValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad">
+											<label class="col-xs-12 no_pad first_letter label_hd">{{d.skillsText}}</label>
+											<div class="col-xs-12 no_pad text-capitalize label_text">{{d.skillsValue}}</div>
+										</li>
+										<li class="col-lg-2 no_pad margin-top-15">
+											<div class="">
+												<button class="pull-left line-btn clickHereBtn" aria-label="analytics" title="analytics">Match check analytics</button>
+												
+											</div>
+										</li>
+									</ul>
+								</div>
+							</accordion-group>
+							
+							
+						
+						</accordion>
+					</div>
+					
+				</div>
+				
+				<div  class="col-xs-12 demand-submit"  *ngIf="showDemandSelectSaved">
+					<div class="pull-left ">
+						<!-- <label class="label_text">What do you want to do with this demand?</label> -->
+						<div class=" wider-select selectBold">
+							<mat-form-field>
+								<mat-select placeholder="What do you want to do with these demands?"  name="select" [(ngModel)]="selectedValue3" (change)="onSavedChange(selectedValue3)">
+								  <mat-option *ngFor="let projarr of savedDemandsSelect" [value]="projarr.value" >
+									{{projarr.viewValue}}
+								  </mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div  class="pull-right">
+						
+						<button  aria-label="view more" class="line-btn primary-btn pull-left text-uppercase view_btn mrg_rgt0" md-button="" title="view more" *ngIf="showSubmit">Submit </button>
+						
+					</div>
+				</div>
+				</div>
+			</mat-tab>
+			
+		</mat-tab-group>
+	</div>
+	</div>
+</div>

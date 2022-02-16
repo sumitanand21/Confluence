@@ -1,0 +1,767 @@
+<div class="col-xs-12 no_pad demand_cls landing-demand">
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span>Open demands </span><span class="tab-count"> 02</span>
+      </ng-template>
+      <div class="col-xs-12 no_pad demandtab_in">
+        <accordion [showArrows]="true" [closeOthers]="true">
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad pull-left text-uppercase accordion_head font12">guk-m-c-pj-po-wt01</div>
+              <ul class="col-xs-12 no_pad forms_ul acc-header-expansion">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">demand</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">position</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <mat-form-field>
+                    <mat-select placeholder="Select action" name="action" [(ngModel)]="selecteddemand" (change)="onChangeDemand(selecteddemand)">
+                      <mat-option *ngFor="let action of demands" [value]="action.value">
+                        {{action.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <div class="pull-right">
+                    <button class="pull-left btndef_none  fav_icon icon-fav_line mr50" aria-label="Favourite" title="Favourite"></button>
+                    <button class="pull-left btndef_none edit_idon icon-edit " aria-label="Edit" title="Edit" (click)="editOpen1()"></button>
+                  </div>
+                </li>
+              </ul>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content demand-acc-content">
+              <ul class="col-xs-12 no_pad forms_ul ">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Indent</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">ETA</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field>
+                    <input matInput placeholder="ETA" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Start date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Start date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">End date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="End date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Location</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Mumbai</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" value="Mumbai">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">No of positions</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">03</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="No of positions" value="03">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Role</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" value="Test Engineer - l3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Suite</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Suite" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Year of experience</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Year of experience" value="3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Mandatory skills</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Angular JS4</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mandatory skills" value="Angular JS4">
+                  </mat-form-field>
+                </li>
+              </ul>
+              <div class="pull-right task_rgt">
+                <button md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="Match Check Analytics" title="Match Check Analytics">Match Check Analytics</button>
+              </div>
+            </div>
+          </accordion-group>
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad pull-left text-uppercase accordion_head font12">guk-m-c-pj-po-wt01</div>
+              <ul class="col-xs-12 no_pad forms_ul acc-header-expansion">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">demand</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">position</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <mat-form-field>
+                    <mat-select placeholder="Select action" name="action" [(ngModel)]="selecteddemand" (change)="onChangeDemand(selecteddemand)">
+                      <mat-option *ngFor="let action of demands" [value]="action.value">
+                        {{action.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <div class="pull-right">
+                    <button class="pull-left btndef_none  fav_icon icon-fav_line mr50" aria-label="Favourite" title="Favourite"></button>
+                    <button class="pull-left btndef_none edit_idon icon-edit " aria-label="Edit" title="Edit" (click)="editOpen2()"></button>
+                  </div>
+                </li>
+              </ul>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content demand-acc-content">
+              <ul class="col-xs-12 no_pad forms_ul ">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Indent</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">ETA</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field>
+                    <input matInput placeholder="ETA" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Start date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Start date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">End date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="End date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Location</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Mumbai</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" value="Mumbai">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">No of positions</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">03</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="No of positions" value="03">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Role</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" value="Test Engineer - l3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Suite</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Suite" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Year of experience</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Year of experience" value="3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableOpen2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Mandatory skills</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Angular JS4</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableOpen2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mandatory skills" value="Angular JS4">
+                  </mat-form-field>
+                </li>
+              </ul>
+              <div class="pull-right task_rgt">
+                <button md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="Match Check Analytics" title="Match Check Analytics">Match Check Analytics</button>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span>Favourite demands</span><span class="tab-count"> 02</span>
+      </ng-template>
+      <div class="col-xs-12 no_pad demandtab_in">
+        <accordion [showArrows]="true">
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad pull-left text-uppercase accordion_head font12">guk-m-c-pj-po-wt01</div>
+              <ul class="col-xs-12 no_pad forms_ul acc-header-expansion">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">demand</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">position</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <mat-form-field>
+                    <mat-select placeholder="Select action" name="action" [(ngModel)]="selecteddemand" (change)="onChangeDemand(selecteddemand)">
+                      <mat-option *ngFor="let action of demands" [value]="action.value">
+                        {{action.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <div class="pull-right">
+                    <button class="pull-left btndef_none  fav_icon icon-fav_line mr50" aria-label="Favourite" title="Favourite"></button>
+                    <button class="pull-left btndef_none edit_idon icon-edit " aria-label="Edit" title="Edit" (click)="editFav1()"></button>
+                  </div>
+                </li>
+              </ul>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content demand-acc-content">
+              <ul class="col-xs-12 no_pad forms_ul ">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Indent</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">ETA</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field>
+                    <input matInput placeholder="ETA" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Start date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Start date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">End date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="End date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Location</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Mumbai</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" value="Mumbai">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">No of positions</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">03</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="No of positions" value="03">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Role</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" value="Test Engineer - l3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Suite</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Suite" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Year of experience</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Year of experience" value="3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Mandatory skills</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Angular JS4</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mandatory skills" value="Angular JS4">
+                  </mat-form-field>
+                </li>
+              </ul>
+              <div class="pull-right task_rgt">
+                <button md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="Match Check Analytics" title="Match Check Analytics">Match Check Analytics</button>
+              </div>
+            </div>
+          </accordion-group>
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad pull-left text-uppercase accordion_head font12">guk-m-c-pj-po-wt01</div>
+              <ul class="col-xs-12 no_pad forms_ul acc-header-expansion">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">demand</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">position</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <mat-form-field>
+                    <mat-select placeholder="Select action" name="action" [(ngModel)]="selecteddemand" (change)="onChangeDemand(selecteddemand)">
+                      <mat-option *ngFor="let action of demands" [value]="action.value">
+                        {{action.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <div class="pull-right">
+                    <button class="pull-left btndef_none  fav_icon icon-fav_line mr50" aria-label="Favourite" title="Favourite"></button>
+                    <button class="pull-left btndef_none edit_idon icon-edit " aria-label="Edit" title="Edit" (click)="editFav2()"></button>
+                  </div>
+                </li>
+              </ul>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content demand-acc-content">
+              <ul class="col-xs-12 no_pad forms_ul ">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Indent</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">ETA</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field>
+                    <input matInput placeholder="ETA" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Start date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Start date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">End date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="End date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Location</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Mumbai</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" value="Mumbai">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">No of positions</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">03</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="No of positions" value="03">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Role</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" value="Test Engineer - l3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Suite</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Suite" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Year of experience</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Year of experience" value="3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableFav2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Mandatory skills</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Angular JS4</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableFav2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mandatory skills" value="Angular JS4">
+                  </mat-form-field>
+                </li>
+              </ul>
+              <div class="pull-right task_rgt">
+                <button md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="Match Check Analytics" title="Match Check Analytics">Match Check Analytics</button>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span>Saved demands</span><span class="tab-count"> 02</span>
+      </ng-template>
+      <div class="col-xs-12 no_pad demandtab_in">
+        <accordion [showArrows]="true">
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad pull-left text-uppercase accordion_head font12">guk-m-c-pj-po-wt01</div>
+              <ul class="col-xs-12 no_pad forms_ul acc-header-expansion">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">demand</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">position</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <mat-form-field>
+                    <mat-select placeholder="Select action" name="action" [(ngModel)]="selecteddemand" (change)="onChangeDemand(selecteddemand)">
+                      <mat-option *ngFor="let action of demands" [value]="action.value">
+                        {{action.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <div class="pull-right">
+                    <button class="pull-left btndef_none  fav_icon icon-fav_line mr50" aria-label="Favourite" title="Favourite"></button>
+                    <button class="pull-left btndef_none edit_idon icon-edit " aria-label="Edit" title="Edit" (click)="editSave1()"></button>
+                  </div>
+                </li>
+              </ul>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content demand-acc-content">
+              <ul class="col-xs-12 no_pad forms_ul ">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Indent</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">ETA</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field>
+                    <input matInput placeholder="ETA" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Start date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Start date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">End date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="End date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Location</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Mumbai</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" value="Mumbai">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">No of positions</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">03</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="No of positions" value="03">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Role</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" value="Test Engineer - l3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Suite</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Suite" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Year of experience</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Year of experience" value="3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave1">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Mandatory skills</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Angular JS4</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave1">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mandatory skills" value="Angular JS4">
+                  </mat-form-field>
+                </li>
+              </ul>
+              <div class="pull-right task_rgt">
+                <button md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="Match Check Analytics" title="Match Check Analytics">Match Check Analytics</button>
+              </div>
+            </div>
+          </accordion-group>
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad pull-left text-uppercase accordion_head font12">guk-m-c-pj-po-wt01</div>
+              <ul class="col-xs-12 no_pad forms_ul acc-header-expansion">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">demand</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">position</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <mat-form-field>
+                    <mat-select placeholder="Select action" name="action" [(ngModel)]="selecteddemand" (change)="onChangeDemand(selecteddemand)">
+                      <mat-option *ngFor="let action of demands" [value]="action.value">
+                        {{action.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad">
+                  <div class="pull-right">
+                    <button class="pull-left btndef_none  fav_icon icon-fav_line mr50" aria-label="Favourite" title="Favourite"></button>
+                    <button class="pull-left btndef_none edit_idon icon-edit " aria-label="Edit" title="Edit" (click)="editSave2()"></button>
+                  </div>
+                </li>
+              </ul>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content demand-acc-content">
+              <ul class="col-xs-12 no_pad forms_ul ">
+                <li class="col-lg-3 no_pad">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Indent</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">18000000</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">ETA</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field>
+                    <input matInput placeholder="ETA" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Start date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Start date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">End date</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="End date" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Location</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Mumbai</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" value="Mumbai">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">No of positions</label>
+                  <div class="col-xs-12 no_pad first_letter label_text">03</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="No of positions" value="03">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Role</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">test engineer - l3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" value="Test Engineer - l3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Suite</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">29-SEPT-2018</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Suite" value="29-SEPT-2018">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Year of experience</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">3</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Year of experience" value="3">
+                  </mat-form-field>
+                </li>
+                <li class="col-lg-3 no_pad mt15" *ngIf="!isEditableSave2">
+                  <label class="col-xs-12 no_pad first_letter label_hd">Mandatory skills</label>
+                  <div class="col-xs-12 no_pad text-capitalize label_text">Angular JS4</div>
+                </li>
+                <li class="col-lg-3 no_pad" *ngIf="isEditableSave2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mandatory skills" value="Angular JS4">
+                  </mat-form-field>
+                </li>
+              </ul>
+              <div class="pull-right task_rgt">
+                <button md-button class="line-btn  pull-left  text-uppercase searchby_attr" aria-label="Match Check Analytics" title="Match Check Analytics">Match Check Analytics</button>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="col-xs-12 no_pad more_cls">
+    <button class="pull-right btndef_none view-more-btn" aria-label="More" title="More" routerLink="/allmydemandsDetails" routerLinkActive="active">View more<span class="btndef_none icon-arrow_drop_right"></span></button>
+    <button class="pull-right btndef_none view-more-btn" aria-label="See my pending proposals" title="See my pending proposals" routerLink="/pendingproposals" routerLinkActive="active">See my pending proposals<span class="btndef_none icon-arrow_drop_right"></span></button>
+  </div>
+</div>

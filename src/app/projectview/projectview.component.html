@@ -1,0 +1,121 @@
+<div class="col-xs-12 no_pad">
+  <div class="col-xs-12 no_pad rgtcontent_up">
+    <h2 class="pull-left no_pad">
+			<div class="pull-left first_letter inner_head">cosmos</div>
+			<div class="pull-left beside_hd">project</div>
+		</h2>
+    <div class="pull-left navigation_main">
+      <button class="pull-left btndef_none text-uppercase mainnav_btn" aria-label="create an indent" title="create an indent" [routerLink]="['/gotosearchallocate']">create an indent</button>
+      <button class="pull-left btndef_none text-uppercase mainnav_btn" aria-label="project actions" title="project actions" (click)="openManageProject()">project actions</button>
+      <button class="pull-left btndef_none text-uppercase mainnav_btn" aria-label="team actions" title="team actions" [routerLink]="['/myteam']">team actions</button>
+    </div>
+    <div class="pull-right gross_cls">
+      <div class="pull-left grs_txt first_letter">gross margin &nbsp;</div>
+      <div class="pull-left grs_num">18%</div>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad rgtcontent_down">
+    <div class="col-xs-12 no_pad  open_accord">
+      <div class="col-xs-12 no_pad accordionItemHeading default_cursor">
+        <div class="pull-left desc_hd first_letter">my tasks / reminders</div>
+      </div>
+      <div class="col-xs-12 no_pad accordionItemContent">
+        <div class="col-xs-12 no_pad accordionInnerContent">
+          <app-mytasks></app-mytasks>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+      <div class="col-xs-12 no_pad accordionItem close_accord" #accord1>
+        <button aria-label="delete" class="pull-left btndef_none accord_drag task_btn text-uppercase icon-delete abs-pos" title="Remove" (click)="openDeleteDialog(accord1)"></button>
+        <div class="col-xs-12 no_pad accordionItemHeading">
+          <div class="pull-left desc_hd first_letter">Leadership</div>
+          <div class="pull-right">
+            <button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+            <button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad accordionItemContent">
+          <div class="col-xs-12 no_pad accordionInnerContent">
+            <app-leadership></app-leadership>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- accord2 starts here -->
+    <div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+      <div class="col-xs-12 no_pad accordionItem close_accord" #accord2>
+        <button aria-label="delete" class="pull-left btndef_none accord_drag task_btn text-uppercase icon-delete abs-pos" title="Remove" (click)="openDeleteDialog(accord2)"></button>
+        <div class="col-xs-12 no_pad accordionItemHeading">
+          <div class="pull-left desc_hd first_letter">my request status</div>
+          <div class="pull-right">
+            <button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+            <button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad accordionItemContent">
+          <div class="col-xs-12 no_pad accordionInnerContent">
+            <app-myrequests></app-myrequests>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- accord3 starts here -->
+    <div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+      <div class="col-xs-12 no_pad accordionItem close_accord" #accord3>
+        <button aria-label="delete" class="pull-left btndef_none accord_drag task_btn text-uppercase icon-delete abs-pos" title="Remove" (click)="openDeleteDialog(accord3)"></button>
+        <div class="col-xs-12 no_pad accordionItemHeading">
+          <div class="pull-left desc_hd first_letter">team analytics</div>
+          <div class="pull-right">
+            <button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+            <button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad accordionItemContent">
+          <div class="col-xs-12 no_pad accordionInnerContent">
+            <app-teamanalytics></app-teamanalytics>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- accord4 starts here -->
+    <div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"'>
+      <div class="col-xs-12 no_pad accordionItem close_accord" #accord4>
+        <button aria-label="delete" class="pull-left btndef_none accord_drag task_btn text-uppercase icon-delete abs-pos" title="Remove" (click)="openDeleteDialog(accord4)"></button>
+        <div class="col-xs-12 no_pad accordionItemHeading">
+          <div class="pull-left desc_hd first_letter">all my demands</div>
+          <div class="pull-right">
+            <button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+            <button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad accordionItemContent">
+          <div class="col-xs-12 no_pad accordionInnerContent">
+            <app-allmydemands></app-allmydemands>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- accord5 starts here -->
+    <div class="col-xs-12 no_pad drag_cls" [dragula]='"third-bag"' id="createIndent">
+      <div class="col-xs-12 no_pad accordionItem createIndent_accor close_accord" id="createAccor" #accord5>
+        <button aria-label="delete" class="pull-left btndef_none accord_drag task_btn text-uppercase icon-delete abs-pos" title="Remove" (click)="openDeleteDialog(accord5)"></button>
+        <div class="col-xs-12 no_pad accordionItemHeading">
+          <div class="pull-left desc_hd first_letter">manage projects</div>
+          <div class="pull-right">
+            <button class="pull-left btndef_none accord_drag icon-move" aria-label="draggable" title="draggable"></button>
+            <button class="pull-left btndef_none accord_arrow icon-arrow_drop_down" aria-label="arrow" title="arrow"></button>
+          </div>
+        </div>
+        <div class="col-xs-12 no_pad accordionItemContent">
+          <div class="col-xs-12 no_pad accordionInnerContent">
+            <app-manageproject (viewMorePage)="getViewMore($event)"></app-manageproject>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 no_pad view_snapshots">
+      <div class="pull-left first_letter snapshot_txt">would you like to view project snapshots?</div>
+      <button md-button class="line-btn primary-btn pull-right text-uppercase snapshot_btn" aria-label="click here" title="click here">click here</button>
+    </div>
+  </div>

@@ -1,0 +1,892 @@
+<div class="col-xs-12">
+  <div class="col-xs-12 back_pos" *ngIf="myteamback">
+    <div class="col-xs-12 no_pad">
+      <div class="back-button-container projectDetailsHead searchHead">
+        <button class="icon-back_arrow pull-left mt3 backArrw pdngLeft0" aria-label="Back" title="Back" (click)=" goBack()">
+        </button>
+        <h2 class="pull-left">My team</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 back_pos" *ngIf="this.selectedBtn=='two'">
+    <div class="back-button-container">
+      <button class=" btndef_none more_icon icon-back_arrow" aria-label="Back" title="Back" (click)=" goBack()">
+      </button>
+      <h2 class="back-head">Previously ramped down resources</h2>
+    </div>
+  </div>
+  <div class="col-xs-12 back_pos" *ngIf="this.selectedBtn=='one'">
+    <div class="back-button-container">
+      <button class=" btndef_none more_icon icon-back_arrow" aria-label="Back" title="Back" (click)=" goBack()">
+      </button>
+      <h2 class="back-head">Saved profiles</h2>
+    </div>
+  </div>
+  <div class="col-xs-12 no_pad myteamContainer">
+    <div class="col-xs-12 no_pad project_details">
+      <div class="pull-left prjHeader">
+        <label class="bold font_family font14" aria-label="Project:">Project:</label>
+        <label class="bold font_family font14" aria-label="ABC Project">ABC Project</label>
+      </div>
+      <div class="pull-right">
+        <button [ngClass]="this.selectedBtn == 'one'? 'my_team_header_btn_active pull-right btndef_none text-uppercase view-more-btn view_btn':'pull-right btndef_none text-uppercase view-more-btn view_btn'" aria-label="saved profiles" title="saved profiles" (click)="showrampsaveprof('one')">saved profiles<span class="btndef_none icon-arrow_drop_right"></span></button>
+        <button [ngClass]="this.selectedBtn == 'two'? 'my_team_header_btn_active1 pull-right btndef_none text-uppercase view-more-btn view_btn':'pull-right btndef_none text-uppercase view-more-btn view_btn'" aria-label="previously ramped down resources" title="previously ramped down resources" (click)="showrampsaveprof('two')">previously ramped down resources<span class="btndef_none icon-arrow_drop_right"></span></button>
+      </div>
+    </div>
+    <div class="col-xs-12 no_pad demandtab_in myteam">
+      <div class="col-xs-12 no_pad" *ngIf="previouslyramped">
+        <accordion [showArrows]="true">
+          <accordion-group>
+            <accordion-heading>
+              <div class="col-xs-12 no_pad font_family font14 my_acc_color accordion_head bold">My team insights</div>
+            </accordion-heading>
+            <div class="col-xs-12 no_pad accordion_content">
+              <div class="col-xs-12 no_pad">
+                <div class="pull-left">
+                  <label class="font_family font12" aria-label="Project:">Total strength -</label>
+                  <label class="bold font_family font12" aria-label="ABC Project"> 50</label>
+                </div>
+                <div class="pull-right">
+                  <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                </div>
+              </div>
+              <div class="col-xs-12 no_pad acc_table">
+                <table class="myteam_table">
+                  <tr>
+                    <th></th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="2 days to go">2 days to go</label>
+                    </th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="5 days to go">5 days to go</label>
+                    </th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="More than 5 days to go">More than 5 days to go</label>
+                    </th>
+                    <th>
+                      <label class="bold font12 font_family" aria-label="Total">Total</label>
+                    </th>
+                  </tr>
+                  <tr (click)="showonlyselectedemp()">
+                    <td class="text_align_left">
+                      <label class="bold font12 font_family" aria-label="People with valid work visa">People with valid work visa</label>
+                    </td>
+                    <td>
+                      <label class="bold font12 font_family" aria-label="blank">-</label>
+                    </td>
+                    <td>
+                      <label class="bold font12 font_family" aria-label="blank">-</label>
+                    </td>
+                    <td>
+                      <label class="bold font12 font_family" aria-label="blank">-</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family" aria-label="22">22</label>
+                    </td>
+                  </tr>
+                  <tr (click)="showonlyselectedemp()">
+                    <td class="text_align_left">
+                      <label class="bold font12 font_family text_align_left" aria-label="People who see approching">People who see approching</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="6">6</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="4">4</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="3">3</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family" aria-label="13">13</label>
+                    </td>
+                  </tr>
+                  <tr (click)="showonlyselectedemp()">
+                    <td class="text_align_left">
+                      <label class="bold font12 font_family text_align_left" aria-label="People who are serving notice period">People who are serving notice period</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="6">6</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="4">4</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family text_align_left" aria-label="3">3</label>
+                    </td>
+                    <td class="text_align_right">
+                      <label class="bold font12 font_family" aria-label="13">13</label>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+      <div class="col-xs-12 no_pad background_wht" *ngIf="selectedEmployees1">
+        <mat-tab-group>
+          <!--employee tab starts here-->
+          <mat-tab label="Employees">
+            <div class="col-xs-12 no_pad checkbox_div">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="paddngLeft10">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optemp">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names;let i = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb3 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.skilltype}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="alert_padding">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr  searchByattributeBtn" aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-xs-12 mt20" *ngIf="showdropvalues">
+              <div class=" col-xs-4 pull-left">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValue" (change)="showfirstquestion(selectedValue)">
+                      <mat-option *ngFor="let resource of resources" [value]="resource.value">
+                        {{resource.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15" *ngIf="firstquestion">
+                  <div class="col-xs-10 no_pad">
+                    <mat-radio-group (change)="showsecondquestion()">
+                      <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+                      <mat-radio-button value="3" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20" *ngIf="secondquestion">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-8 no_pad">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group (change)="showthirdquestion()">
+                        <mat-radio-button value="4" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+                        <mat-radio-button value="5" class="col-lg-4 no_pad">NG release</mat-radio-button>
+                        <mat-radio-button value="6" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" placeholder="Assignment start date">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="thirdquestion">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-12 no_pad reason">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group [(ngModel)]="radioValue" (change)="showfourthquestion(radioValue)">
+                        <mat-radio-button value="7" checked=true class="col-lg-12 no_pad">Reason one</mat-radio-button>
+                        <mat-radio-button value="8" class="col-lg-12 no_pad">Reason two</mat-radio-button>
+                        <mat-radio-button value="9" class="col-lg-12 no_pad">Reason three</mat-radio-button>
+                        <mat-radio-button value="10" class="col-lg-12 no_pad">Reason four</mat-radio-button>
+                        <mat-radio-button value="11" class="col-lg-12 no_pad">Others</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="fourthquestion">
+                  <div class="styled-input wide mt40 myteam_textarea">
+                    <textarea maxlength="500" required></textarea>
+                    <label>Description</label>
+                    <span></span>
+                  </div>
+                  <span class="pull-right text-count"><span class="pull-left chars-count">0</span><span class="pull-left total-words">/ 500 Characters</span></span>
+                </div>
+                <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+              </div>
+            </div>
+          </mat-tab>
+          <!--contractors tab starts here-->
+          <mat-tab label="Contractors">
+            <div class="col-xs-12 no_pad checkbox_div">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="paddngLeft10">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optcont">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names;let i = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(i)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb0 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.skilltype}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="alert_padding">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr  " aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-xs-12 mt20" *ngIf="showdropvalues">
+              <!-- <div class=" col-xs-4  pull-left">
+              <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+
+              <mat-form-field>
+                      <mat-select placeholder="What you want to do with these resources ?"  name="resource" [(ngModel)]="selectedValue" (change)="onChange(selectedValue)">
+                        <mat-option *ngFor="let resource of resources" [value]="resource.value" >
+                          {{resource.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+    
+                  </div>
+              </div> -->
+              <!-- temporary data, since no data available for this page -->
+              <div class=" col-xs-4 pull-left">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValue" (change)="showfirstquestion(selectedValue)">
+                      <mat-option *ngFor="let resource of resources" [value]="resource.value">
+                        {{resource.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15" *ngIf="firstquestion">
+                  <div class="col-xs-10 no_pad">
+                    <mat-radio-group (change)="showsecondquestion()">
+                      <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+                      <mat-radio-button value="2" class="col-lg-3 no_pad">De allocate</mat-radio-button>
+                      <mat-radio-button value="3" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20" *ngIf="secondquestion">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-8 no_pad">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group (change)="showthirdquestion()">
+                        <mat-radio-button value="4" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+                        <mat-radio-button value="5" class="col-lg-4 no_pad">NG release</mat-radio-button>
+                        <mat-radio-button value="6" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" placeholder="Assignment start date">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="thirdquestion">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-12 no_pad reason">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group [(ngModel)]="radioValue" (change)="showfourthquestion(radioValue)">
+                        <mat-radio-button value="7" checked=true class="col-lg-12 no_pad">Reason one</mat-radio-button>
+                        <mat-radio-button value="8" class="col-lg-12 no_pad">Reason two</mat-radio-button>
+                        <mat-radio-button value="9" class="col-lg-12 no_pad">Reason three</mat-radio-button>
+                        <mat-radio-button value="10" class="col-lg-12 no_pad">Reason four</mat-radio-button>
+                        <mat-radio-button value="11" class="col-lg-12 no_pad">Others</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="fourthquestion">
+                  <div class="styled-input wide mt40 myteam_textarea">
+                    <textarea maxlength="500" required></textarea>
+                    <label>Description</label>
+                    <span></span>
+                  </div>
+                  <span class="pull-right text-count"><span class="pull-left chars-count">0</span><span class="pull-left total-words">/ 500 Characters</span></span>
+                </div>
+                <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+              </div>
+            </div>
+          </mat-tab>
+          <!--rookies tab starts here-->
+          <mat-tab label="Investment">
+            <div class="col-xs-12 no_pad checkbox_div">
+              <table class="myteam_emp_table mt10">
+                <tr>
+                  <th colspan="3" class="paddngLeft10">
+                    <div class="pull-left">
+                      <label class="mb0">
+                        <mat-checkbox class="mb0" [(ngModel)]="selectedAll" (change)="selectAll()"></mat-checkbox>
+                      </label>
+                      <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                    </div>
+                  </th>
+                  <th colspan="4">
+                    <div class="pull-right">
+                      <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                    </div>
+                  </th>
+                </tr>
+              </table>
+              <div class="col-xs-12 no_pad noLineHeight scroll-window" slimScroll [options]="optrook">
+                <table class="myteam_emp_table mt10">
+                  <tr *ngFor="let n of names;let j = index">
+                    <td>
+                      <div class="col-xs-1 no_pad singleCheckbox">
+                        <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected(j)"></mat-checkbox>
+                      </div>
+                      <div class="col-xs-4 no_pad empdetail">
+                        <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                      </div>
+                      <div class="col-xs-8">
+                        <label class="col-xs-12 no_pad first_letter label_text capitalize mb0 myteamleft15">{{n.profilename}}
+                          <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                        </label>
+                        <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                        <div class="email_skype_div">
+                          <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                          <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.skilltype}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                    </td>
+                    <td>
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                    </td>
+                    <td class="alert_padding">
+                      <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alert}}</label>
+                      <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alertmsg}}</span>
+                    </td>
+                    <td class="padd0">
+                      <div class="col-xs-12 no_pad">
+                        <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr  " aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                      </div>
+                      <div class="col-xs-12 no_pad mt10">
+                        <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-xs-12 mt20" *ngIf="showdropvalues">
+              <!-- <div class="col-xs-4 pull-left">
+              <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+              <mat-form-field>
+                      <mat-select placeholder="What you want to do with these resources ?"  name="resource" [(ngModel)]="selectedValue" (change)="onChange(selectedValue)">
+                        <mat-option *ngFor="let resource of resources" [value]="resource.value" >
+                          {{resource.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                  </div>
+              </div> -->
+              <!-- temporary data, since no data available for this page -->
+              <div class=" col-xs-4 pull-left">
+                <div class="col-xs-12 no_pad excel_select_myteam selectBold">
+                  <mat-form-field>
+                    <mat-select placeholder="What you want to do with these resources ?" name="resource" [(ngModel)]="selectedValue" (change)="showfirstquestion(selectedValue)">
+                      <mat-option *ngFor="let resource of resources" [value]="resource.value">
+                        {{resource.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15" *ngIf="firstquestion">
+                  <div class="col-xs-10 no_pad">
+                    <mat-radio-group (change)="showsecondquestion()">
+                      <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+                      <mat-radio-button value="2" class="col-lg-3 no_pad">De allocate</mat-radio-button>
+                      <mat-radio-button value="3" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad mt20" *ngIf="secondquestion">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-8 no_pad">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group (change)="showthirdquestion()">
+                        <mat-radio-button value="4" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+                        <mat-radio-button value="5" class="col-lg-4 no_pad">NG release</mat-radio-button>
+                        <mat-radio-button value="6" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 no_pad">
+                    <div class="col-xs-12">
+                      <form class="dropdownSelect example-form col-xs-12 no_pad">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker" placeholder="Assignment start date">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="thirdquestion">
+                  <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+                  <div class="col-xs-12 no_pad reason">
+                    <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                      <mat-radio-group [(ngModel)]="radioValue" (change)="showfourthquestion(radioValue)">
+                        <mat-radio-button value="7" checked=true class="col-lg-12 no_pad">Reason one</mat-radio-button>
+                        <mat-radio-button value="8" class="col-lg-12 no_pad">Reason two</mat-radio-button>
+                        <mat-radio-button value="9" class="col-lg-12 no_pad">Reason three</mat-radio-button>
+                        <mat-radio-button value="10" class="col-lg-12 no_pad">Reason four</mat-radio-button>
+                        <mat-radio-button value="11" class="col-lg-12 no_pad">Others</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 no_pad" *ngIf="fourthquestion">
+                  <div class="styled-input wide mt40 myteam_textarea">
+                    <textarea maxlength="500" required></textarea>
+                    <label>Description</label>
+                    <span></span>
+                  </div>
+                  <span class="pull-right text-count"><span class="pull-left chars-count">0</span><span class="pull-left total-words">/ 500 Characters</span></span>
+                </div>
+                <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="col-xs-12 no_pad background_wht" *ngIf="selectedEmployees">
+        <div class="col-xs-12 no_pad checkbox_div">
+          <table class="myteam_emp_table">
+            <tr>
+              <th colspan="3">
+                <div class="pull-left">
+                  <label class="mb0">
+                    <mat-checkbox class="mb0" [(ngModel)]="selectedAll1" (change)="selectAll1()"></mat-checkbox>
+                  </label>
+                  <label class="bold font14 font_family first_letter">People whos ERD approching</label>
+                </div>
+              </th>
+              <th colspan="4">
+                <div class="pull-right">
+                  <button class="pull-right btndef_none filter_left icon-close myteam_filter_color myteam_close_pad12" (click)="showhomepagemyteam()" aria-label="close" title="close"></button>
+                  <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color myteam_flter_pad15" aria-label="Filter" title="Filter"></button>
+                </div>
+              </th>
+            </tr>
+            <tr *ngFor="let n of names1;let j = index">
+              <td>
+                <div class="col-xs-1 no_pad singleCheckbox">
+                  <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected1(j)"></mat-checkbox>
+                </div>
+                <div class="col-xs-4 no_pad empdetail">
+                  <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                </div>
+                <div class="col-xs-8">
+                  <label class="col-xs-12 no_pad first_letter label_text capitalize mb0 myteamleft15">{{n.profilename}}
+                    <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                  </label>
+                  <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                  <div class="email_skype_div">
+                    <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                    <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype"></button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.skilltype}}</span>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+              </td>
+              <td class="alert_padding">
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alert}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alertmsg}}</span>
+              </td>
+              <td>
+                <div class="col-xs-12 no_pad">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr  " aria-label="search by attributes" title="search by attributes" (click)="openDialog()" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                </div>
+                <div class="col-xs-12 no_pad mt10">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="see eligible roles" title="see eligible roles" *ngIf="n.profilename == 'frakash'">{{n.seeroles}}</button>
+                </div>
+                <div class="col-xs-12 no_pad mt10">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr " aria-label="initiate c2h process" title="initiate c2h process" *ngIf="n.profilename == 'ranju v s'">{{n.initiate}}</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-xs-12 mt20" *ngIf="showdropvalues1">
+          <div class=" col-xs-4 pull-left">
+            <div class="col-xs-12 no_pad excel_select_myteam">
+              <mat-form-field>
+                <mat-select placeholder="What you want to do with these resources ?" name="resource1" [(ngModel)]="selectedValue1" (change)="showfirstquestion(selectedValue1)">
+                  <mat-option *ngFor="let resource1 of resources" [value]="resource1.value">
+                    {{resource1.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+            <div class="col-xs-12 no_pad staggerRadio mt_radio15" *ngIf="firstquestion">
+              <div class="col-xs-10 no_pad">
+                <mat-radio-group (change)="showsecondquestion()">
+                  <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+                  <mat-radio-button value="2" class="col-lg-3 no_pad">De allocate</mat-radio-button>
+                  <mat-radio-button value="3" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="col-xs-12 no_pad mt20" *ngIf="secondquestion">
+              <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+              <div class="col-xs-8 no_pad">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                  <mat-radio-group (change)="showthirdquestion()">
+                    <mat-radio-button value="4" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+                    <mat-radio-button value="5" class="col-lg-4 no_pad">NG release</mat-radio-button>
+                    <mat-radio-button value="6" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="Assignment start date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 no_pad" *ngIf="thirdquestion">
+              <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+              <div class="col-xs-12 no_pad reason">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                  <mat-radio-group [(ngModel)]="radioValue" (change)="showfourthquestion(radioValue)">
+                    <mat-radio-button value="7" checked=true class="col-lg-12 no_pad">Reason one</mat-radio-button>
+                    <mat-radio-button value="8" class="col-lg-12 no_pad">Reason two</mat-radio-button>
+                    <mat-radio-button value="9" class="col-lg-12 no_pad">Reason three</mat-radio-button>
+                    <mat-radio-button value="10" class="col-lg-12 no_pad">Reason four</mat-radio-button>
+                    <mat-radio-button value="11" class="col-lg-12 no_pad">Others</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 no_pad" *ngIf="fourthquestion">
+              <div class="styled-input wide mt40 myteam_textarea">
+                <textarea maxlength="500" required></textarea>
+                <label>Description</label>
+                <span></span>
+              </div>
+              <span class="pull-right text-count"><span class="pull-left chars-count">0</span><span class="pull-left total-words">/ 500 Characters</span></span>
+            </div>
+            <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 no_pad background_wht" *ngIf="selectedEmployeesrampsave">
+        <div class="col-xs-12 no_pad checkbox_div">
+          <table class="myteam_emp_table">
+            <tr>
+              <th colspan="3" class="paddngLeft10">
+                <div class="pull-left">
+                  <label class="mb0">
+                    <mat-checkbox [(ngModel)]="selectedAll2" (change)="selectAll2()"></mat-checkbox>
+                  </label>
+                  <label class="bold font14 font_family text_align_left first_letter">Select all</label>
+                </div>
+              </th>
+              <th colspan="4">
+                <div class="pull-right">
+                  <button class="pull-right btndef_none filter_left icon-filter myteam_filter_color" aria-label="Filter" title="Filter"></button>
+                </div>
+              </th>
+            </tr>
+            <tr *ngFor="let n of names2;let k = index">
+              <td>
+                <div class="col-xs-1 no_pad singleCheckbox">
+                  <mat-checkbox class="checkbox_myteam_align" [(ngModel)]="n.selected" (change)="checkIfAllSelected2(k)"></mat-checkbox>
+                </div>
+                <div class="col-xs-4 no_pad empdetail">
+                  <div class="user_pic pull-left myteam_pic" aria-label="profile pic"></div>
+                </div>
+                <div class="col-xs-8">
+                  <label class="col-xs-12 no_pad first_letter label_text capitalize mb0 myteamleft15">{{n.profilename}}
+                    <button class="btndef_none icon-info icon_info_myteam" aria-label="information" title="information" (click)="openDialogEmpolyee()"></button>
+                  </label>
+                  <span class="col-xs-12 no_pad first_letter label_hd capitalize myteam_color myteamleft15">{{n.number}}</span>
+                  <div class="email_skype_div">
+                    <button class="pull-rleft btndef_none icon-email myteam_mail_color" aria-label="mail" title="mail"></button>
+                    <button class="pull-right btndef_none filter_left icon-skype myteam_skype_color" aria-label="skype" title="skype" *ngIf="n.profilename!= 'frakash'"></button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="n.profilename!= 'frakash'">
+                  <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.emid}}</label>
+                  <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.empid}}</span>
+                </div>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.skill}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.skilltype}}</span>
+              </td>
+              <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.exp}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text text_align_left">{{n.expyears}}</span>
+              </td>
+              <td>
+                <div class="left_wipro_myteam" *ngIf="n.profilename == 'frakash'">
+                  <label class="mb0 font12">Left wipro</label>
+                </div>
+                <div *ngIf="n.profilename!= 'frakash'">
+                  <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.loc}}</label>
+                  <span class="col-xs-12 no_pad first_letter label_text capitalize">{{n.place}}</span>
+                </div>
+              </td>
+              <!-- <td>
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0">{{n.billability}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text">{{n.billper}}</span>
+                </td> -->
+              <!-- <td class="alert_padding alert_padding">
+                <label class="col-xs-12 no_pad first_letter label_hd myteam_color mb0" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alert}}</label>
+                <span class="col-xs-12 no_pad first_letter label_text" *ngIf="n.profilename == 'ranju v s' || n.profilename == 'frakash'">{{n.alertmsg}}</span>
+                </td> -->
+              <td class="padd0">
+                <div class="col-xs-12 no_pad">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr  " aria-label="search by attributes" title="search by attributes" routerLink="/gotosearchallocate" routerLinkActive="active">{{n.searchby}}</button>
+                </div>
+                <div class="col-xs-12 no_pad">
+                  <button md-button class="col-xs-12 line-btn  pull-right  text-uppercase searchby_attr   myteammarn_top8" aria-label="proceed to allocate" title="proceed to allocate" routerLink="/ProceedToAllocate" routerLinkActive="active">{{n.allocate}}</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-xs-12 mt20" *ngIf="showdropvalues2">
+          <div class=" col-xs-4 pull-left">
+            <div class="col-xs-12 no_pad excel_select_myteam">
+              <mat-form-field>
+                <mat-select placeholder="What you want to do with these resources ?" name="resource2" [(ngModel)]="selectedValue2" (change)="showfirstquestion(selectedValue2)">
+                  <mat-option *ngFor="let resource2 of resources" [value]="resource2.value">
+                    {{resource2.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-xs-8 pull-right" *ngIf="showSubmit">
+            <div class="col-xs-12 no_pad staggerRadio mt_radio15" *ngIf="firstquestion">
+              <div class="col-xs-10 no_pad">
+                <mat-radio-group (change)="showsecondquestion()">
+                  <mat-radio-button value="1" checked=true class="col-lg-3 no_pad">Ramped down</mat-radio-button>
+                  <mat-radio-button value="2" class="col-lg-3 no_pad">De allocate</mat-radio-button>
+                  <mat-radio-button value="3" class="col-lg-4 no_pad">Change billing assignment %</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="col-xs-12 no_pad mt20" *ngIf="secondquestion">
+              <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+              <div class="col-xs-8 no_pad">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                  <mat-radio-group (change)="showthirdquestion()">
+                    <mat-radio-button value="4" checked=true class="col-lg-4 no_pad">NC release</mat-radio-button>
+                    <mat-radio-button value="5" class="col-lg-4 no_pad">NG release</mat-radio-button>
+                    <mat-radio-button value="6" class="col-lg-4 no_pad">Normal release</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="col-xs-4 no_pad">
+                <div class="col-xs-12">
+                  <form class="dropdownSelect example-form col-xs-12 no_pad">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="Assignment start date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 no_pad" *ngIf="thirdquestion">
+              <span class="col-xs-12 no_pad first_letter label_text mt_radio15">What kind of ramped down is this? </span>
+              <div class="col-xs-12 no_pad reason">
+                <div class="col-xs-12 no_pad staggerRadio mt_radio15">
+                  <mat-radio-group [(ngModel)]="radioValue" (change)="showfourthquestion(radioValue)">
+                    <mat-radio-button value="7" checked=true class="col-lg-12 no_pad">Reason one</mat-radio-button>
+                    <mat-radio-button value="8" class="col-lg-12 no_pad">Reason two</mat-radio-button>
+                    <mat-radio-button value="9" class="col-lg-12 no_pad">Reason three</mat-radio-button>
+                    <mat-radio-button value="10" class="col-lg-12 no_pad">Reason four</mat-radio-button>
+                    <mat-radio-button value="11" class="col-lg-12 no_pad">Others</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 no_pad" *ngIf="fourthquestion">
+              <div class="styled-input wide mt40 myteam_textarea">
+                <textarea maxlength="500" required></textarea>
+                <label>Description</label>
+                <span></span>
+              </div>
+              <span class="pull-right text-count"><span class="pull-left chars-count">0</span><span class="pull-left total-words">/ 500 Characters</span></span>
+            </div>
+            <button class="pull-right my_team_header_btn sub_col mrg_rgt0" aria-label="submit" title="submit" *ngIf="submitbutton">submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

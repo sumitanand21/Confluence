@@ -1,0 +1,30 @@
+<div class="col-xs-12 no_pad employee_details">
+  <mat-dialog-actions>
+    <div class="col-xs-12 no_pad">
+      <div class="col-xs-12 no_pad allPopHeader">
+        <h1 class="pull-left">Manage Core List</h1>
+        <button class="pull-right icon-close" mat-dialog-close aria-label="close" (click)="removeScroll()"></button>
+      </div>
+      <div class="col-xs-12 no_pad popInnerPadd">
+        <!-- Code Here -->
+        <div class="col-xs-12 no_pad">
+          <div class="col-xs-12 no_pad checkbox_div">
+            <table class="myteam_emp_table border_ccc">
+            	<tr>
+            		<th>Account Name</th>
+            		<th>Account Current %</th>
+            		<th>Action</th>
+            	</tr>
+            	<tr *ngFor="let n of accounts;let i = index">
+            		<td>{{n.accoutName}}</td>
+            		<td>{{n.corePercent}}</td>
+            		<td></td>
+            	</tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Buttons here -->
+    </div>
+  </mat-dialog-actions>
+</div>
